@@ -20,6 +20,7 @@ def do_kernel_test(
     depth3_banks: int = 13,
     tmp3_banks: int | None = 18,
     depth3_use_alu_masks: bool = False,
+    schedule_mode: str = "relaxed",
     trace: bool = False,
     seed: int = 123,
     verbose: bool = False,
@@ -54,6 +55,7 @@ def do_kernel_test(
         depth3_banks=depth3_banks,
         depth3_use_alu_masks=depth3_use_alu_masks,
         tmp3_banks=tmp3_banks,
+        schedule_mode=schedule_mode,
     )
 
     value_trace: dict[Any, int] = {}
@@ -80,7 +82,8 @@ def do_kernel_test(
             f"(unroll={unroll} banks={parallel_banks} "
             f"lw={load_weight} vw={valu_weight} ab={addr_bonus} "
             f"inplace={inplace_gather} tmp3={use_tmp3} streamIO={streaming_io} "
-            f"cacheD3={cache_depth3} d3b={depth3_banks} aluD3={depth3_use_alu_masks})"
+            f"cacheD3={cache_depth3} d3b={depth3_banks} aluD3={depth3_use_alu_masks} "
+            f"sched={schedule_mode})"
             )
     return machine.cycle
 

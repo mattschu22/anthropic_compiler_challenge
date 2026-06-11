@@ -1,7 +1,12 @@
 """Optimized kernel builder for the compiler challenge workload."""
 
 from .problem_api import DebugInfo, SCRATCH_SIZE, SLOT_LIMITS, VLEN
-from .scheduler import chunk_wide_valu_bundles, pipeline_relaxed
+from .scheduler import (
+    chunk_wide_valu_bundles,
+    get_read_write_sets,
+    pipeline_relaxed,
+    pipeline_strict,
+)
 
 class KernelBuilder:
     def __init__(self):
@@ -50,6 +55,54 @@ class KernelBuilder:
                 ops.append(("const", a, v))
             self.add("load", ops)
         self.pending_consts = []
+
+    def pack_adjacent_same_engine(self, body):
+        """Locally fill slots for adjacent same-engine bundles.
+
+        This is intentionally much weaker than the VLIW scheduler: it does not
+        reorder instructions or combine different engines. It only merges
+        adjacent same-engine bundles when they fit in the engine slot limit and
+        have no same-cycle scratch conflicts.
+        """
+
+        def normalize(ops):
+            return [ops] if isinstance(ops, tuple) else ops
+
+        def read_write(engine, ops):
+            reads, writes = set(), set()
+            for op in ops:
+                r, w = get_read_write_sets(engine, op)
+                reads |= r
+                writes |= w
+            return reads, writes
+
+        packed = []
+        for engine, ops in body:
+            ops = normalize(ops)
+            if not packed:
+                packed.append((engine, ops))
+                continue
+
+            prev_engine, prev_ops = packed[-1]
+            if prev_engine != engine:
+                packed.append((engine, ops))
+                continue
+            if len(prev_ops) + len(ops) > SLOT_LIMITS.get(engine, 64):
+                packed.append((engine, ops))
+                continue
+
+            prev_reads, prev_writes = read_write(prev_engine, prev_ops)
+            reads, writes = read_write(engine, ops)
+            if prev_writes & (reads | writes):
+                packed.append((engine, ops))
+                continue
+            if writes & (prev_reads | prev_writes):
+                packed.append((engine, ops))
+                continue
+
+            packed[-1] = (prev_engine, prev_ops + ops)
+
+        return packed
 
     # --- Hash micro-kernel pieces ---
 
@@ -167,6 +220,7 @@ class KernelBuilder:
         depth3_banks: int = 13,
         tmp3_banks: int | None = 18,
         depth3_use_alu_masks: bool = False,
+        schedule_mode: str = "relaxed",
     ):
         """
         Build a fully unrolled kernel for the fixed (forest_height, rounds, batch_size) test case.
@@ -737,7 +791,29 @@ class KernelBuilder:
                     body.append(("store", [("vstore", tmp_addr2[b], tmp_v_val[b])]))
         # schedule and append pauses (yield boundaries)
         body_sched = chunk_wide_valu_bundles(body, chunk_size=2)
-        sched = pipeline_relaxed(body_sched, load_weight=self.load_weight, valu_weight=self.valu_weight, addr_bonus=self.addr_bonus, bank_map=bank_map)
+        if schedule_mode == "none":
+            body_sched = self.pack_adjacent_same_engine(body_sched)
+            sched = []
+            for engine, ops in body_sched:
+                if isinstance(ops, tuple):
+                    ops = [ops]
+                sched.append({engine: ops})
+        elif schedule_mode == "strict":
+            sched = pipeline_strict(
+                body_sched,
+                load_weight=self.load_weight,
+                valu_weight=self.valu_weight,
+            )
+        elif schedule_mode == "relaxed":
+            sched = pipeline_relaxed(
+                body_sched,
+                load_weight=self.load_weight,
+                valu_weight=self.valu_weight,
+                addr_bonus=self.addr_bonus,
+                bank_map=bank_map,
+            )
+        else:
+            raise ValueError(f"unknown schedule_mode={schedule_mode!r}")
         assert sched, "expected non-empty scheduled program"
         # Fold pauses into the first and last scheduled instructions
         sched[0].setdefault("flow", []).append(("pause",))

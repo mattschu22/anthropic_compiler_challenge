@@ -1,0 +1,17 @@
+{
+  "stage": 0,
+  "id": "00_baseline",
+  "name": "Baseline",
+  "kind": "reported_baseline",
+  "claim": "Reference point from the supplied benchmark: full tree-walk work with no specialization.",
+  "trace_kind": "index_memory",
+  "trace_note": "Perfetto trace uses an equivalent scalar machine kernel; CSV cycles keep the supplied benchmark baseline.",
+  "workload": {
+    "forest_height": 10,
+    "rounds": 16,
+    "batch_size": 256
+  },
+  "trace_builder_args": {
+    "skip_final_index_store": false
+  }
+}

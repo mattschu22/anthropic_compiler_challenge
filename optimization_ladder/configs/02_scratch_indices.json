@@ -1,0 +1,16 @@
+{
+  "stage": 2,
+  "id": "02_scratch_indices",
+  "name": "Move Indices Out Of Memory",
+  "kind": "scalar_scratch",
+  "claim": "Indices start at zero and only guide future node choices, so keep live index state in scratch.",
+  "workload": {
+    "forest_height": 10,
+    "rounds": 16,
+    "batch_size": 256
+  },
+  "builder_args": {
+    "fixed_layout": false,
+    "unroll_rounds": false
+  }
+}

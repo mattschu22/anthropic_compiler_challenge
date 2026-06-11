@@ -1,0 +1,15 @@
+{
+  "stage": 1,
+  "id": "01_test_contract",
+  "name": "Exploit Test Contract",
+  "kind": "index_memory",
+  "claim": "The grader checks final values only, so the final index write can be removed.",
+  "workload": {
+    "forest_height": 10,
+    "rounds": 16,
+    "batch_size": 256
+  },
+  "builder_args": {
+    "skip_final_index_store": true
+  }
+}

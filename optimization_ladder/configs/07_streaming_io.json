@@ -1,0 +1,17 @@
+{
+  "stage": 7,
+  "id": "07_streaming_io",
+  "name": "Streaming Value IO",
+  "kind": "vector_ladder",
+  "claim": "Use a moving value pointer instead of many per-vector value address constants.",
+  "workload": {
+    "forest_height": 10,
+    "rounds": 16,
+    "batch_size": 256
+  },
+  "builder_args": {
+    "cache_tree": true,
+    "cache_depth3": false,
+    "streaming_io": true
+  }
+}

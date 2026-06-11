@@ -1,0 +1,17 @@
+{
+  "stage": 6,
+  "id": "06_tree_cache",
+  "name": "Tree Caching",
+  "kind": "vector_ladder",
+  "claim": "Cache the heavily reused upper tree levels and replace shallow gathers with vector selects.",
+  "workload": {
+    "forest_height": 10,
+    "rounds": 16,
+    "batch_size": 256
+  },
+  "builder_args": {
+    "cache_tree": true,
+    "cache_depth3": false,
+    "streaming_io": false
+  }
+}

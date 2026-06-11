@@ -1,0 +1,16 @@
+{
+  "stage": 4,
+  "id": "04_unroll",
+  "name": "Round Unrolling",
+  "kind": "scalar_scratch",
+  "claim": "Unrolling exposes the fixed depth sequence, allowing the leaf reset and non-leaf updates to be specialized.",
+  "workload": {
+    "forest_height": 10,
+    "rounds": 16,
+    "batch_size": 256
+  },
+  "builder_args": {
+    "fixed_layout": true,
+    "unroll_rounds": true
+  }
+}
