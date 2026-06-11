@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+<rect width="100%" height="100%" fill="#f8fafc"/>
+<text x="36" y="46" font-family="Arial, sans-serif" font-size="28" font-weight="700" fill="#111827">Machine Utilization Across the Ladder</text>
+<text x="36" y="72" font-family="Arial, sans-serif" font-size="15" fill="#475569">Per-engine busy fraction · same fixed workload · the same two rungs that drop cycles also fill the machine</text>
+<rect x="92.0" y="90" width="207.6" height="508" fill="#dbeafe" opacity="0.48"/>
+<text x="195.8" y="106" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#334155">Remove work</text>
+<rect x="299.6" y="90" width="207.6" height="508" fill="#dcfce7" opacity="0.48"/>
+<text x="403.4" y="106" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#334155">Specialize</text>
+<rect x="507.2" y="90" width="415.2" height="508" fill="#fef3c7" opacity="0.48"/>
+<text x="714.8" y="106" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#334155">Expose parallelism</text>
+<rect x="922.4" y="90" width="207.6" height="508" fill="#ede9fe" opacity="0.48"/>
+<text x="1026.2" y="106" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#334155">Schedule machine</text>
+<line x1="92" y1="588" x2="1130" y2="588" stroke="#334155" stroke-width="1.2"/>
+<line x1="92" y1="116" x2="92" y2="588" stroke="#334155" stroke-width="1.2"/>
+<line x1="92" y1="588.0" x2="1130" y2="588.0" stroke="#e2e8f0" stroke-width="1"/>
+<text x="80" y="592.0" text-anchor="end" font-family="Arial, sans-serif" font-size="12" fill="#64748b">0%</text>
+<line x1="92" y1="470.0" x2="1130" y2="470.0" stroke="#e2e8f0" stroke-width="1"/>
+<text x="80" y="474.0" text-anchor="end" font-family="Arial, sans-serif" font-size="12" fill="#64748b">25%</text>
+<line x1="92" y1="352.0" x2="1130" y2="352.0" stroke="#e2e8f0" stroke-width="1"/>
+<text x="80" y="356.0" text-anchor="end" font-family="Arial, sans-serif" font-size="12" fill="#64748b">50%</text>
+<line x1="92" y1="234.0" x2="1130" y2="234.0" stroke="#e2e8f0" stroke-width="1"/>
+<text x="80" y="238.0" text-anchor="end" font-family="Arial, sans-serif" font-size="12" fill="#64748b">75%</text>
+<line x1="92" y1="116.0" x2="1130" y2="116.0" stroke="#e2e8f0" stroke-width="1"/>
+<text x="80" y="120.0" text-anchor="end" font-family="Arial, sans-serif" font-size="12" fill="#64748b">100%</text>
+<text x="24" y="352.0" transform="rotate(-90 24 352.0)" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#475569">engine busy fraction</text>
+<polyline points="92.0,557.0 195.8,557.0 299.6,555.6 403.4,555.9 507.2,553.8 611.0,548.7 714.8,547.2 818.6,547.1 922.4,529.0 1026.2,182.3 1130.0,131.0" fill="none" stroke="#2563eb" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" opacity="0.95"/>
+<circle cx="92.0" cy="557.0" r="3.4" fill="#2563eb" stroke="#f8fafc" stroke-width="1.4"/>
+<circle cx="195.8" cy="557.0" r="3.4" fill="#2563eb" stroke="#f8fafc" stroke-width="1.4"/>
+<circle cx="299.6" cy="555.6" r="3.4" fill="#2563eb" stroke="#f8fafc" stroke-width="1.4"/>
+<circle cx="403.4" cy="555.9" r="3.4" fill="#2563eb" stroke="#f8fafc" stroke-width="1.4"/>
+<circle cx="507.2" cy="553.8" r="3.4" fill="#2563eb" stroke="#f8fafc" stroke-width="1.4"/>
+<circle cx="611.0" cy="548.7" r="3.4" fill="#2563eb" stroke="#f8fafc" stroke-width="1.4"/>
+<circle cx="714.8" cy="547.2" r="3.4" fill="#2563eb" stroke="#f8fafc" stroke-width="1.4"/>
+<circle cx="818.6" cy="547.1" r="3.4" fill="#2563eb" stroke="#f8fafc" stroke-width="1.4"/>
+<circle cx="922.4" cy="529.0" r="3.4" fill="#2563eb" stroke="#f8fafc" stroke-width="1.4"/>
+<circle cx="1026.2" cy="182.3" r="3.4" fill="#2563eb" stroke="#f8fafc" stroke-width="1.4"/>
+<circle cx="1130.0" cy="131.0" r="3.4" fill="#2563eb" stroke="#f8fafc" stroke-width="1.4"/>
+<polyline points="92.0,588.0 195.8,588.0 299.6,588.0 403.4,588.0 507.2,588.0 611.0,542.8 714.8,540.7 818.6,540.6 922.4,526.0 1026.2,161.2 1130.0,126.2" fill="none" stroke="#7c3aed" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" opacity="0.95"/>
+<circle cx="92.0" cy="588.0" r="3.4" fill="#7c3aed" stroke="#f8fafc" stroke-width="1.4"/>
+<circle cx="195.8" cy="588.0" r="3.4" fill="#7c3aed" stroke="#f8fafc" stroke-width="1.4"/>
+<circle cx="299.6" cy="588.0" r="3.4" fill="#7c3aed" stroke="#f8fafc" stroke-width="1.4"/>
+<circle cx="403.4" cy="588.0" r="3.4" fill="#7c3aed" stroke="#f8fafc" stroke-width="1.4"/>
+<circle cx="507.2" cy="588.0" r="3.4" fill="#7c3aed" stroke="#f8fafc" stroke-width="1.4"/>
+<circle cx="611.0" cy="542.8" r="3.4" fill="#7c3aed" stroke="#f8fafc" stroke-width="1.4"/>
+<circle cx="714.8" cy="540.7" r="3.4" fill="#7c3aed" stroke="#f8fafc" stroke-width="1.4"/>
+<circle cx="818.6" cy="540.6" r="3.4" fill="#7c3aed" stroke="#f8fafc" stroke-width="1.4"/>
+<circle cx="922.4" cy="526.0" r="3.4" fill="#7c3aed" stroke="#f8fafc" stroke-width="1.4"/>
+<circle cx="1026.2" cy="161.2" r="3.4" fill="#7c3aed" stroke="#f8fafc" stroke-width="1.4"/>
+<circle cx="1130.0" cy="126.2" r="3.4" fill="#7c3aed" stroke="#f8fafc" stroke-width="1.4"/>
+<polyline points="92.0,566.5 195.8,566.2 299.6,563.0 403.4,561.8 507.2,567.4 611.0,507.8 714.8,535.2 818.6,535.7 922.4,532.3 1026.2,204.5 1130.0,169.8" fill="none" stroke="#0f766e" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" opacity="0.95"/>
+<circle cx="92.0" cy="566.5" r="3.4" fill="#0f766e" stroke="#f8fafc" stroke-width="1.4"/>
+<circle cx="195.8" cy="566.2" r="3.4" fill="#0f766e" stroke="#f8fafc" stroke-width="1.4"/>
+<circle cx="299.6" cy="563.0" r="3.4" fill="#0f766e" stroke="#f8fafc" stroke-width="1.4"/>
+<circle cx="403.4" cy="561.8" r="3.4" fill="#0f766e" stroke="#f8fafc" stroke-width="1.4"/>
+<circle cx="507.2" cy="567.4" r="3.4" fill="#0f766e" stroke="#f8fafc" stroke-width="1.4"/>
+<circle cx="611.0" cy="507.8" r="3.4" fill="#0f766e" stroke="#f8fafc" stroke-width="1.4"/>
+<circle cx="714.8" cy="535.2" r="3.4" fill="#0f766e" stroke="#f8fafc" stroke-width="1.4"/>
+<circle cx="818.6" cy="535.7" r="3.4" fill="#0f766e" stroke="#f8fafc" stroke-width="1.4"/>
+<circle cx="922.4" cy="532.3" r="3.4" fill="#0f766e" stroke="#f8fafc" stroke-width="1.4"/>
+<circle cx="1026.2" cy="204.5" r="3.4" fill="#0f766e" stroke="#f8fafc" stroke-width="1.4"/>
+<circle cx="1130.0" cy="169.8" r="3.4" fill="#0f766e" stroke="#f8fafc" stroke-width="1.4"/>
+<polyline points="92.0,573.7 195.8,574.0 299.6,579.6 403.4,579.3 507.2,578.0 611.0,587.4 714.8,587.4 818.6,587.4 922.4,587.1 1026.2,582.2 1130.0,581.6" fill="none" stroke="#dc2626" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" opacity="0.95"/>
+<circle cx="92.0" cy="573.7" r="3.4" fill="#dc2626" stroke="#f8fafc" stroke-width="1.4"/>
+<circle cx="195.8" cy="574.0" r="3.4" fill="#dc2626" stroke="#f8fafc" stroke-width="1.4"/>
+<circle cx="299.6" cy="579.6" r="3.4" fill="#dc2626" stroke="#f8fafc" stroke-width="1.4"/>
+<circle cx="403.4" cy="579.3" r="3.4" fill="#dc2626" stroke="#f8fafc" stroke-width="1.4"/>
+<circle cx="507.2" cy="578.0" r="3.4" fill="#dc2626" stroke="#f8fafc" stroke-width="1.4"/>
+<circle cx="611.0" cy="587.4" r="3.4" fill="#dc2626" stroke="#f8fafc" stroke-width="1.4"/>
+<circle cx="714.8" cy="587.4" r="3.4" fill="#dc2626" stroke="#f8fafc" stroke-width="1.4"/>
+<circle cx="818.6" cy="587.4" r="3.4" fill="#dc2626" stroke="#f8fafc" stroke-width="1.4"/>
+<circle cx="922.4" cy="587.1" r="3.4" fill="#dc2626" stroke="#f8fafc" stroke-width="1.4"/>
+<circle cx="1026.2" cy="582.2" r="3.4" fill="#dc2626" stroke="#f8fafc" stroke-width="1.4"/>
+<circle cx="1130.0" cy="581.6" r="3.4" fill="#dc2626" stroke="#f8fafc" stroke-width="1.4"/>
+<polyline points="92.0,559.4 195.8,559.9 299.6,571.1 403.4,570.5 507.2,588.0 611.0,588.0 714.8,577.8 818.6,576.5 922.4,557.2 1026.2,376.3 1130.0,357.2" fill="none" stroke="#f59e0b" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" opacity="0.95"/>
+<circle cx="92.0" cy="559.4" r="3.4" fill="#f59e0b" stroke="#f8fafc" stroke-width="1.4"/>
+<circle cx="195.8" cy="559.9" r="3.4" fill="#f59e0b" stroke="#f8fafc" stroke-width="1.4"/>
+<circle cx="299.6" cy="571.1" r="3.4" fill="#f59e0b" stroke="#f8fafc" stroke-width="1.4"/>
+<circle cx="403.4" cy="570.5" r="3.4" fill="#f59e0b" stroke="#f8fafc" stroke-width="1.4"/>
+<circle cx="507.2" cy="588.0" r="3.4" fill="#f59e0b" stroke="#f8fafc" stroke-width="1.4"/>
+<circle cx="611.0" cy="588.0" r="3.4" fill="#f59e0b" stroke="#f8fafc" stroke-width="1.4"/>
+<circle cx="714.8" cy="577.8" r="3.4" fill="#f59e0b" stroke="#f8fafc" stroke-width="1.4"/>
+<circle cx="818.6" cy="576.5" r="3.4" fill="#f59e0b" stroke="#f8fafc" stroke-width="1.4"/>
+<circle cx="922.4" cy="557.2" r="3.4" fill="#f59e0b" stroke="#f8fafc" stroke-width="1.4"/>
+<circle cx="1026.2" cy="376.3" r="3.4" fill="#f59e0b" stroke="#f8fafc" stroke-width="1.4"/>
+<circle cx="1130.0" cy="357.2" r="3.4" fill="#f59e0b" stroke="#f8fafc" stroke-width="1.4"/>
+<text x="1142.0" y="130.2" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#7c3aed">VALU 98%</text>
+<text x="1142.0" y="148.2" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#2563eb">ALU 97%</text>
+<text x="1142.0" y="173.8" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#0f766e">Load 89%</text>
+<text x="1142.0" y="361.2" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#f59e0b">Flow 49%</text>
+<text x="1142.0" y="585.6" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#dc2626">Store 1%</text>
+<text x="92.0" y="610" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#111827">0</text>
+<text x="195.8" y="610" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#111827">1</text>
+<text x="299.6" y="610" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#111827">2</text>
+<text x="403.4" y="610" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#111827">3</text>
+<text x="507.2" y="610" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#111827">4</text>
+<text x="611.0" y="610" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#111827">5</text>
+<text x="714.8" y="610" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#111827">6</text>
+<text x="818.6" y="610" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#111827">7</text>
+<text x="922.4" y="610" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#111827">8</text>
+<text x="1026.2" y="610" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#111827">9</text>
+<text x="1130.0" y="610" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#111827">10</text>
+<text x="611.0" y="634" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#475569">checkpoint</text>
+<line x1="611.0" y1="542.8" x2="637.0" y2="446.8" stroke="#64748b" stroke-width="1.2"/>
+<rect x="629.0" y="414.8" width="196" height="32" rx="5" fill="#ffffff" stroke="#cbd5e1"/>
+<text x="641.0" y="428.8" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#111827">SIMD turns VALU on</text>
+<text x="641.0" y="441.8" font-family="Arial, sans-serif" font-size="11" fill="#475569">8 inputs per vector op</text>
+<line x1="1026.2" y1="182.3" x2="1004.2" y2="164.3" stroke="#64748b" stroke-width="1.2"/>
+<rect x="816.2" y="132.3" width="196" height="32" rx="5" fill="#ffffff" stroke="#cbd5e1"/>
+<text x="828.2" y="146.3" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#111827">VLIW fills every engine</text>
+<text x="828.2" y="159.3" font-family="Arial, sans-serif" font-size="11" fill="#475569">cross-engine packing</text>
+<text x="36" y="696" font-family="Arial, sans-serif" font-size="13" fill="#64748b">Source: optimization_ladder/results/traces/*.json (busy engine-slots ÷ available engine-slots)</text>
+</svg>

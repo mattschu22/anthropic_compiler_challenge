@@ -40,6 +40,35 @@ Generate the marked line-chart SVG from the latest CSV:
 python3 -m optimization_ladder.chart
 ```
 
+Generate the companion per-engine utilization chart (the "why cycles fell"
+view) from the same traces:
+
+```bash
+python3 -m optimization_ladder.utilization_chart
+```
+
+Generate the four bottleneck charts (issue density vs. peak, the shifting
+bottleneck band, work vs. time, and per-stage op composition):
+
+```bash
+python3 -m optimization_ladder.bottleneck_charts
+```
+
+Generate the stage-6 deep-dive heatmap (reuse mapped onto the depth-10 tree,
+explaining why caching the top levels works):
+
+```bash
+python3 -m optimization_ladder.tree_cache_heatmap
+```
+
+The companion `tree_cache_heatmap_rounds` weights the heat by the real 16-round
+schedule (depths 0–4 are traversed twice), exposing the 4× drop between depth 4
+and depth 5:
+
+```bash
+python3 -m optimization_ladder.tree_cache_heatmap_rounds
+```
+
 Generate compact Perfetto-style lane visuals for each checkpoint:
 
 ```bash
@@ -56,6 +85,17 @@ The trace files are written under `optimization_ladder/results/traces/`.
 The reported baseline is not an emitted machine program, so `00_baseline.json`
 uses an equivalent scalar machine kernel for the trace while preserving the
 supplied `147,734` cycle number in `results/cycles.csv`.
+
+The raw trace format intentionally matches the original take-home simulator and
+watcher exactly. For the original hot-reload workflow, copy or symlink any
+checkpoint trace to `trace.json`, then run:
+
+```bash
+python3 watch_trace.py
+```
+
+The bundled `watch_trace.py` and `watch_trace.html` are byte-for-byte identical
+to the original take-home files.
 
 Slide-ready trace SVGs are written under
 `optimization_ladder/results/trace_visuals/`. These are derived from the same

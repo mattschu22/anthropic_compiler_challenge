@@ -54,8 +54,20 @@ def _load_rows():
 
 
 def _load_trace(path: Path):
-    with path.open() as f:
-        return json.load(f)
+    text = path.read_text()
+    try:
+        return json.loads(text)
+    except json.JSONDecodeError:
+        # The original take-home simulator writes a comma after every event and
+        # then closes the array. Perfetto accepts that trace shape through the
+        # bundled watcher, so keep files untouched and parse leniently here.
+        last_comma = text.rfind(",")
+        last_bracket = text.rfind("]")
+        if last_comma == -1 or last_bracket == -1 or last_comma > last_bracket:
+            raise
+        if text[last_comma + 1 : last_bracket].strip():
+            raise
+        return json.loads(text[:last_comma] + text[last_bracket:])
 
 
 def summarize_trace(path: Path, bins: int = 280):
@@ -116,8 +128,8 @@ def summarize_trace(path: Path, bins: int = 280):
 def write_trace_svg(row, summary, out_path: Path):
     out_path.parent.mkdir(parents=True, exist_ok=True)
     width = 1280
-    top = 92
-    left = 118
+    top = 132
+    left = 150
     right = 44
     lane_h = 12
     lane_gap = 3
@@ -135,10 +147,11 @@ def write_trace_svg(row, summary, out_path: Path):
         '<rect width="100%" height="100%" fill="#f8fafc"/>',
         f'<text x="34" y="42" font-family="Arial, sans-serif" font-size="25" font-weight="700" fill="#111827">{_esc(row["stage"])}. {_esc(row["name"])}</text>',
         f'<text x="34" y="68" font-family="Arial, sans-serif" font-size="14" fill="#475569">{cycles:,} cycles · {speedup:.2f}x over baseline</text>',
-        f'<text x="34" y="91" font-family="Arial, sans-serif" font-size="14" fill="#334155">{_esc(note)}</text>',
-        f'<line x1="{left}" y1="{top - 8}" x2="{left + timeline_w}" y2="{top - 8}" stroke="#cbd5e1" stroke-width="1"/>',
-        f'<text x="{left}" y="{top - 16}" font-family="Arial, sans-serif" font-size="11" fill="#64748b">0</text>',
-        f'<text x="{left + timeline_w}" y="{top - 16}" text-anchor="end" font-family="Arial, sans-serif" font-size="11" fill="#64748b">{cycles:,} cycles</text>',
+        f'<text x="34" y="92" font-family="Arial, sans-serif" font-size="14" fill="#334155">{_esc(note)}</text>',
+        f'<line x1="{left}" y1="{top - 12}" x2="{left + timeline_w}" y2="{top - 12}" stroke="#cbd5e1" stroke-width="1"/>',
+        f'<text x="{left}" y="{top - 18}" font-family="Arial, sans-serif" font-size="11" fill="#64748b">0</text>',
+        f'<text x="{left + timeline_w}" y="{top - 18}" text-anchor="end" font-family="Arial, sans-serif" font-size="11" fill="#64748b">{cycles:,} cycles</text>',
+        f'<text x="34" y="{top - 18}" font-family="Arial, sans-serif" font-size="11" font-weight="700" fill="#64748b">engine lanes</text>',
     ]
 
     y = top
@@ -146,11 +159,14 @@ def write_trace_svg(row, summary, out_path: Path):
     bin_w = timeline_w / bins
     for engine, slots, color in ENGINE_ORDER:
         util = summary["engine_util"].get(engine, 0.0)
+        # Vertically center the engine label against its block of slot lanes.
+        block_h = slots * (lane_h + lane_gap) - lane_gap
+        label_cy = y + block_h / 2
         parts.append(
-            f'<text x="34" y="{y + 9}" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#111827">{engine.upper()}</text>'
+            f'<text x="34" y="{label_cy + 1:.1f}" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#111827">{engine.upper()}</text>'
         )
         parts.append(
-            f'<text x="78" y="{y + 9}" text-anchor="end" font-family="Arial, sans-serif" font-size="11" fill="#64748b">{util * 100:.1f}%</text>'
+            f'<text x="{left - 12}" y="{label_cy + 1:.1f}" text-anchor="end" font-family="Arial, sans-serif" font-size="11" fill="#64748b">{util * 100:.0f}%</text>'
         )
         for slot in range(slots):
             lane_y = y + slot * (lane_h + lane_gap)

@@ -78,19 +78,6 @@ def _close_trace(machine: Machine):
     machine.trace = None
 
 
-def _sanitize_trace_json(path: Path):
-    """Remove the simulator's final trailing comma so tools can parse the trace."""
-
-    text = path.read_text()
-    last_comma = text.rfind(",")
-    last_bracket = text.rfind("]")
-    if last_comma != -1 and last_bracket != -1 and last_comma < last_bracket:
-        between = text[last_comma + 1 : last_bracket].strip()
-        if not between:
-            text = text[:last_comma] + text[last_bracket:]
-            path.write_text(text)
-
-
 def _run_machine_checkpoint(
     cfg: dict[str, Any],
     *,
@@ -136,7 +123,6 @@ def _run_machine_checkpoint(
             if trace_path.exists():
                 trace_path.unlink()
             scratch_trace.rename(trace_path)
-            _sanitize_trace_json(trace_path)
 
     for ref_mem in reference_kernel2(mem):
         pass

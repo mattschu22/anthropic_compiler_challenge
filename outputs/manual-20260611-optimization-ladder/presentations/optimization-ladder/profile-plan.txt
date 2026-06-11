@@ -1,0 +1,24 @@
+Task mode: create
+Primary deck-profile: engineering-platform
+Secondary gates: interview presentation, technical narrative, evidence-led optimization story
+
+Required proof objects:
+- Workflow/problem map for the binary tree traversal workload.
+- Machine model diagram showing VLIW/SIMD engines and slot limits.
+- Metric evidence tied to the system: cycle counts for every optimization checkpoint.
+- Profiler evidence: Perfetto-compatible trace visuals showing bottlenecks and improvements.
+- Roadmap/next-step slide tied to compiler architecture.
+
+Source/asset requirements:
+- Use local project results under optimization_ladder/results.
+- Use cycles.csv for exact cycle counts.
+- Use trace_visuals/*.svg for slide-friendly Perfetto visual summaries.
+- Use charts/*.svg for the optimization ladder, utilization, and tree-cache heatmap.
+
+Brand/authenticity constraints:
+- No external logos or invented brand assets.
+- Present as a personal technical project for a SpaceX interview.
+
+Known missing inputs:
+- Final visual style/template is intentionally not locked yet.
+- This version prioritizes complete technical content and editable structure.

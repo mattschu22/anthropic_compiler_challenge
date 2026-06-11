@@ -34150,4 +34150,5 @@
 {"name": "add_imm", "cat": "op", "ph": "X", "pid": 0, "tid": 23, "ts": 1289, "dur": 1, "args":{"slot": "('add_imm', 781, 781, 8)", "named": "('add_imm', 'io_val_p', 'io_val_p', 8)" } },
 {"name": "2558", "cat": "op", "ph": "X", "pid": 1, "tid": 100781, "ts": 1289, "dur": 1 },
 {"name": "vstore", "cat": "op", "ph": "X", "pid": 0, "tid": 21, "ts": 1290, "dur": 1, "args":{"slot": "('vstore', 781, 773)", "named": "('vstore', 'io_val_p', 'tmp_v_val_31')" } },
-{"name": "pause", "cat": "op", "ph": "X", "pid": 0, "tid": 23, "ts": 1290, "dur": 1, "args":{"slot": "('pause',)", "named": "('pause',)" } }]
+{"name": "pause", "cat": "op", "ph": "X", "pid": 0, "tid": 23, "ts": 1290, "dur": 1, "args":{"slot": "('pause',)", "named": "('pause',)" } },
+]

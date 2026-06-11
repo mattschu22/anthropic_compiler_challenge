@@ -41,7 +41,7 @@ def write_svg(rows, path: Path = SVG_PATH):
     height = 720
     left = 92
     right = 56
-    top = 98
+    top = 116
     bottom = 150
     chart_w = width - left - right
     chart_h = height - top - bottom
@@ -63,7 +63,7 @@ def write_svg(rows, path: Path = SVG_PATH):
         f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}">',
         '<rect width="100%" height="100%" fill="#f8fafc"/>',
         '<text x="36" y="46" font-family="Arial, sans-serif" font-size="28" font-weight="700" fill="#111827">Optimization Ladder</text>',
-        '<text x="36" y="74" font-family="Arial, sans-serif" font-size="15" fill="#475569">Cumulative checkpoints · log-scaled cycles · fixed 10/16/256 workload</text>',
+        '<text x="36" y="72" font-family="Arial, sans-serif" font-size="15" fill="#475569">Cumulative checkpoints · log-scaled cycles · fixed 10/16/256 workload</text>',
         '<text x="1132" y="46" text-anchor="end" font-family="Arial, sans-serif" font-size="14" fill="#475569">final speedup</text>',
         '<text x="1228" y="46" text-anchor="end" font-family="Arial, sans-serif" font-size="28" font-weight="700" fill="#0f766e">124.8x</text>',
     ]
@@ -74,8 +74,8 @@ def write_svg(rows, path: Path = SVG_PATH):
         x2 = x_for(end)
         parts.extend(
             [
-                f'<rect x="{x1:.1f}" y="{top - 34}" width="{x2 - x1:.1f}" height="{chart_h + 44}" fill="{fill}" opacity="0.48"/>',
-                f'<text x="{(x1 + x2) / 2:.1f}" y="{top - 15}" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#334155">{_esc(label)}</text>',
+                f'<rect x="{x1:.1f}" y="{top - 26}" width="{x2 - x1:.1f}" height="{chart_h + 36}" fill="{fill}" opacity="0.48"/>',
+                f'<text x="{(x1 + x2) / 2:.1f}" y="{top - 10}" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#334155">{_esc(label)}</text>',
             ]
         )
 
@@ -118,27 +118,38 @@ def write_svg(rows, path: Path = SVG_PATH):
         marker_fill = "#0f766e" if idx >= 9 else "#2563eb"
         if idx == 8:
             marker_fill = "#f59e0b"
+        # Points 5 and 9 carry callout boxes above them, so drop their value
+        # label below the marker to keep both readable.
+        label_y = y + 22 if idx in (5, 9) else y - 12
         parts.extend(
             [
                 f'<circle cx="{x:.1f}" cy="{y:.1f}" r="6.5" fill="{marker_fill}" stroke="#f8fafc" stroke-width="2"/>',
                 f'<text x="{x:.1f}" y="{top + chart_h + 26}" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#111827">{_esc(row["stage"])}</text>',
-                f'<text x="{x:.1f}" y="{y - 12:.1f}" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#111827">{value:,}</text>',
+                f'<text x="{x:.1f}" y="{label_y:.1f}" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="700" fill="#111827">{value:,}</text>',
             ]
         )
 
-    # Callouts for the two largest narrative inflection points.
-    for idx, label, dx, dy in (
-        (5, "SIMD: 8 lanes per vector", -106, -54),
-        (9, "VLIW packing fills slots", -156, -48),
+    # Callouts for the two largest narrative inflection points. Boxes sit above
+    # and to the left of each marker; value labels for these points are placed
+    # below the marker so nothing is occluded.
+    box_w = 212
+    box_h = 30
+    for idx, label, factor, dx, dy in (
+        (5, "SIMD: 8 lanes per vector", "11.9x faster", -box_w - 16, -88),
+        (9, "VLIW packing fills slots", "6.9x faster", -box_w - 16, -96),
     ):
         x, y = points[idx]
-        tx = x + dx
-        ty = y + dy
+        bx = x + dx
+        by = y + dy
+        anchor_x = bx + box_w
+        anchor_y = by + box_h / 2
         parts.extend(
             [
-                f'<line x1="{x:.1f}" y1="{y - 8:.1f}" x2="{tx + 120:.1f}" y2="{ty + 16:.1f}" stroke="#64748b" stroke-width="1"/>',
-                f'<rect x="{tx:.1f}" y="{ty:.1f}" width="206" height="30" rx="4" fill="#ffffff" stroke="#cbd5e1"/>',
-                f'<text x="{tx + 10:.1f}" y="{ty + 20:.1f}" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#111827">{_esc(label)}</text>',
+                f'<line x1="{x:.1f}" y1="{y - 9:.1f}" x2="{anchor_x:.1f}" y2="{anchor_y:.1f}" stroke="#64748b" stroke-width="1.2"/>',
+                f'<circle cx="{anchor_x:.1f}" cy="{anchor_y:.1f}" r="2.4" fill="#64748b"/>',
+                f'<rect x="{bx:.1f}" y="{by:.1f}" width="{box_w}" height="{box_h}" rx="5" fill="#ffffff" stroke="#cbd5e1"/>',
+                f'<text x="{bx + 12:.1f}" y="{by + 13:.1f}" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#111827">{_esc(label)}</text>',
+                f'<text x="{bx + 12:.1f}" y="{by + 25:.1f}" font-family="Arial, sans-serif" font-size="11" fill="#0f766e">{_esc(factor)} vs previous rung</text>',
             ]
         )
 

@@ -1,0 +1,25 @@
+Slide rhythm plan:
+1. Cover with headline metric and proof chart.
+2. Context slide with thresholds and evaluation framing.
+3. Problem map with algorithm flow and workload constants.
+4. Machine model with engine slot table and profiler explanation.
+5. Roadmap with full optimization ladder.
+6. Baseline trace deep dive.
+7. Two-step easy-wins comparison.
+8. Specialization comparison.
+9. SIMD breakthrough proof.
+10. Memory pressure heatmap and traces.
+11. Temp-bank dependency exposure comparison.
+12. Scheduler dependency model and final trace proof.
+13. Results synthesis with utilization evidence.
+14. Limitations slide.
+15. Next steps slide.
+
+Macro layout variety:
+- Cover with metric rail.
+- Two-column technical explainer.
+- Diagram-led problem map.
+- Evidence chart with interpretation rail.
+- Before/after trace comparison.
+- Roadmap ladder.
+- Roadmap/architecture next-step slide.
