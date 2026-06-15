@@ -1,0 +1,19 @@
+{
+  "stage": 4,
+  "id": "04_schedule_dependencies",
+  "name": "Schedule RAW/WAR/WAW Dependencies",
+  "kind": "scheduled_vector_ladder",
+  "claim": "Dependency-aware VLIW scheduling packs independent ALU, VALU, load, store, and flow work, but reused temporaries still create false dependencies.",
+  "workload": {
+    "forest_height": 10,
+    "rounds": 16,
+    "batch_size": 256
+  },
+  "builder_args": {
+    "cache_tree": false,
+    "streaming_io": true,
+    "schedule_mode": "strict",
+    "load_weight": -1,
+    "valu_weight": -1
+  }
+}

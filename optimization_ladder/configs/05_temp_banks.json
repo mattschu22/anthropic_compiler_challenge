@@ -1,0 +1,22 @@
+{
+  "stage": 5,
+  "id": "05_temp_banks",
+  "name": "Virtualize Temporaries Through Banks",
+  "kind": "banked_vector",
+  "claim": "Give independent vector groups separate temporary banks so the scheduler sees real parallel work instead of false WAR/WAW chains through reused scratch names.",
+  "workload": {
+    "forest_height": 10,
+    "rounds": 16,
+    "batch_size": 256
+  },
+  "builder_args": {
+    "cache_tree": false,
+    "cache_depth3": false,
+    "streaming_io": true,
+    "parallel_banks": 23,
+    "unroll": 32,
+    "schedule_mode": "strict",
+    "load_weight": -1,
+    "valu_weight": -1
+  }
+}

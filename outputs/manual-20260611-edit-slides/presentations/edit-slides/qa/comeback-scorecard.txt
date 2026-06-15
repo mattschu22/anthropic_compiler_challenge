@@ -1,0 +1,20 @@
+primary deck profile: engineering-platform
+mode: template-following edit of content-only source deck
+final output: /Users/baseb/Documents/Projects/AnthropicPerf/anthropic_compiler_challenge/slides/current.pptx
+root copy: /Users/baseb/Documents/Projects/AnthropicPerf/anthropic_compiler_challenge/current.pptx
+slide count: 14
+
+profile gate:
+- pass: technical labels preserve compiler/profiler meaning.
+- pass: requested proof objects are diagrams, dependency maps, trace images, or local chart assets.
+- pass: no external logos, fabricated marks, or generated real-world evidence.
+
+mechanical checks:
+- exported PPTX is non-empty.
+- package contains 14 slide XML parts.
+- package contains local codebase media assets only.
+- rendered all slides to PNG and generated contact sheet.
+- checked final slide XML for leftover Placeholder / Click to strings; none found.
+
+accepted tradeoff:
+- The source deck contains 14 slides, not the 15-slide outline implied by the original diagram instructions. The edit preserves the source deck order and maps the requested diagrams onto the corresponding content-only slides.

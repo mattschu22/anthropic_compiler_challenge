@@ -1,0 +1,16 @@
+{
+  "stage": 1,
+  "id": "01_remove_unnecessary_work",
+  "name": "Removing Unnecessary Work",
+  "kind": "scalar_scratch",
+  "claim": "The final index state is ungraded, and live traversal indices can stay in scratch instead of being loaded and stored through memory.",
+  "workload": {
+    "forest_height": 10,
+    "rounds": 16,
+    "batch_size": 256
+  },
+  "builder_args": {
+    "fixed_layout": false,
+    "unroll_rounds": false
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "outputSlides": [
+    { "outputSlide": 1, "sourceSlide": 1, "narrativeRole": "hero metric", "reuseMode": "duplicate-slide", "editTargets": [] },
+    { "outputSlide": 2, "sourceSlide": 2, "narrativeRole": "batched binary tree traversal", "reuseMode": "duplicate-slide", "editTargets": [] },
+    { "outputSlide": 3, "sourceSlide": 3, "narrativeRole": "machine model and trace reading", "reuseMode": "duplicate-slide", "editTargets": [] },
+    { "outputSlide": 4, "sourceSlide": 4, "narrativeRole": "optimization roadmap", "reuseMode": "duplicate-slide", "editTargets": [] },
+    { "outputSlide": 5, "sourceSlide": 5, "narrativeRole": "baseline trace reading", "reuseMode": "duplicate-slide", "editTargets": [] },
+    { "outputSlide": 6, "sourceSlide": 6, "narrativeRole": "remove index bookkeeping", "reuseMode": "duplicate-slide", "editTargets": [] },
+    { "outputSlide": 7, "sourceSlide": 7, "narrativeRole": "specialization and unrolling", "reuseMode": "duplicate-slide", "editTargets": [] },
+    { "outputSlide": 8, "sourceSlide": 8, "narrativeRole": "SIMD batching", "reuseMode": "duplicate-slide", "editTargets": [] },
+    { "outputSlide": 9, "sourceSlide": 9, "narrativeRole": "tree caching and streaming value IO", "reuseMode": "duplicate-slide", "editTargets": [] },
+    { "outputSlide": 10, "sourceSlide": 10, "narrativeRole": "temporary banks", "reuseMode": "duplicate-slide", "editTargets": [] },
+    { "outputSlide": 11, "sourceSlide": 11, "narrativeRole": "dependency-aware VLIW scheduler", "reuseMode": "duplicate-slide", "editTargets": [] },
+    { "outputSlide": 12, "sourceSlide": 12, "narrativeRole": "results and bottleneck movement", "reuseMode": "duplicate-slide", "editTargets": [] },
+    { "outputSlide": 13, "sourceSlide": 13, "narrativeRole": "limitations", "reuseMode": "duplicate-slide", "editTargets": [] },
+    { "outputSlide": 14, "sourceSlide": 14, "narrativeRole": "next steps pipeline", "reuseMode": "duplicate-slide", "editTargets": [] }
+  ],
+  "omittedSourceSlides": []
+}

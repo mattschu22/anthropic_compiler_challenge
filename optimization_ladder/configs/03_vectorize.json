@@ -1,0 +1,16 @@
+{
+  "stage": 3,
+  "id": "03_vectorize",
+  "name": "Vectorize",
+  "kind": "vector_ladder",
+  "claim": "Process eight inputs per vector instruction and stream value IO through one moving pointer.",
+  "workload": {
+    "forest_height": 10,
+    "rounds": 16,
+    "batch_size": 256
+  },
+  "builder_args": {
+    "cache_tree": false,
+    "streaming_io": true
+  }
+}

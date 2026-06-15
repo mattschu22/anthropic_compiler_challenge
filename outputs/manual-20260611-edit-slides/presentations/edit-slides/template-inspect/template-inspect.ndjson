@@ -1,0 +1,146 @@
+{"kind":"slide","id":"sl/2x4nap4r","slide":2,"title":"Profiler-Guided Compiler Optimization","textShapes":6}
+{"kind":"textbox","id":"sh/u9knih4b","slide":2,"textChars":37,"textLines":1}
+{"kind":"textbox","id":"sh/cvixczed","slide":2,"textChars":98,"textLines":1}
+{"kind":"textbox","id":"sh/5gbq1ory","slide":2,"textChars":78,"textLines":1}
+{"kind":"textbox","id":"sh/udg7adsj","slide":2,"textChars":65,"textLines":1}
+{"kind":"textbox","id":"sh/cj6tovah","slide":2,"textChars":97,"textLines":1}
+{"kind":"textbox","id":"sh/54zidony","slide":2,"textChars":163,"textLines":1}
+{"kind":"slide","id":"sl/pg3ex0nu","slide":3,"title":"Problem Description: Batched Binary Tree Traversal","textShapes":11}
+{"kind":"textbox","id":"sh/wb2hwfyx","slide":3,"textChars":50,"textLines":1}
+{"kind":"textbox","id":"sh/5o7qpg3e","slide":3,"textChars":96,"textLines":1}
+{"kind":"textbox","id":"sh/g3ex0nux","slide":3,"textChars":72,"textLines":1}
+{"kind":"textbox","id":"sh/r65wjudg","slide":3,"textChars":53,"textLines":1}
+{"kind":"textbox","id":"sh/ylc7u54z","slide":3,"textChars":64,"textLines":1}
+{"kind":"textbox","id":"sh/9cvixcze","slide":3,"textChars":170,"textLines":1}
+{"kind":"textbox","id":"sh/gr2p8nqx","slide":3,"textChars":72,"textLines":1}
+{"kind":"textbox","id":"sh/rytsvu9k","slide":3,"textChars":75,"textLines":1}
+{"kind":"textbox","id":"sh/yd0z6103","slide":3,"textChars":224,"textLines":1}
+{"kind":"textbox","id":"sh/lwval87e","slide":3,"textChars":77,"textLines":1}
+{"kind":"textbox","id":"sh/e9cvixcz","slide":3,"textChars":151,"textLines":1}
+{"kind":"slide","id":"sl/s72x4nap","slide":4,"title":"Machine Model And Perfetto Tooling","textShapes":9}
+{"kind":"textbox","id":"sh/6dcbulwv","slide":4,"textChars":34,"textLines":1}
+{"kind":"textbox","id":"sh/o7qpg3ex","slide":4,"textChars":90,"textLines":1}
+{"kind":"textbox","id":"sh/dsji5sne","slide":4,"textChars":106,"textLines":1}
+{"kind":"textbox","id":"sh/6dcbulwv","slide":4,"textChars":113,"textLines":1}
+{"kind":"textbox","id":"sh/vy90je9c","slide":4,"textChars":82,"textLines":1}
+{"kind":"textbox","id":"sh/oj2t83it","slide":4,"textChars":63,"textLines":1}
+{"kind":"textbox","id":"sh/d4vmtwra","slide":4,"textChars":52,"textLines":1}
+{"kind":"textbox","id":"sh/6hcrmhk3","slide":4,"textChars":77,"textLines":1}
+{"kind":"textbox","id":"sh/vy90je9c","slide":4,"textChars":200,"textLines":1}
+{"kind":"image","id":"im/6hcrmhk3","slide":4,"name":"Picture 11","bbox":[640,279.14,580.06,268.86]}
+{"kind":"slide","id":"sl/val87ed8","slide":5,"title":"Optimization Roadmap: Cumulative Checkpoints","textShapes":13}
+{"kind":"textbox","id":"sh/18jqh0fe","slide":5,"textChars":44,"textLines":1}
+{"kind":"textbox","id":"sh/qtcj6tov","slide":5,"textChars":60,"textLines":1}
+{"kind":"textbox","id":"sh/je9cvixc","slide":5,"textChars":29,"textLines":1}
+{"kind":"textbox","id":"sh/87ed8bat","slide":5,"textChars":45,"textLines":1}
+{"kind":"textbox","id":"sh/xs72x4na","slide":5,"textChars":45,"textLines":1}
+{"kind":"textbox","id":"sh/q1orytsv","slide":5,"textChars":35,"textLines":1}
+{"kind":"textbox","id":"sh/fmlkjm1c","slide":5,"textChars":33,"textLines":1}
+{"kind":"textbox","id":"sh/8jqh0fep","slide":5,"textChars":32,"textLines":1}
+{"kind":"textbox","id":"sh/x4nap4r6","slide":5,"textChars":39,"textLines":1}
+{"kind":"textbox","id":"sh/1w7mp0bi","slide":5,"textChars":34,"textLines":1}
+{"kind":"textbox","id":"sh/8bat47y1","slide":5,"textChars":34,"textLines":1}
+{"kind":"textbox","id":"sh/jqh0fepk","slide":5,"textChars":36,"textLines":1}
+{"kind":"textbox","id":"sh/q5o7qpg3","slide":5,"textChars":212,"textLines":1}
+{"kind":"image","id":"im/nuxc3ylc","slide":5,"name":"Picture 15","bbox":[667.36,101,525.33,295.5]}
+{"kind":"slide","id":"sl/mlkjm1cf","slide":6,"title":"Stage 0: Baseline","textShapes":8}
+{"kind":"textbox","id":"sh/y90je9cv","slide":6,"textChars":17,"textLines":1}
+{"kind":"textbox","id":"sh/ovahoza1","slide":6,"textChars":23,"textLines":1}
+{"kind":"textbox","id":"sh/dg7adsji","slide":6,"textChars":88,"textLines":1}
+{"kind":"textbox","id":"sh/z25kb6xk","slide":6,"textChars":50,"textLines":1}
+{"kind":"textbox","id":"sh/onyd0z61","slide":6,"textChars":34,"textLines":1}
+{"kind":"textbox","id":"sh/d8v6psfi","slide":6,"textChars":99,"textLines":1}
+{"kind":"textbox","id":"sh/6dcbulwv","slide":6,"textChars":85,"textLines":1}
+{"kind":"textbox","id":"sh/nuxc3ylc","slide":6,"textChars":244,"textLines":1}
+{"kind":"image","id":"im/yxobm58z","slide":6,"name":"Picture 14","bbox":[539.65,385.29,628.35,280.3]}
+{"kind":"slide","id":"sl/58z25kb6","slide":7,"title":"Stage 1: Removing Unnecessary Work","textShapes":7}
+{"kind":"textbox","id":"sh/onyd0z61","slide":7,"textChars":34,"textLines":1}
+{"kind":"textbox","id":"sh/ylc7u54z","slide":7,"textChars":23,"textLines":1}
+{"kind":"textbox","id":"sh/r65wjudg","slide":7,"textChars":76,"textLines":1}
+{"kind":"textbox","id":"sh/g3ex0nux","slide":7,"textChars":63,"textLines":1}
+{"kind":"textbox","id":"sh/5o7qpg3e","slide":7,"textChars":34,"textLines":1}
+{"kind":"textbox","id":"sh/nih4byhg","slide":7,"textChars":113,"textLines":1}
+{"kind":"textbox","id":"sh/d8v6psfi","slide":7,"textChars":246,"textLines":1}
+{"kind":"slide","id":"sl/0z61032l","slide":8,"title":"Stages 2 & 3: Specializing for the Fixed Workload","textShapes":8}
+{"kind":"textbox","id":"sh/hgn29gr2","slide":8,"textChars":49,"textLines":1}
+{"kind":"textbox","id":"sh/x4nap4r6","slide":8,"textChars":22,"textLines":1}
+{"kind":"textbox","id":"sh/8jqh0fep","slide":8,"textChars":100,"textLines":1}
+{"kind":"textbox","id":"sh/qpg3ex0n","slide":8,"textChars":91,"textLines":1}
+{"kind":"textbox","id":"sh/8v6psfil","slide":8,"textChars":96,"textLines":1}
+{"kind":"textbox","id":"sh/je9cvixc","slide":8,"textChars":69,"textLines":1}
+{"kind":"textbox","id":"sh/qtcj6tov","slide":8,"textChars":83,"textLines":1}
+{"kind":"textbox","id":"sh/svu9knih","slide":8,"textChars":225,"textLines":1}
+{"kind":"slide","id":"sl/fu18jqh0","slide":9,"title":"Stage 4: Leveraging SIMD","textShapes":8}
+{"kind":"textbox","id":"sh/8nqxs72x","slide":9,"textChars":24,"textLines":1}
+{"kind":"textbox","id":"sh/u9knih4b","slide":9,"textChars":22,"textLines":1}
+{"kind":"textbox","id":"sh/judg7ads","slide":9,"textChars":87,"textLines":1}
+{"kind":"textbox","id":"sh/1orytsvu","slide":9,"textChars":25,"textLines":1}
+{"kind":"textbox","id":"sh/u18jqh0f","slide":9,"textChars":61,"textLines":1}
+{"kind":"textbox","id":"sh/jm1cfa9w","slide":9,"textChars":100,"textLines":1}
+{"kind":"textbox","id":"sh/cvixczed","slide":9,"textChars":88,"textLines":1}
+{"kind":"textbox","id":"sh/18jqh0fe","slide":9,"textChars":196,"textLines":1}
+{"kind":"slide","id":"sl/qh0fepkz","slide":10,"title":"Stages 5 & 6: Bottleneck Analysis and Memory Pressure","textShapes":10}
+{"kind":"textbox","id":"sh/5wjudg7a","slide":10,"textChars":53,"textLines":1}
+{"kind":"textbox","id":"sh/ovahoza1","slide":10,"textChars":22,"textLines":1}
+{"kind":"textbox","id":"sh/dg7adsji","slide":10,"textChars":89,"textLines":1}
+{"kind":"textbox","id":"sh/6hcrmhk3","slide":10,"textChars":49,"textLines":1}
+{"kind":"textbox","id":"sh/z25kb6xk","slide":10,"textChars":45,"textLines":1}
+{"kind":"textbox","id":"sh/onyd0z61","slide":10,"textChars":78,"textLines":1}
+{"kind":"textbox","id":"sh/d8v6psfi","slide":10,"textChars":78,"textLines":1}
+{"kind":"textbox","id":"sh/6dcbulwv","slide":10,"textChars":56,"textLines":1}
+{"kind":"textbox","id":"sh/vy90je9c","slide":10,"textChars":80,"textLines":1}
+{"kind":"textbox","id":"sh/y90je9cv","slide":10,"textChars":283,"textLines":1}
+{"kind":"image","id":"im/36hcrmhk","slide":10,"name":"Picture 13","bbox":[722,92,448,287]}
+{"kind":"slide","id":"sl/29gr2p8n","slide":11,"title":"Stage 7: Exposing Independent Work","textShapes":9}
+{"kind":"textbox","id":"sh/x0nuxc3y","slide":11,"textChars":34,"textLines":1}
+{"kind":"textbox","id":"sh/9gr2p8nq","slide":11,"textChars":21,"textLines":1}
+{"kind":"textbox","id":"sh/gvy90je9","slide":11,"textChars":87,"textLines":1}
+{"kind":"textbox","id":"sh/2hwfyxob","slide":11,"textChars":79,"textLines":1}
+{"kind":"textbox","id":"sh/94fu18jq","slide":11,"textChars":98,"textLines":1}
+{"kind":"textbox","id":"sh/kjm1cfa9","slide":11,"textChars":74,"textLines":1}
+{"kind":"textbox","id":"sh/rqd4vmtw","slide":11,"textChars":56,"textLines":1}
+{"kind":"textbox","id":"sh/25kb6xkf","slide":11,"textChars":79,"textLines":1}
+{"kind":"textbox","id":"sh/4fu18jqh","slide":11,"textChars":215,"textLines":1}
+{"kind":"image","id":"im/hk3q5o7q","slide":11,"name":"Picture 16","bbox":[635.07,272,564.93,252.01]}
+{"kind":"slide","id":"sl/re1w7mp0","slide":12,"title":"Stages 8 & 9: Packing Independent Ops Into VLIW Slots","textShapes":11}
+{"kind":"textbox","id":"sh/3ylc7u54","slide":12,"textChars":53,"textLines":1}
+{"kind":"textbox","id":"sh/6tovahoz","slide":12,"textChars":21,"textLines":1}
+{"kind":"textbox","id":"sh/vahoza1g","slide":12,"textChars":73,"textLines":1}
+{"kind":"textbox","id":"sh/onyd0z61","slide":12,"textChars":50,"textLines":1}
+{"kind":"textbox","id":"sh/d8v6psfi","slide":12,"textChars":52,"textLines":1}
+{"kind":"textbox","id":"sh/6hcrmhk3","slide":12,"textChars":75,"textLines":1}
+{"kind":"textbox","id":"sh/z25kb6xk","slide":12,"textChars":66,"textLines":1}
+{"kind":"textbox","id":"sh/oj2t83it","slide":12,"textChars":62,"textLines":1}
+{"kind":"textbox","id":"sh/d4vmtwra","slide":12,"textChars":179,"textLines":1}
+{"kind":"textbox","id":"sh/h4byhgn2","slide":12,"textChars":88,"textLines":1}
+{"kind":"textbox","id":"sh/sji5snel","slide":12,"textChars":228,"textLines":1}
+{"kind":"slide","id":"sl/4fu18jqh","slide":13,"title":"Results: The Binding Constraint Moved Over Time","textShapes":9}
+{"kind":"textbox","id":"sh/z61032ls","slide":13,"textChars":47,"textLines":1}
+{"kind":"textbox","id":"sh/s72x4nap","slide":13,"textChars":88,"textLines":1}
+{"kind":"textbox","id":"sh/lszqtcj6","slide":13,"textChars":29,"textLines":1}
+{"kind":"textbox","id":"sh/adsji5sn","slide":13,"textChars":70,"textLines":1}
+{"kind":"textbox","id":"sh/3ylc7u54","slide":13,"textChars":73,"textLines":1}
+{"kind":"textbox","id":"sh/sji5snel","slide":13,"textChars":90,"textLines":1}
+{"kind":"textbox","id":"sh/h4byhgn2","slide":13,"textChars":91,"textLines":1}
+{"kind":"textbox","id":"sh/ap4r65wj","slide":13,"textChars":114,"textLines":1}
+{"kind":"textbox","id":"sh/za1gvy90","slide":13,"textChars":192,"textLines":1}
+{"kind":"image","id":"im/1cfa9w3m","slide":13,"name":"Picture 11","bbox":[325.65,15.5,816,459]}
+{"kind":"image","id":"im/ulwval87","slide":13,"name":"Picture 13","bbox":[84.71,138,816,459]}
+{"kind":"image","id":"im/j6tovaho","slide":13,"name":"Picture 15","bbox":[252.24,235.99,816,364.01]}
+{"kind":"slide","id":"sl/lwval87e","slide":14,"title":"Limitations","textShapes":7}
+{"kind":"textbox","id":"sh/7adsji5s","slide":14,"textChars":11,"textLines":1}
+{"kind":"textbox","id":"sh/l0rqd4vm","slide":14,"textChars":106,"textLines":1}
+{"kind":"textbox","id":"sh/wfyxobm5","slide":14,"textChars":138,"textLines":1}
+{"kind":"textbox","id":"sh/36hcrmhk","slide":14,"textChars":126,"textLines":1}
+{"kind":"textbox","id":"sh/eloj2t83","slide":14,"textChars":106,"textLines":1}
+{"kind":"textbox","id":"sh/lc7u54zi","slide":14,"textChars":149,"textLines":1}
+{"kind":"textbox","id":"sh/wra5gbq1","slide":14,"textChars":163,"textLines":1}
+{"kind":"slide","id":"sl/25kb6xkf","slide":15,"title":"Next Steps","textShapes":8}
+{"kind":"textbox","id":"sh/vu9knih4","slide":15,"textChars":10,"textLines":1}
+{"kind":"textbox","id":"sh/kre1w7mp","slide":15,"textChars":74,"textLines":1}
+{"kind":"textbox","id":"sh/dcbulwva","slide":15,"textChars":116,"textLines":1}
+{"kind":"textbox","id":"sh/2x4nap4r","slide":15,"textChars":144,"textLines":1}
+{"kind":"textbox","id":"sh/vixczed8","slide":15,"textChars":130,"textLines":1}
+{"kind":"textbox","id":"sh/k3q5o7qp","slide":15,"textChars":108,"textLines":1}
+{"kind":"textbox","id":"sh/donyd0z6","slide":15,"textChars":226,"textLines":1}
+{"kind":"notice","message":"Truncated: omitted 1 lines. Increase maxChars or narrow target."}

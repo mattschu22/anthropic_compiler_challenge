@@ -20,9 +20,11 @@ from anthropic_compiler_challenge.problem_api import (
 )
 
 from .builders import (
+    build_banked_vector_kernel,
     build_index_memory_kernel,
     build_optimized_kernel,
     build_scalar_scratch_kernel,
+    build_scheduled_vector_ladder_kernel,
     build_vector_ladder_kernel,
 )
 
@@ -65,6 +67,10 @@ def _build_kernel(cfg: dict[str, Any], forest: Tree, inp: Input):
         return build_scalar_scratch_kernel(*common, **kwargs)
     if kind == "vector_ladder":
         return build_vector_ladder_kernel(*common, **kwargs)
+    if kind == "scheduled_vector_ladder":
+        return build_scheduled_vector_ladder_kernel(*common, **kwargs)
+    if kind == "banked_vector":
+        return build_banked_vector_kernel(*common, **kwargs)
     if kind == "optimized":
         return build_optimized_kernel(*common, **kwargs)
     raise ValueError(f"unknown checkpoint kind={kind!r}")

@@ -1,0 +1,25 @@
+{
+  "source": "/Users/baseb/Documents/Projects/AnthropicPerf/anthropic_compiler_challenge/slides/current.pptx",
+  "originalCopy": "/Users/baseb/Documents/Projects/AnthropicPerf/anthropic_compiler_challenge/outputs/manual-20260611-edit-slides/presentations/edit-slides/output/source-current-before-edit.pptx",
+  "output": "/Users/baseb/Documents/Projects/AnthropicPerf/anthropic_compiler_challenge/slides/current.pptx",
+  "rootCopy": "/Users/baseb/Documents/Projects/AnthropicPerf/anthropic_compiler_challenge/current.pptx",
+  "outputBytes": 1005867,
+  "slideCount": 14,
+  "previews": [
+    "/Users/baseb/Documents/Projects/AnthropicPerf/anthropic_compiler_challenge/outputs/manual-20260611-edit-slides/presentations/edit-slides/preview/slide-01.png",
+    "/Users/baseb/Documents/Projects/AnthropicPerf/anthropic_compiler_challenge/outputs/manual-20260611-edit-slides/presentations/edit-slides/preview/slide-02.png",
+    "/Users/baseb/Documents/Projects/AnthropicPerf/anthropic_compiler_challenge/outputs/manual-20260611-edit-slides/presentations/edit-slides/preview/slide-03.png",
+    "/Users/baseb/Documents/Projects/AnthropicPerf/anthropic_compiler_challenge/outputs/manual-20260611-edit-slides/presentations/edit-slides/preview/slide-04.png",
+    "/Users/baseb/Documents/Projects/AnthropicPerf/anthropic_compiler_challenge/outputs/manual-20260611-edit-slides/presentations/edit-slides/preview/slide-05.png",
+    "/Users/baseb/Documents/Projects/AnthropicPerf/anthropic_compiler_challenge/outputs/manual-20260611-edit-slides/presentations/edit-slides/preview/slide-06.png",
+    "/Users/baseb/Documents/Projects/AnthropicPerf/anthropic_compiler_challenge/outputs/manual-20260611-edit-slides/presentations/edit-slides/preview/slide-07.png",
+    "/Users/baseb/Documents/Projects/AnthropicPerf/anthropic_compiler_challenge/outputs/manual-20260611-edit-slides/presentations/edit-slides/preview/slide-08.png",
+    "/Users/baseb/Documents/Projects/AnthropicPerf/anthropic_compiler_challenge/outputs/manual-20260611-edit-slides/presentations/edit-slides/preview/slide-09.png",
+    "/Users/baseb/Documents/Projects/AnthropicPerf/anthropic_compiler_challenge/outputs/manual-20260611-edit-slides/presentations/edit-slides/preview/slide-10.png",
+    "/Users/baseb/Documents/Projects/AnthropicPerf/anthropic_compiler_challenge/outputs/manual-20260611-edit-slides/presentations/edit-slides/preview/slide-11.png",
+    "/Users/baseb/Documents/Projects/AnthropicPerf/anthropic_compiler_challenge/outputs/manual-20260611-edit-slides/presentations/edit-slides/preview/slide-12.png",
+    "/Users/baseb/Documents/Projects/AnthropicPerf/anthropic_compiler_challenge/outputs/manual-20260611-edit-slides/presentations/edit-slides/preview/slide-13.png",
+    "/Users/baseb/Documents/Projects/AnthropicPerf/anthropic_compiler_challenge/outputs/manual-20260611-edit-slides/presentations/edit-slides/preview/slide-14.png"
+  ],
+  "contactSheet": "/Users/baseb/Documents/Projects/AnthropicPerf/anthropic_compiler_challenge/outputs/manual-20260611-edit-slides/presentations/edit-slides/preview/contact-sheet.png"
+}

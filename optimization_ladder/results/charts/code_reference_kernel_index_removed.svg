@@ -1,0 +1,153 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="752" height="590" viewBox="0 0 752 590">
+<rect width="100%" height="100%" fill="#f8fafc"/>
+<text x="40" y="50" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#0f172a">Reference Kernel: index bookkeeping removed</text>
+<text x="40" y="72" font-family="Arial, sans-serif" font-size="13" fill="#64748b">frozen_problem.py · reference_kernel()</text>
+<rect x="40" y="86" width="672" height="450" rx="10" fill="#ffffff" stroke="#d8dee4" stroke-width="1.2"/>
+<rect x="40" y="86" width="50" height="450" rx="10" fill="#f6f8fa"/>
+<rect x="80" y="86" width="10" height="450" fill="#f6f8fa"/>
+<line x1="90" y1="86" x2="90" y2="536" stroke="#e6eaf0" stroke-width="1"/>
+<text x="78" y="121.0" text-anchor="end" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="12" fill="#9aa5b1">1</text>
+<text x="104.0" y="121.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#0550ae" xml:space="preserve">def</text>
+<text x="140.1" y="121.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#8250df" xml:space="preserve">reference_kernel</text>
+<text x="284.6" y="121.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#57606a" xml:space="preserve">(</text>
+<text x="293.6" y="121.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#1f2328" xml:space="preserve">t</text>
+<text x="302.7" y="121.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#57606a" xml:space="preserve">:</text>
+<text x="320.7" y="121.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#1f2328" xml:space="preserve">Tree</text>
+<text x="356.8" y="121.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#57606a" xml:space="preserve">,</text>
+<text x="374.9" y="121.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#1f2328" xml:space="preserve">inp</text>
+<text x="402.0" y="121.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#57606a" xml:space="preserve">:</text>
+<text x="420.0" y="121.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#1f2328" xml:space="preserve">Input</text>
+<text x="465.2" y="121.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#57606a" xml:space="preserve">)</text>
+<text x="474.2" y="121.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#57606a" xml:space="preserve">:</text>
+<text x="78" y="144.0" text-anchor="end" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="12" fill="#9aa5b1">2</text>
+<text x="140.1" y="144.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#116329" xml:space="preserve">&quot;&quot;&quot;</text>
+<text x="78" y="167.0" text-anchor="end" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="12" fill="#9aa5b1">3</text>
+<text x="104.0" y="167.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#116329" xml:space="preserve">    Reference implementation of the kernel.</text>
+<text x="78" y="190.0" text-anchor="end" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="12" fill="#9aa5b1">4</text>
+<text x="78" y="213.0" text-anchor="end" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="12" fill="#9aa5b1">5</text>
+<text x="104.0" y="213.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#116329" xml:space="preserve">    A parallel tree traversal where at each node we set</text>
+<text x="78" y="236.0" text-anchor="end" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="12" fill="#9aa5b1">6</text>
+<text x="104.0" y="236.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#116329" xml:space="preserve">    cur_inp_val = myhash(cur_inp_val ^ node_val)</text>
+<text x="78" y="259.0" text-anchor="end" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="12" fill="#9aa5b1">7</text>
+<text x="104.0" y="259.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#116329" xml:space="preserve">    and then choose the left branch if cur_inp_val is even.</text>
+<text x="78" y="282.0" text-anchor="end" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="12" fill="#9aa5b1">8</text>
+<text x="104.0" y="282.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#116329" xml:space="preserve">    If we reach the bottom of the tree we wrap around to the top.</text>
+<text x="78" y="305.0" text-anchor="end" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="12" fill="#9aa5b1">9</text>
+<text x="104.0" y="305.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#116329" xml:space="preserve">    &quot;&quot;&quot;</text>
+<text x="78" y="328.0" text-anchor="end" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="12" fill="#9aa5b1">10</text>
+<text x="140.1" y="328.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#0550ae" xml:space="preserve">for</text>
+<text x="176.2" y="328.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#1f2328" xml:space="preserve">h</text>
+<text x="194.3" y="328.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#0550ae" xml:space="preserve">in</text>
+<text x="221.4" y="328.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#1f2328" xml:space="preserve">range</text>
+<text x="266.5" y="328.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#57606a" xml:space="preserve">(</text>
+<text x="275.6" y="328.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#1f2328" xml:space="preserve">inp</text>
+<text x="302.7" y="328.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#57606a" xml:space="preserve">.</text>
+<text x="311.7" y="328.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#1f2328" xml:space="preserve">rounds</text>
+<text x="365.9" y="328.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#57606a" xml:space="preserve">)</text>
+<text x="374.9" y="328.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#57606a" xml:space="preserve">:</text>
+<text x="78" y="351.0" text-anchor="end" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="12" fill="#9aa5b1">11</text>
+<text x="176.2" y="351.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#0550ae" xml:space="preserve">for</text>
+<text x="212.4" y="351.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#1f2328" xml:space="preserve">i</text>
+<text x="230.4" y="351.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#0550ae" xml:space="preserve">in</text>
+<text x="257.5" y="351.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#1f2328" xml:space="preserve">range</text>
+<text x="302.7" y="351.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#57606a" xml:space="preserve">(</text>
+<text x="311.7" y="351.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#1f2328" xml:space="preserve">len</text>
+<text x="338.8" y="351.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#57606a" xml:space="preserve">(</text>
+<text x="347.8" y="351.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#1f2328" xml:space="preserve">inp</text>
+<text x="374.9" y="351.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#57606a" xml:space="preserve">.</text>
+<text x="383.9" y="351.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#1f2328" xml:space="preserve">indices</text>
+<text x="447.1" y="351.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#57606a" xml:space="preserve">)</text>
+<text x="456.2" y="351.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#57606a" xml:space="preserve">)</text>
+<text x="465.2" y="351.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#57606a" xml:space="preserve">:</text>
+<rect x="90" y="355.0" width="622" height="23" fill="#ffebe9"/>
+<rect x="90" y="355.0" width="3.5" height="23" fill="#cf222e"/>
+<text x="78" y="374.0" text-anchor="end" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="12" fill="#9aa5b1">12</text>
+<text x="212.4" y="374.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#1f2328" opacity="0.55" xml:space="preserve">idx</text>
+<text x="248.5" y="374.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#57606a" opacity="0.55" xml:space="preserve">=</text>
+<text x="266.5" y="374.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#1f2328" opacity="0.55" xml:space="preserve">inp</text>
+<text x="293.6" y="374.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#57606a" opacity="0.55" xml:space="preserve">.</text>
+<text x="302.7" y="374.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#1f2328" opacity="0.55" xml:space="preserve">indices</text>
+<text x="365.9" y="374.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#57606a" opacity="0.55" xml:space="preserve">[</text>
+<text x="374.9" y="374.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#1f2328" opacity="0.55" xml:space="preserve">i</text>
+<text x="383.9" y="374.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#57606a" opacity="0.55" xml:space="preserve">]</text>
+<line x1="212.4" y1="369.0" x2="393.0" y2="369.0" stroke="#cf222e" stroke-width="1.6"/>
+<text x="78" y="397.0" text-anchor="end" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="12" fill="#9aa5b1">13</text>
+<text x="212.4" y="397.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#1f2328" xml:space="preserve">val</text>
+<text x="248.5" y="397.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#57606a" xml:space="preserve">=</text>
+<text x="266.5" y="397.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#1f2328" xml:space="preserve">inp</text>
+<text x="293.6" y="397.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#57606a" xml:space="preserve">.</text>
+<text x="302.7" y="397.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#1f2328" xml:space="preserve">values</text>
+<text x="356.8" y="397.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#57606a" xml:space="preserve">[</text>
+<text x="365.9" y="397.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#1f2328" xml:space="preserve">i</text>
+<text x="374.9" y="397.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#57606a" xml:space="preserve">]</text>
+<text x="78" y="420.0" text-anchor="end" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="12" fill="#9aa5b1">14</text>
+<text x="212.4" y="420.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#1f2328" xml:space="preserve">val</text>
+<text x="248.5" y="420.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#57606a" xml:space="preserve">=</text>
+<text x="266.5" y="420.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#1f2328" xml:space="preserve">myhash</text>
+<text x="320.7" y="420.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#57606a" xml:space="preserve">(</text>
+<text x="329.8" y="420.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#1f2328" xml:space="preserve">val</text>
+<text x="365.9" y="420.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#57606a" xml:space="preserve">^</text>
+<text x="383.9" y="420.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#1f2328" xml:space="preserve">t</text>
+<text x="393.0" y="420.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#57606a" xml:space="preserve">.</text>
+<text x="402.0" y="420.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#1f2328" xml:space="preserve">values</text>
+<text x="456.2" y="420.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#57606a" xml:space="preserve">[</text>
+<text x="465.2" y="420.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#1f2328" xml:space="preserve">idx</text>
+<text x="492.3" y="420.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#57606a" xml:space="preserve">]</text>
+<text x="501.3" y="420.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#57606a" xml:space="preserve">)</text>
+<text x="78" y="443.0" text-anchor="end" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="12" fill="#9aa5b1">15</text>
+<text x="212.4" y="443.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#1f2328" xml:space="preserve">idx</text>
+<text x="248.5" y="443.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#57606a" xml:space="preserve">=</text>
+<text x="266.5" y="443.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#953800" xml:space="preserve">2</text>
+<text x="284.6" y="443.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#57606a" xml:space="preserve">*</text>
+<text x="302.7" y="443.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#1f2328" xml:space="preserve">idx</text>
+<text x="338.8" y="443.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#57606a" xml:space="preserve">+</text>
+<text x="356.8" y="443.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#57606a" xml:space="preserve">(</text>
+<text x="365.9" y="443.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#953800" xml:space="preserve">1</text>
+<text x="383.9" y="443.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#0550ae" xml:space="preserve">if</text>
+<text x="411.0" y="443.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#1f2328" xml:space="preserve">val</text>
+<text x="447.1" y="443.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#57606a" xml:space="preserve">%</text>
+<text x="465.2" y="443.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#953800" xml:space="preserve">2</text>
+<text x="483.3" y="443.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#57606a" xml:space="preserve">==</text>
+<text x="510.3" y="443.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#953800" xml:space="preserve">0</text>
+<text x="528.4" y="443.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#0550ae" xml:space="preserve">else</text>
+<text x="573.6" y="443.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#953800" xml:space="preserve">2</text>
+<text x="582.6" y="443.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#57606a" xml:space="preserve">)</text>
+<text x="78" y="466.0" text-anchor="end" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="12" fill="#9aa5b1">16</text>
+<text x="212.4" y="466.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#1f2328" xml:space="preserve">idx</text>
+<text x="248.5" y="466.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#57606a" xml:space="preserve">=</text>
+<text x="266.5" y="466.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#953800" xml:space="preserve">0</text>
+<text x="284.6" y="466.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#0550ae" xml:space="preserve">if</text>
+<text x="311.7" y="466.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#1f2328" xml:space="preserve">idx</text>
+<text x="347.8" y="466.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#57606a" xml:space="preserve">&gt;=</text>
+<text x="374.9" y="466.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#1f2328" xml:space="preserve">len</text>
+<text x="402.0" y="466.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#57606a" xml:space="preserve">(</text>
+<text x="411.0" y="466.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#1f2328" xml:space="preserve">t</text>
+<text x="420.0" y="466.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#57606a" xml:space="preserve">.</text>
+<text x="429.1" y="466.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#1f2328" xml:space="preserve">values</text>
+<text x="483.3" y="466.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#57606a" xml:space="preserve">)</text>
+<text x="501.3" y="466.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#0550ae" xml:space="preserve">else</text>
+<text x="546.5" y="466.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#1f2328" xml:space="preserve">idx</text>
+<text x="78" y="489.0" text-anchor="end" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="12" fill="#9aa5b1">17</text>
+<text x="212.4" y="489.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#1f2328" xml:space="preserve">inp</text>
+<text x="239.4" y="489.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#57606a" xml:space="preserve">.</text>
+<text x="248.5" y="489.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#1f2328" xml:space="preserve">values</text>
+<text x="302.7" y="489.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#57606a" xml:space="preserve">[</text>
+<text x="311.7" y="489.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#1f2328" xml:space="preserve">i</text>
+<text x="320.7" y="489.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#57606a" xml:space="preserve">]</text>
+<text x="338.8" y="489.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#57606a" xml:space="preserve">=</text>
+<text x="356.8" y="489.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#1f2328" xml:space="preserve">val</text>
+<rect x="90" y="493.0" width="622" height="23" fill="#ffebe9"/>
+<rect x="90" y="493.0" width="3.5" height="23" fill="#cf222e"/>
+<text x="78" y="512.0" text-anchor="end" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="12" fill="#9aa5b1">18</text>
+<text x="212.4" y="512.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#1f2328" opacity="0.55" xml:space="preserve">inp</text>
+<text x="239.4" y="512.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#57606a" opacity="0.55" xml:space="preserve">.</text>
+<text x="248.5" y="512.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#1f2328" opacity="0.55" xml:space="preserve">indices</text>
+<text x="311.7" y="512.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#57606a" opacity="0.55" xml:space="preserve">[</text>
+<text x="320.7" y="512.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#1f2328" opacity="0.55" xml:space="preserve">i</text>
+<text x="329.8" y="512.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#57606a" opacity="0.55" xml:space="preserve">]</text>
+<text x="347.8" y="512.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#57606a" opacity="0.55" xml:space="preserve">=</text>
+<text x="365.9" y="512.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#1f2328" opacity="0.55" xml:space="preserve">idx</text>
+<line x1="212.4" y1="507.0" x2="393.0" y2="507.0" stroke="#cf222e" stroke-width="1.6"/>
+<rect x="40" y="550.0" width="14" height="14" rx="3" fill="#ffebe9" stroke="#cf222e" stroke-width="1.2"/>
+<text x="62" y="562.0" font-family="Arial, sans-serif" font-size="14" fill="#334155">Removed: index load and writeback to memory; final indices are not graded, and the live index stays in scratch.</text>
+</svg>

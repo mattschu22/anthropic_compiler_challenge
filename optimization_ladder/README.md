@@ -9,23 +9,20 @@ rung in the path from the reference workload to the final tuned kernel.
 | Stage | ID | Claim |
 | --- | --- | --- |
 | 0 | `00_baseline` | Supplied benchmark baseline. |
-| 1 | `01_test_contract` | Final index writes are not graded. |
-| 2 | `02_scratch_indices` | Keep live index state in scratch. |
-| 3 | `03_fixed_layout` | Bake in stable workload and memory layout. |
-| 4 | `04_unroll` | Expose the deterministic round/depth sequence. |
-| 5 | `05_vectorize` | Process eight inputs per vector instruction. |
+| 1 | `01_remove_unnecessary_work` | Skip ungraded final index work and keep live indices in scratch. |
+| 2 | `02_specialize_workload` | Bake in stable workload, memory layout, and the fixed round/depth sequence. |
+| 3 | `03_vectorize` | Process eight inputs per vector instruction and stream value IO. |
+| 4 | `04_schedule_dependencies` | Schedule RAW/WAR/WAW dependencies; improvement is limited by false temp dependencies. |
+| 5 | `05_temp_banks` | Virtualize temporaries through independent banks so the scheduler sees parallel work. |
 | 6 | `06_tree_cache` | Cache high-reuse upper tree nodes. |
-| 7 | `07_streaming_io` | Stream value addresses through one moving pointer. |
-| 8 | `08_temp_banks` | Add independent temp banks for later scheduling. |
-| 9 | `09_vliw_schedule` | Pack work into VLIW engine slots. |
-| 10 | `10_final_refinements` | Use the final relaxed scheduler and tuned priorities. |
+| 7 | `07_scheduler_tuning` | Use the final relaxed scheduler and tuned priorities. |
 
 ## Run
 
 Run one checkpoint:
 
 ```bash
-python3 -m optimization_ladder.runner 05_vectorize --no-csv
+python3 -m optimization_ladder.runner 03_vectorize --no-csv
 ```
 
 Run every checkpoint and write `results/cycles.csv`:
@@ -69,6 +66,42 @@ and depth 5:
 python3 -m optimization_ladder.tree_cache_heatmap_rounds
 ```
 
+Generate the target-machine diagram (engine slot counts + per-engine ISA,
+straight from `frozen_problem.py`):
+
+```bash
+python3 -m optimization_ladder.cpu_diagram
+```
+
+Generate the reference-kernel source images (plain, and with the removed index
+bookkeeping highlighted):
+
+```bash
+python3 -m optimization_ladder.source_image
+```
+
+Generate the round-unrolling diagram (rolled generic loop vs. the unrolled
+16-step fixed depth schedule + baked-in layout):
+
+```bash
+python3 -m optimization_ladder.unroll_diagram
+```
+
+Generate the VLIW scheduler diagram (RAW/WAR/WAW dependency graph feeding a
+packed cycles-x-engines table, with the critical path highlighted):
+
+```bash
+python3 -m optimization_ladder.scheduler_diagram
+```
+
+Rasterize every generated chart/trace SVG to PNG (2x) for the slide deck. The
+presentation embeds the PNGs, which render consistently across PowerPoint,
+Keynote, and Google Slides. Run this after regenerating any chart:
+
+```bash
+python3 -m optimization_ladder.to_png
+```
+
 Generate compact Perfetto-style lane visuals for each checkpoint:
 
 ```bash
@@ -104,10 +137,10 @@ Perfetto screenshot would be too dense.
 
 ## Presentation Notes
 
-Stage 8 uses temp banks plus local same-engine slot packing. It does not run the
-global VLIW scheduler; stage 9 is still the first checkpoint that performs
-dependency-aware cross-engine scheduling.
+Stage 4 intentionally uses a single temporary namespace. The dependency-aware
+scheduler can still pack some independent work, but false WAR/WAW dependencies
+through reused temporaries keep the improvement moderate.
 
-Stage 1 is intentionally modest. The test contract only makes final index state
-irrelevant after the last value has already been computed. See
-`results/test_contract_analysis.md`.
+Stage 5 uses the same scheduled vector shape with multiple temporary banks. This
+is the checkpoint that shows why temporary virtualization matters before final
+scheduler tuning.

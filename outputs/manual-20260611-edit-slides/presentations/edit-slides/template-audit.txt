@@ -1,0 +1,8 @@
+task mode: template-following edit of the content-only deck found at slides/current.pptx
+source structure: 14 slides, white content-only skeleton, title/subtitle/bullet text plus placeholder instructions.
+preserve: slide order, technical facts, cumulative stage narrative, result assets from optimization_ladder/results.
+improve: replace placeholder instructions with actual diagrams and trace/chart visuals; add a coherent but restrained technical visual system.
+do not imitate: do not leave placeholder bracket notes or plain bullet-only evidence slides.
+brand/assets: no external brand marks; all embedded images come from the local codebase asset root optimization_ladder/results.
+typography/spacing: use Aptos/Calibri-compatible sans text, high-contrast labels, consistent title rail, and compact engineering diagrams.
+insertion contract: existing content-only placeholders are treated as authoring notes and replaced by bounded diagram systems on the same slide positions.

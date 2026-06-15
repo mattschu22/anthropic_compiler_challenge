@@ -1,0 +1,16 @@
+{
+  "stage": 2,
+  "id": "02_specialize_workload",
+  "name": "Specialize For The Workload",
+  "kind": "scalar_scratch",
+  "claim": "The workload shape, memory layout, and round/depth sequence are fixed, so pointer/header work and generic loop control can be baked into the emitted program.",
+  "workload": {
+    "forest_height": 10,
+    "rounds": 16,
+    "batch_size": 256
+  },
+  "builder_args": {
+    "fixed_layout": true,
+    "unroll_rounds": true
+  }
+}

@@ -1,7 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="820" viewBox="0 0 1280 820">
+<svg xmlns="http://www.w3.org/2000/svg" width="1150" height="812" viewBox="0 0 1150 812">
 <rect width="100%" height="100%" fill="#f8fafc"/>
-<text x="44" y="52" font-family="Arial, sans-serif" font-size="29" font-weight="700" fill="#0f172a">Why Tree Caching Wins: the Heat Lives at the Top</text>
-<text x="44" y="82" font-family="Arial, sans-serif" font-size="15" fill="#475569">Heat = inputs traversing each node across all 16 rounds · rounds cycle depths 0→10 then 0→4 again, so depths 0–4 are hit twice</text>
+<text x="44" y="52" font-family="Arial, sans-serif" font-size="29" font-weight="700" fill="#0f172a">Tree Caching: Node Access Frequency by Depth</text>
+<text x="44" y="82" font-family="Arial, sans-serif" font-size="15" fill="#475569">Heat = inputs traversing each node over 16 rounds · depths 0–4 are traversed twice</text>
 <defs><linearGradient id="heat" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#ffffcc"/><stop offset="25%" stop-color="#fed976"/><stop offset="50%" stop-color="#fd8d3c"/><stop offset="75%" stop-color="#f03b20"/><stop offset="100%" stop-color="#bd0026"/></linearGradient><linearGradient id="cold" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#fec063"/><stop offset="100%" stop-color="#ffffcc"/></linearGradient><filter id="soft" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="1.4" stdDeviation="1.6" flood-color="#0f172a" flood-opacity="0.18"/></filter></defs>
 <rect x="72.0" y="124.0" width="956.0" height="239.0" rx="10" fill="#0f766e" opacity="0.06"/>
 <path d="M 158.1 493.0 L 134.1 690.0 Q 158.1 699.0 182.2 690.0 Z" fill="url(#cold)" stroke="#fcd9a0" stroke-width="0.8" opacity="0.96"/>
@@ -192,8 +192,7 @@
 <text x="72.0" y="384.0" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#64748b">GATHERED from memory · depths 3–10</text>
 <path d="M 63.0 156.0 H 54.0 V 492.0 H 63.0" fill="none" stroke="#9a3412" stroke-width="1.8"/>
 <text x="46.0" y="324.0" transform="rotate(-90 46.0 324.0)" text-anchor="middle" font-family="Arial, sans-serif" font-size="12.5" font-weight="700" fill="#9a3412">depths 0–4 · traversed 2×</text>
-<text x="550.0" y="724.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="13.5" font-weight="700" fill="#92400e">depths 5–10: 2,016 cold nodes — reuse ≤ 8×, always gathered</text>
-<text x="550.0" y="742.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="11.5" fill="#a16207">each wedge is one 63-node subtree under a depth-4 node</text>
+<text x="550.0" y="726.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="13.5" font-weight="700" fill="#92400e">depths 5–10: 2,016 cold nodes — always gathered</text>
 <text x="1032.0" y="138.0" font-family="Arial, sans-serif" font-size="11" font-weight="700" fill="#64748b">ACCESSES / NODE</text>
 <circle cx="1032.0" cy="168.0" r="7" fill="#bd0026" stroke="#ffffff" stroke-width="1.4"/>
 <text x="1048.0" y="172.0" font-family="Arial, sans-serif" font-size="12.5" fill="#111827">d0: <tspan font-weight="700">512</tspan> ×2</text>
@@ -206,9 +205,8 @@
 <circle cx="1032.0" cy="480.0" r="7" fill="#fa7b36" stroke="#ffffff" stroke-width="1.4"/>
 <text x="1048.0" y="484.0" font-family="Arial, sans-serif" font-size="12.5" fill="#111827">d4: <tspan font-weight="700">32</tspan> ×2</text>
 <text x="1002.0" y="324.0" transform="rotate(-90 1002.0 324.0)" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#94a3b8">halves each level ↓</text>
-<text x="44" y="754" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#334155">Accesses per node over 16 rounds</text>
-<rect x="44" y="762" width="320" height="14" rx="3" fill="url(#heat)" stroke="#cbd5e1"/>
-<text x="44" y="791" font-family="Arial, sans-serif" font-size="11" fill="#64748b">&lt;1 (deep leaves)</text>
-<text x="364" y="791" text-anchor="end" font-family="Arial, sans-serif" font-size="11" fill="#64748b">512 (root)</text>
-<text x="1236" y="798" text-anchor="end" font-family="Arial, sans-serif" font-size="11" fill="#94a3b8">Stage 6 (06_tree_cache) · caches depths 0–2 · source: optimization_ladder/builders.py · workload 10/16/256</text>
+<text x="44" y="746" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#334155">Accesses per node over 16 rounds</text>
+<rect x="44" y="754" width="320" height="14" rx="3" fill="url(#heat)" stroke="#cbd5e1"/>
+<text x="44" y="783" font-family="Arial, sans-serif" font-size="11" fill="#64748b">&lt;1 (deep leaves)</text>
+<text x="364" y="783" text-anchor="end" font-family="Arial, sans-serif" font-size="11" fill="#64748b">512 (root)</text>
 </svg>

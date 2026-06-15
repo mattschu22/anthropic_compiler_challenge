@@ -1,0 +1,617 @@
+{
+  "schema": "openai.presentation.layout/v4",
+  "unit": "px",
+  "slide": {
+    "aid": "sl/25kb6xkf",
+    "id": "25kb6xkf",
+    "slide": 15,
+    "layoutId": "/ppt/slideLayouts/slideLayout1.xml",
+    "layoutName": "Title Slide",
+    "layoutType": "title",
+    "masterLayoutId": "/ppt/slideMasters/slideMaster1.xml",
+    "masterLayoutName": "Master",
+    "frame": {
+      "left": 0,
+      "top": 0,
+      "width": 1280,
+      "height": 720
+    }
+  },
+  "theme": {
+    "colorSchemeName": "ChatGPT",
+    "colors": {
+      "accent1": "#156082",
+      "accent2": "#E97132",
+      "accent3": "#196B24",
+      "accent4": "#0F9ED5",
+      "accent5": "#A02B93",
+      "accent6": "#4EA72E",
+      "dk1": "#000000",
+      "lt1": "#FFFFFF",
+      "dk2": "#0E2841",
+      "lt2": "#E8E8E8",
+      "hlink": "#467886",
+      "folHlink": "#96607D"
+    },
+    "fontScheme": {
+      "name": "Office",
+      "majorFont": {
+        "latinTypeface": "Calibri Light",
+        "eastAsianTypeface": "Calibri Light",
+        "complexScriptTypeface": "Calibri Light"
+      },
+      "minorFont": {
+        "latinTypeface": "Calibri",
+        "eastAsianTypeface": "Calibri",
+        "complexScriptTypeface": "Calibri"
+      }
+    },
+    "typefaces": [
+      "Aptos",
+      "Calibri",
+      "Calibri Light"
+    ]
+  },
+  "inheritedLayers": [
+    {
+      "scope": "layout",
+      "id": "/ppt/slideLayouts/slideLayout1.xml",
+      "name": "Title Slide",
+      "type": "title",
+      "parentLayoutId": "/ppt/slideMasters/slideMaster1.xml",
+      "elements": []
+    },
+    {
+      "scope": "master",
+      "id": "/ppt/slideMasters/slideMaster1.xml",
+      "name": "Master",
+      "type": "master",
+      "elements": []
+    }
+  ],
+  "elements": [
+    {
+      "order": 1,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/vu9knih4",
+      "id": "9",
+      "name": "Rectangle 8",
+      "bbox": [
+        48,
+        36,
+        1120,
+        52
+      ],
+      "geometry": "rect",
+      "text": "Next Steps",
+      "textPreview": "Next Steps",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 24,
+        "typeface": "Calibri",
+        "color": "tx1",
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Next Steps"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Next Steps",
+          "resolvedTextStyle": {
+            "fontSize": 28,
+            "typeface": "Aptos",
+            "color": "#000000",
+            "bold": true,
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "Next Steps",
+              "fontSize": 28,
+              "typeface": "Aptos",
+              "color": "#000000",
+              "bold": true
+            }
+          ],
+          "bulletCharacter": "",
+          "marginLeft": 0
+        }
+      ],
+      "fillColor": "rgba(0, 0, 0, 0)",
+      "lineColor": "rgba(0, 0, 0, 0)",
+      "lineWidth": 0
+    },
+    {
+      "order": 2,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/kre1w7mp",
+      "id": "2",
+      "name": "Rectangle 1",
+      "bbox": [
+        50,
+        92,
+        1120,
+        42
+      ],
+      "geometry": "rect",
+      "text": "Turn the one-kernel optimization into a more systematic compiler pipeline.",
+      "textPreview": "Turn the one-kernel optimization into a more systematic compiler pipeline.",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 24,
+        "typeface": "Calibri",
+        "color": "tx1",
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Turn the one-kernel optimization into a more systematic compiler pipeline."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Turn the one-kernel optimization into a more systematic compiler pipeline.",
+          "resolvedTextStyle": {
+            "fontSize": 16,
+            "typeface": "Aptos",
+            "color": "#000000",
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "Turn the one-kernel optimization into a more systematic compiler pipeline.",
+              "fontSize": 16,
+              "typeface": "Aptos",
+              "color": "#000000"
+            }
+          ],
+          "bulletCharacter": "",
+          "marginLeft": 0
+        }
+      ],
+      "fillColor": "rgba(0, 0, 0, 0)",
+      "lineColor": "rgba(0, 0, 0, 0)",
+      "lineWidth": 0
+    },
+    {
+      "order": 3,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/dcbulwva",
+      "id": "3",
+      "name": "Rectangle 2",
+      "bbox": [
+        70,
+        150,
+        1060,
+        56
+      ],
+      "geometry": "rect",
+      "text": "• Register coloring: use liveness analysis to assign scratch locations systematically and reduce false dependencies.",
+      "textPreview": "• Register coloring: use liveness analysis to assign scratch locations systematically and reduce false dependencies.",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 24,
+        "typeface": "Calibri",
+        "color": "tx1",
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "• Register coloring: use liveness analysis to assign scratch locations systematically and reduce false dependencies."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "• Register coloring: use liveness analysis to assign scratch locations systematically and reduce false dependencies.",
+          "resolvedTextStyle": {
+            "fontSize": 16,
+            "typeface": "Aptos",
+            "color": "#000000",
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "• Register coloring: use liveness analysis to assign scratch locations systematically and reduce false dependencies.",
+              "fontSize": 16,
+              "typeface": "Aptos",
+              "color": "#000000"
+            }
+          ],
+          "bulletCharacter": "",
+          "marginLeft": 0
+        }
+      ],
+      "fillColor": "rgba(0, 0, 0, 0)",
+      "lineColor": "rgba(0, 0, 0, 0)",
+      "lineWidth": 0
+    },
+    {
+      "order": 4,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/2x4nap4r",
+      "id": "4",
+      "name": "Rectangle 3",
+      "bbox": [
+        70,
+        206,
+        1060,
+        56
+      ],
+      "geometry": "rect",
+      "text": "• Goodput calculator: compute useful work per cycle, engine utilization, idle slots, memory pressure, and stall categories directly from traces.",
+      "textPreview": "• Goodput calculator: compute useful work per cycle, engine utilization, idle slots, memory pressure, and stall categories directly from ...",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 24,
+        "typeface": "Calibri",
+        "color": "tx1",
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "• Goodput calculator: compute useful work per cycle, engine utilization, idle slots, memory pressure, and stall categories directly from traces."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "• Goodput calculator: compute useful work per cycle, engine utilization, idle slots, memory pressure, and stall categories directly from traces.",
+          "resolvedTextStyle": {
+            "fontSize": 16,
+            "typeface": "Aptos",
+            "color": "#000000",
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "• Goodput calculator: compute useful work per cycle, engine utilization, idle slots, memory pressure, and stall categories directly from traces.",
+              "fontSize": 16,
+              "typeface": "Aptos",
+              "color": "#000000"
+            }
+          ],
+          "bulletCharacter": "",
+          "marginLeft": 0
+        }
+      ],
+      "fillColor": "rgba(0, 0, 0, 0)",
+      "lineColor": "rgba(0, 0, 0, 0)",
+      "lineWidth": 0
+    },
+    {
+      "order": 5,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/vixczed8",
+      "id": "5",
+      "name": "Rectangle 4",
+      "bbox": [
+        70,
+        262,
+        1060,
+        56
+      ],
+      "geometry": "rect",
+      "text": "• Profiler/tooling automation: automatically identify bubbles, saturated engines, load/store bottlenecks, and before/after deltas.",
+      "textPreview": "• Profiler/tooling automation: automatically identify bubbles, saturated engines, load/store bottlenecks, and before/after deltas.",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 24,
+        "typeface": "Calibri",
+        "color": "tx1",
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "• Profiler/tooling automation: automatically identify bubbles, saturated engines, load/store bottlenecks, and before/after deltas."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "• Profiler/tooling automation: automatically identify bubbles, saturated engines, load/store bottlenecks, and before/after deltas.",
+          "resolvedTextStyle": {
+            "fontSize": 16,
+            "typeface": "Aptos",
+            "color": "#000000",
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "• Profiler/tooling automation: automatically identify bubbles, saturated engines, load/store bottlenecks, and before/after deltas.",
+              "fontSize": 16,
+              "typeface": "Aptos",
+              "color": "#000000"
+            }
+          ],
+          "bulletCharacter": "",
+          "marginLeft": 0
+        }
+      ],
+      "fillColor": "rgba(0, 0, 0, 0)",
+      "lineColor": "rgba(0, 0, 0, 0)",
+      "lineWidth": 0
+    },
+    {
+      "order": 6,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/k3q5o7qp",
+      "id": "6",
+      "name": "Rectangle 5",
+      "bbox": [
+        70,
+        318,
+        1060,
+        56
+      ],
+      "geometry": "rect",
+      "text": "• Automated schedule search: explore scheduler priorities, tie-breaks, and packing choices programmatically.",
+      "textPreview": "• Automated schedule search: explore scheduler priorities, tie-breaks, and packing choices programmatically.",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 24,
+        "typeface": "Calibri",
+        "color": "tx1",
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "• Automated schedule search: explore scheduler priorities, tie-breaks, and packing choices programmatically."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "• Automated schedule search: explore scheduler priorities, tie-breaks, and packing choices programmatically.",
+          "resolvedTextStyle": {
+            "fontSize": 16,
+            "typeface": "Aptos",
+            "color": "#000000",
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "• Automated schedule search: explore scheduler priorities, tie-breaks, and packing choices programmatically.",
+              "fontSize": 16,
+              "typeface": "Aptos",
+              "color": "#000000"
+            }
+          ],
+          "bulletCharacter": "",
+          "marginLeft": 0
+        }
+      ],
+      "fillColor": "rgba(0, 0, 0, 0)",
+      "lineColor": "rgba(0, 0, 0, 0)",
+      "lineWidth": 0
+    },
+    {
+      "order": 7,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/donyd0z6",
+      "id": "7",
+      "name": "Rectangle 6",
+      "bbox": [
+        70,
+        374,
+        1060,
+        56
+      ],
+      "geometry": "rect",
+      "text": "• Formalized dependency model: represent every instruction as a graph node with explicit reads, writes, engine constraints, and RAW/WAR/WAW edges. Use the graph to prove schedule correctness and search for better VLIW packing.",
+      "textPreview": "• Formalized dependency model: represent every instruction as a graph node with explicit reads, writes, engine constraints, and RAW/WAR/W...",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 24,
+        "typeface": "Calibri",
+        "color": "tx1",
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "• Formalized dependency model: represent every instruction as a graph node with explicit reads, writes, engine constraints, and RAW/WAR/WAW"
+          },
+          {
+            "index": 2,
+            "text": "edges. Use the graph to prove schedule correctness and search for better VLIW packing."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "• Formalized dependency model: represent every instruction as a graph node with explicit reads, writes, engine constraints, and RAW/WAR/WAW edges. Use the graph to prove schedule correctness and search for better VLIW packing.",
+          "resolvedTextStyle": {
+            "fontSize": 16,
+            "typeface": "Aptos",
+            "color": "#000000",
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "• Formalized dependency model: represent every instruction as a graph node with explicit reads, writes, engine constraints, and RAW/WAR/WAW edges. Use the graph to prove schedule correctness and search for better VLIW packing.",
+              "fontSize": 16,
+              "typeface": "Aptos",
+              "color": "#000000"
+            }
+          ],
+          "bulletCharacter": "",
+          "marginLeft": 0
+        }
+      ],
+      "fillColor": "rgba(0, 0, 0, 0)",
+      "lineColor": "rgba(0, 0, 0, 0)",
+      "lineWidth": 0
+    },
+    {
+      "order": 8,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/29gr2p8n",
+      "id": "8",
+      "name": "Rectangle 7",
+      "bbox": [
+        70,
+        548,
+        1050,
+        92
+      ],
+      "geometry": "rect",
+      "text": "[Placeholder: PowerPoint diagram: compiler pipeline roadmap: trace metrics -> dependency graph -> register coloring -> scheduler search -> verified VLIW program.]",
+      "textPreview": "[Placeholder: PowerPoint diagram: compiler pipeline roadmap: trace metrics -> dependency graph -> register coloring -> scheduler search -...",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 24,
+        "typeface": "Calibri",
+        "color": "tx1",
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "[Placeholder: PowerPoint diagram: compiler pipeline roadmap: trace metrics -> dependency graph -> register coloring -> scheduler search -> verified VLIW program.]"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "[Placeholder: PowerPoint diagram: compiler pipeline roadmap: trace metrics -> dependency graph -> register coloring -> scheduler search -> verified VLIW program.]",
+          "resolvedTextStyle": {
+            "fontSize": 12,
+            "typeface": "Aptos",
+            "color": "#000000",
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "[Placeholder: PowerPoint diagram: compiler pipeline roadmap: trace metrics -> dependency graph -> register coloring -> scheduler search -> verified VLIW program.]",
+              "fontSize": 12,
+              "typeface": "Aptos",
+              "color": "#000000"
+            }
+          ],
+          "bulletCharacter": "",
+          "marginLeft": 0
+        }
+      ],
+      "fillColor": "rgba(0, 0, 0, 0)",
+      "lineColor": "rgba(0, 0, 0, 0)",
+      "lineWidth": 0
+    }
+  ],
+  "composeRuns": []
+}

@@ -1,0 +1,12 @@
+Content-only deck QA:
+- Slide count: 15
+- Styling: default white slides, plain black text, no custom color system, no cards, no imported images.
+- Image handling: all chart/trace visuals are represented as text placeholders.
+- Narrative update: `Exploit Test Contract` and `Move Indices Out Of Memory`
+  are combined into `Remove Index Bookkeeping` at 114,868 cycles.
+- Placeholder update: most per-step Perfetto placeholders were replaced with
+  diagram-first visual briefs. Perfetto is kept as a main visual only for the
+  baseline trace-reading slide and as a small proof inset for scheduling.
+- Export: passed
+- Render previews: passed
+- PPTX archive integrity: passed with unzip -t

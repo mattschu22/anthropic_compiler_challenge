@@ -1,0 +1,896 @@
+{
+  "schema": "openai.presentation.layout/v4",
+  "unit": "px",
+  "slide": {
+    "aid": "sl/pg3ex0nu",
+    "id": "pg3ex0nu",
+    "slide": 3,
+    "layoutId": "/ppt/slideLayouts/slideLayout1.xml",
+    "layoutName": "Title Slide",
+    "layoutType": "title",
+    "masterLayoutId": "/ppt/slideMasters/slideMaster1.xml",
+    "masterLayoutName": "Master",
+    "frame": {
+      "left": 0,
+      "top": 0,
+      "width": 1280,
+      "height": 720
+    }
+  },
+  "theme": {
+    "colorSchemeName": "ChatGPT",
+    "colors": {
+      "accent1": "#156082",
+      "accent2": "#E97132",
+      "accent3": "#196B24",
+      "accent4": "#0F9ED5",
+      "accent5": "#A02B93",
+      "accent6": "#4EA72E",
+      "dk1": "#000000",
+      "lt1": "#FFFFFF",
+      "dk2": "#0E2841",
+      "lt2": "#E8E8E8",
+      "hlink": "#467886",
+      "folHlink": "#96607D"
+    },
+    "fontScheme": {
+      "name": "Office",
+      "majorFont": {
+        "latinTypeface": "Calibri Light",
+        "eastAsianTypeface": "Calibri Light",
+        "complexScriptTypeface": "Calibri Light"
+      },
+      "minorFont": {
+        "latinTypeface": "Calibri",
+        "eastAsianTypeface": "Calibri",
+        "complexScriptTypeface": "Calibri"
+      }
+    },
+    "typefaces": [
+      "Aptos",
+      "Calibri",
+      "Calibri Light"
+    ]
+  },
+  "inheritedLayers": [
+    {
+      "scope": "layout",
+      "id": "/ppt/slideLayouts/slideLayout1.xml",
+      "name": "Title Slide",
+      "type": "title",
+      "parentLayoutId": "/ppt/slideMasters/slideMaster1.xml",
+      "elements": []
+    },
+    {
+      "scope": "master",
+      "id": "/ppt/slideMasters/slideMaster1.xml",
+      "name": "Master",
+      "type": "master",
+      "elements": []
+    }
+  ],
+  "elements": [
+    {
+      "order": 1,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/wb2hwfyx",
+      "id": "10",
+      "name": "Rectangle 9",
+      "bbox": [
+        48,
+        36,
+        1120,
+        52
+      ],
+      "geometry": "rect",
+      "text": "Problem Description: Batched Binary Tree Traversal",
+      "textPreview": "Problem Description: Batched Binary Tree Traversal",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 24,
+        "typeface": "Calibri",
+        "color": "tx1",
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Problem Description: Batched Binary Tree Traversal"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Problem Description: Batched Binary Tree Traversal",
+          "resolvedTextStyle": {
+            "fontSize": 28,
+            "typeface": "Aptos",
+            "color": "#000000",
+            "bold": true,
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "Problem Description: Batched Binary Tree Traversal",
+              "fontSize": 28,
+              "typeface": "Aptos",
+              "color": "#000000",
+              "bold": true
+            }
+          ],
+          "bulletCharacter": "",
+          "marginLeft": 0
+        }
+      ],
+      "fillColor": "rgba(0, 0, 0, 0)",
+      "lineColor": "rgba(0, 0, 0, 0)",
+      "lineWidth": 0
+    },
+    {
+      "order": 2,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/5o7qpg3e",
+      "id": "2",
+      "name": "Rectangle 1",
+      "bbox": [
+        50,
+        92,
+        1120,
+        42
+      ],
+      "geometry": "rect",
+      "text": "Each input repeatedly walks a perfect binary tree and updates its value through a hash pipeline.",
+      "textPreview": "Each input repeatedly walks a perfect binary tree and updates its value through a hash pipeline.",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 24,
+        "typeface": "Calibri",
+        "color": "tx1",
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Each input repeatedly walks a perfect binary tree and updates its value through a hash pipeline."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Each input repeatedly walks a perfect binary tree and updates its value through a hash pipeline.",
+          "resolvedTextStyle": {
+            "fontSize": 16,
+            "typeface": "Aptos",
+            "color": "#000000",
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "Each input repeatedly walks a perfect binary tree and updates its value through a hash pipeline.",
+              "fontSize": 16,
+              "typeface": "Aptos",
+              "color": "#000000"
+            }
+          ],
+          "bulletCharacter": "",
+          "marginLeft": 0
+        }
+      ],
+      "fillColor": "rgba(0, 0, 0, 0)",
+      "lineColor": "rgba(0, 0, 0, 0)",
+      "lineWidth": 0
+    },
+    {
+      "order": 3,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/g3ex0nux",
+      "id": "3",
+      "name": "Rectangle 2",
+      "bbox": [
+        70,
+        239,
+        1060,
+        34
+      ],
+      "geometry": "rect",
+      "text": "• Workload constants: forest_height = 10, rounds = 16, batch_size = 256.",
+      "textPreview": "• Workload constants: forest_height = 10, rounds = 16, batch_size = 256.",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 24,
+        "typeface": "Calibri",
+        "color": "tx1",
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "• Workload constants: forest_height = 10, rounds = 16, batch_size = 256."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "• Workload constants: forest_height = 10, rounds = 16, batch_size = 256.",
+          "resolvedTextStyle": {
+            "fontSize": 16,
+            "typeface": "Aptos",
+            "color": "#000000",
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "• Workload constants: ",
+              "fontSize": 16,
+              "typeface": "Aptos",
+              "color": "#000000"
+            },
+            {
+              "index": 2,
+              "text": "forest_height",
+              "fontSize": 16,
+              "typeface": "Aptos",
+              "color": "#000000"
+            },
+            {
+              "index": 3,
+              "text": " = 10, rounds = 16, ",
+              "fontSize": 16,
+              "typeface": "Aptos",
+              "color": "#000000"
+            },
+            {
+              "index": 4,
+              "text": "batch_size",
+              "fontSize": 16,
+              "typeface": "Aptos",
+              "color": "#000000"
+            },
+            {
+              "index": 5,
+              "text": " = 256.",
+              "fontSize": 16,
+              "typeface": "Aptos",
+              "color": "#000000"
+            }
+          ],
+          "bulletCharacter": "",
+          "marginLeft": 0
+        }
+      ],
+      "fillColor": "rgba(0, 0, 0, 0)",
+      "lineColor": "rgba(0, 0, 0, 0)",
+      "lineWidth": 0
+    },
+    {
+      "order": 4,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/r65wjudg",
+      "id": "4",
+      "name": "Rectangle 3",
+      "bbox": [
+        70,
+        273,
+        1060,
+        34
+      ],
+      "geometry": "rect",
+      "text": "• A perfect binary tree of height 10 has 2,047 nodes.",
+      "textPreview": "• A perfect binary tree of height 10 has 2,047 nodes.",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 24,
+        "typeface": "Calibri",
+        "color": "tx1",
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "• A perfect binary tree of height 10 has 2,047 nodes."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "• A perfect binary tree of height 10 has 2,047 nodes.",
+          "resolvedTextStyle": {
+            "fontSize": 16,
+            "typeface": "Aptos",
+            "color": "#000000",
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "• A perfect binary tree of height 10 has 2,047 nodes.",
+              "fontSize": 16,
+              "typeface": "Aptos",
+              "color": "#000000"
+            }
+          ],
+          "bulletCharacter": "",
+          "marginLeft": 0
+        }
+      ],
+      "fillColor": "rgba(0, 0, 0, 0)",
+      "lineColor": "rgba(0, 0, 0, 0)",
+      "lineWidth": 0
+    },
+    {
+      "order": 5,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/ylc7u54z",
+      "id": "5",
+      "name": "Rectangle 4",
+      "bbox": [
+        70,
+        307,
+        1060,
+        34
+      ],
+      "geometry": "rect",
+      "text": "• Each input maintains a current value and a current tree index.",
+      "textPreview": "• Each input maintains a current value and a current tree index.",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 24,
+        "typeface": "Calibri",
+        "color": "tx1",
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "• Each input maintains a current value and a current tree index."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "• Each input maintains a current value and a current tree index.",
+          "resolvedTextStyle": {
+            "fontSize": 16,
+            "typeface": "Aptos",
+            "color": "#000000",
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "• Each input maintains a current value and a current tree index.",
+              "fontSize": 16,
+              "typeface": "Aptos",
+              "color": "#000000"
+            }
+          ],
+          "bulletCharacter": "",
+          "marginLeft": 0
+        }
+      ],
+      "fillColor": "rgba(0, 0, 0, 0)",
+      "lineColor": "rgba(0, 0, 0, 0)",
+      "lineWidth": 0
+    },
+    {
+      "order": 6,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/9cvixcze",
+      "id": "6",
+      "name": "Rectangle 5",
+      "bbox": [
+        70,
+        341,
+        1060,
+        34
+      ],
+      "geometry": "rect",
+      "text": "• One round: read current index, read tree node value, compute myhash(input_value ^ node_value), choose left or right child from hash parity, then update value and index.",
+      "textPreview": "• One round: read current index, read tree node value, compute myhash(input_value ^ node_value), choose left or right child from hash par...",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 24,
+        "typeface": "Calibri",
+        "color": "tx1",
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "• One round: read current index, read tree node value, compute myhash(input_value ^ node_value), choose left or right child from hash parity, then"
+          },
+          {
+            "index": 2,
+            "text": "update value and index."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "• One round: read current index, read tree node value, compute myhash(input_value ^ node_value), choose left or right child from hash parity, then update value and index.",
+          "resolvedTextStyle": {
+            "fontSize": 16,
+            "typeface": "Aptos",
+            "color": "#000000",
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "• One round: read current index, read tree node value, compute myhash(input_value ^ node_value), choose left or right child from hash parity, then update value and index.",
+              "fontSize": 16,
+              "typeface": "Aptos",
+              "color": "#000000"
+            }
+          ],
+          "bulletCharacter": "",
+          "marginLeft": 0
+        }
+      ],
+      "fillColor": "rgba(0, 0, 0, 0)",
+      "lineColor": "rgba(0, 0, 0, 0)",
+      "lineWidth": 0
+    },
+    {
+      "order": 7,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/gr2p8nqx",
+      "id": "7",
+      "name": "Rectangle 6",
+      "bbox": [
+        70,
+        375,
+        1060,
+        34
+      ],
+      "geometry": "rect",
+      "text": "• The depth sequence is deterministic: 0,1,2,3,4,5,6,7,8,9,10,0,1,2,3,4.",
+      "textPreview": "• The depth sequence is deterministic: 0,1,2,3,4,5,6,7,8,9,10,0,1,2,3,4.",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 24,
+        "typeface": "Calibri",
+        "color": "tx1",
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "• The depth sequence is deterministic: 0,1,2,3,4,5,6,7,8,9,10,0,1,2,3,4."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "• The depth sequence is deterministic: 0,1,2,3,4,5,6,7,8,9,10,0,1,2,3,4.",
+          "resolvedTextStyle": {
+            "fontSize": 16,
+            "typeface": "Aptos",
+            "color": "#000000",
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "• The depth sequence is deterministic: 0,1,2,3,4,5,6,7,8,9,10,0,1,2,3,4.",
+              "fontSize": 16,
+              "typeface": "Aptos",
+              "color": "#000000"
+            }
+          ],
+          "bulletCharacter": "",
+          "marginLeft": 0
+        }
+      ],
+      "fillColor": "rgba(0, 0, 0, 0)",
+      "lineColor": "rgba(0, 0, 0, 0)",
+      "lineWidth": 0
+    },
+    {
+      "order": 8,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/rytsvu9k",
+      "id": "8",
+      "name": "Rectangle 7",
+      "bbox": [
+        70,
+        409,
+        1060,
+        34
+      ],
+      "geometry": "rect",
+      "text": "• Correctness target: final values must match the reference implementation.",
+      "textPreview": "• Correctness target: final values must match the reference implementation.",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 24,
+        "typeface": "Calibri",
+        "color": "tx1",
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "• Correctness target: final values must match the reference implementation."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "• Correctness target: final values must match the reference implementation.",
+          "resolvedTextStyle": {
+            "fontSize": 16,
+            "typeface": "Aptos",
+            "color": "#000000",
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "• Correctness target: final values must match the reference implementation.",
+              "fontSize": 16,
+              "typeface": "Aptos",
+              "color": "#000000"
+            }
+          ],
+          "bulletCharacter": "",
+          "marginLeft": 0
+        }
+      ],
+      "fillColor": "rgba(0, 0, 0, 0)",
+      "lineColor": "rgba(0, 0, 0, 0)",
+      "lineWidth": 0
+    },
+    {
+      "order": 9,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/yd0z6103",
+      "id": "9",
+      "name": "Rectangle 8",
+      "bbox": [
+        70,
+        548,
+        1050,
+        92
+      ],
+      "geometry": "rect",
+      "text": "[Placeholder: PowerPoint diagram: clean concept diagram with depth-10 binary tree on left, one highlighted input path, and one-round dataflow on right: value + index -> node lookup -> hash -> branch bit -> next index/value.]",
+      "textPreview": "[Placeholder: PowerPoint diagram: clean concept diagram with depth-10 binary tree on left, one highlighted input path, and one-round data...",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 24,
+        "typeface": "Calibri",
+        "color": "tx1",
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "[Placeholder: PowerPoint diagram: clean concept diagram with depth-10 binary tree on left, one highlighted input path, and one-round dataflow on right: value + index -> node lookup -> hash ->"
+          },
+          {
+            "index": 2,
+            "text": "branch bit -> next index/value.]"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "[Placeholder: PowerPoint diagram: clean concept diagram with depth-10 binary tree on left, one highlighted input path, and one-round dataflow on right: value + index -> node lookup -> hash -> branch bit -> next index/value.]",
+          "resolvedTextStyle": {
+            "fontSize": 12,
+            "typeface": "Aptos",
+            "color": "#000000",
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "[Placeholder: PowerPoint diagram: clean concept diagram with depth-10 binary tree on left, one highlighted input path, and one-round dataflow on right: value + index -> node lookup -> hash -> branch bit -> next index/value.]",
+              "fontSize": 12,
+              "typeface": "Aptos",
+              "color": "#000000"
+            }
+          ],
+          "bulletCharacter": "",
+          "marginLeft": 0
+        }
+      ],
+      "fillColor": "rgba(0, 0, 0, 0)",
+      "lineColor": "rgba(0, 0, 0, 0)",
+      "lineWidth": 0
+    },
+    {
+      "order": 10,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/lwval87e",
+      "id": "11",
+      "name": "Rectangle 10",
+      "bbox": [
+        70,
+        167,
+        1050,
+        38
+      ],
+      "geometry": "rect",
+      "text": "• The take-home asks candidates to minimize cycle count for a fixed workload.",
+      "textPreview": "• The take-home asks candidates to minimize cycle count for a fixed workload.",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 24,
+        "typeface": "Calibri",
+        "color": "tx1",
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "• The take-home asks candidates to minimize cycle count for a fixed workload."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "• The take-home asks candidates to minimize cycle count for a fixed workload.",
+          "resolvedTextStyle": {
+            "fontSize": 16,
+            "typeface": "Aptos",
+            "color": "#000000",
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "• The take-home asks candidates to",
+              "fontSize": 16,
+              "typeface": "Aptos",
+              "color": "#000000"
+            },
+            {
+              "index": 2,
+              "text": " minimize cycle count",
+              "fontSize": 16,
+              "typeface": "Aptos",
+              "color": "#000000"
+            },
+            {
+              "index": 3,
+              "text": " for a fixed workload.",
+              "fontSize": 16,
+              "typeface": "Aptos",
+              "color": "#000000"
+            }
+          ],
+          "bulletCharacter": "",
+          "marginLeft": 0
+        }
+      ],
+      "fillColor": "rgba(0, 0, 0, 0)",
+      "lineColor": "rgba(0, 0, 0, 0)",
+      "lineWidth": 0
+    },
+    {
+      "order": 11,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/e9cvixcz",
+      "id": "12",
+      "name": "Rectangle 11",
+      "bbox": [
+        70,
+        461,
+        1050,
+        38
+      ],
+      "geometry": "rect",
+      "text": "• Strategy: remove unnecessary work, specialize the workload, exploit SIMD, reduce memory pressure, expose independent work, and schedule aggressively.",
+      "textPreview": "• Strategy: remove unnecessary work, specialize the workload, exploit SIMD, reduce memory pressure, expose independent work, and schedule...",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 24,
+        "typeface": "Calibri",
+        "color": "tx1",
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "• Strategy: remove unnecessary work, specialize the workload, exploit SIMD, reduce memory pressure, expose independent work, and schedule"
+          },
+          {
+            "index": 2,
+            "text": "aggressively."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "• Strategy: remove unnecessary work, specialize the workload, exploit SIMD, reduce memory pressure, expose independent work, and schedule aggressively.",
+          "resolvedTextStyle": {
+            "fontSize": 16,
+            "typeface": "Aptos",
+            "color": "#000000",
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "• ",
+              "fontSize": 16,
+              "typeface": "Aptos",
+              "color": "#000000"
+            },
+            {
+              "index": 2,
+              "text": "Strategy",
+              "fontSize": 16,
+              "typeface": "Aptos",
+              "color": "#000000"
+            },
+            {
+              "index": 3,
+              "text": ": remove unnecessary work, specialize the workload, exploit SIMD, reduce memory pressure, expose independent work, and schedule ",
+              "fontSize": 16,
+              "typeface": "Aptos",
+              "color": "#000000"
+            },
+            {
+              "index": 4,
+              "text": "aggressively",
+              "fontSize": 16,
+              "typeface": "Aptos",
+              "color": "#000000"
+            },
+            {
+              "index": 5,
+              "text": ".",
+              "fontSize": 16,
+              "typeface": "Aptos",
+              "color": "#000000"
+            }
+          ],
+          "bulletCharacter": "",
+          "marginLeft": 0
+        }
+      ],
+      "fillColor": "rgba(0, 0, 0, 0)",
+      "lineColor": "rgba(0, 0, 0, 0)",
+      "lineWidth": 0
+    }
+  ],
+  "composeRuns": []
+}

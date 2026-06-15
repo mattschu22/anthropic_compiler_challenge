@@ -8,12 +8,15 @@ import math
 from collections import defaultdict
 from pathlib import Path
 
+from .presentation_rows import load_presentation_rows
+
 
 ROOT = Path(__file__).resolve().parent
 RESULTS = ROOT / "results"
 CSV_PATH = RESULTS / "cycles.csv"
 TRACE_DIR = RESULTS / "traces"
 OUT_DIR = RESULTS / "trace_visuals"
+RAW_OUT_DIR = OUT_DIR / "raw_checkpoints"
 
 ENGINE_ORDER = [
     ("alu", 12, "#2563eb"),
@@ -25,16 +28,24 @@ ENGINE_ORDER = [
 
 STAGE_NOTES = {
     "00_baseline": "Mostly one scalar lane at a time; memory and branch work dominate.",
-    "01_test_contract": "Final pass removes index update/store work; still scalar and memory-backed.",
-    "02_scratch_indices": "Index memory traffic drops; compute lanes remain mostly serialized.",
-    "03_fixed_layout": "Pointer/header work shrinks; trace still shows scalar execution.",
-    "04_unroll": "Control overhead drops, but execution is still scalar-width.",
-    "05_vectorize": "VALU lanes become active as eight inputs move together.",
-    "06_tree_cache": "Load pressure falls on shallow tree depths.",
-    "07_streaming_io": "Value address updates become a small streaming pattern.",
-    "08_temp_banks": "Independent work is exposed and locally packed before global scheduling.",
-    "09_vliw_schedule": "Many engine lanes fill together after dependency-aware scheduling.",
-    "10_final_refinements": "Scheduler polish improves packing and shifts some VALU work to ALU.",
+    "01_remove_unnecessary_work": "Final index work is skipped and live traversal indices stay in scratch.",
+    "02_specialize_workload": "Fixed layout and unrolled depth sequence remove generic control work.",
+    "03_vectorize": "VALU lanes become active as eight inputs move together and value IO streams.",
+    "04_schedule_dependencies": "The scheduler packs legal RAW/WAR/WAW dependencies, but false temp deps remain.",
+    "05_temp_banks": "Separate temp banks expose independent vector groups to the scheduler.",
+    "06_tree_cache": "Cached upper tree levels reduce gather pressure.",
+    "07_scheduler_tuning": "Relaxed WAR timing and tuned priorities improve final packing.",
+}
+
+PRESENTATION_FILENAMES = {
+    "00_baseline": "00_baseline.svg",
+    "01_remove_unnecessary_work": "01_remove_unnecessary_work.svg",
+    "02_specialize_workload": "02_specialize_workload.svg",
+    "03_vectorize": "03_vectorize.svg",
+    "04_schedule_dependencies": "04_schedule_dependencies.svg",
+    "05_temp_banks": "05_temp_banks.svg",
+    "06_tree_cache": "06_tree_cache.svg",
+    "07_scheduler_tuning": "07_scheduler_tuning.svg",
 }
 
 
@@ -136,7 +147,7 @@ def write_trace_svg(row, summary, out_path: Path):
     engine_gap = 14
     timeline_w = width - left - right
     lane_count = sum(slots for _engine, slots, _color in ENGINE_ORDER)
-    height = top + lane_count * (lane_h + lane_gap) + engine_gap * len(ENGINE_ORDER) + 112
+    height = top + lane_count * (lane_h + lane_gap) + engine_gap * len(ENGINE_ORDER) + 24
 
     cycles = int(row["cycles"])
     speedup = float(row["speedup"])
@@ -200,23 +211,8 @@ def write_trace_svg(row, summary, out_path: Path):
                         last_alpha = alpha_key if value else None
         y += slots * (lane_h + lane_gap) + engine_gap
 
-    # Compact utilization strip for slide scanning.
-    strip_y = height - 68
-    x = 34
-    for engine, _slots, color in ENGINE_ORDER:
-        util = summary["engine_util"].get(engine, 0.0)
-        parts.extend(
-            [
-                f'<rect x="{x}" y="{strip_y}" width="130" height="8" fill="#e2e8f0"/>',
-                f'<rect x="{x}" y="{strip_y}" width="{130 * min(util, 1):.1f}" height="8" fill="{color}"/>',
-                f'<text x="{x}" y="{strip_y + 26}" font-family="Arial, sans-serif" font-size="11" fill="#334155">{engine} {util * 100:.1f}%</text>',
-            ]
-        )
-        x += 160
-
     parts.extend(
         [
-            f'<text x="34" y="{height - 18}" font-family="Arial, sans-serif" font-size="11" fill="#64748b">Derived from { _esc(Path(row["trace"]).name) }; full trace remains Perfetto-compatible.</text>',
             "</svg>",
         ]
     )
@@ -225,14 +221,17 @@ def write_trace_svg(row, summary, out_path: Path):
 
 
 def write_all():
-    rows = _load_rows()
     outputs = []
-    for row in rows:
+
+    # Main deck visuals use the revised checkpoint ladder directly.
+    for row in load_presentation_rows(CSV_PATH):
         trace = row.get("trace")
         if not trace:
             continue
         summary = summarize_trace(Path(trace))
-        outputs.append(write_trace_svg(row, summary, OUT_DIR / f"{row['id']}.svg"))
+        filename = PRESENTATION_FILENAMES.get(row["id"], f"{row['stage']}_{row['id']}.svg")
+        outputs.append(write_trace_svg(row, summary, OUT_DIR / filename))
+
     return outputs
 
 

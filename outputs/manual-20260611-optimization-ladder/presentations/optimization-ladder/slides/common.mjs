@@ -33,14 +33,14 @@ export function addTitle(slide, ctx, title, subtitle = "", section = "") {
   addBackground(slide, ctx, section);
   ctx.addText(slide, {
     text: title,
-    x: 42, y: 52, w: 760, h: subtitle ? 46 : 64,
-    fontSize: 32, bold: true, color: colors.ink,
+    x: 42, y: 52, w: 900, h: subtitle ? 64 : 70,
+    fontSize: 30, bold: true, color: colors.ink,
     typeface: ctx.fonts.title,
   });
   if (subtitle) {
     ctx.addText(slide, {
       text: subtitle,
-      x: 44, y: 98, w: 1000, h: 34,
+      x: 44, y: 118, w: 1000, h: 28,
       fontSize: 16, color: colors.muted,
       typeface: ctx.fonts.body,
     });

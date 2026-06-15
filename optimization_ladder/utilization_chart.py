@@ -2,8 +2,8 @@
 
 The line chart in ``chart.py`` shows *that* cycles fell. This chart shows *why*:
 each engine's busy fraction over the same fixed workload, so the two structural
-unlocks become visible. VALU goes from idle to active at stage 5 (SIMD), and
-every engine jumps together at stage 9 (dependency-aware VLIW scheduling).
+unlocks become visible. VALU goes from idle to active at stage 3 (SIMD), and
+every engine jumps together after scheduling and temp banking.
 """
 
 from __future__ import annotations
@@ -11,6 +11,7 @@ from __future__ import annotations
 import csv
 from pathlib import Path
 
+from .presentation_rows import load_presentation_rows
 from .trace_visuals import ENGINE_ORDER, summarize_trace
 
 
@@ -21,10 +22,11 @@ SVG_PATH = RESULTS / "charts" / "utilization_ladder.svg"
 
 # Reuse the same phase framing as the cycle chart so the two slides line up.
 PHASES = [
-    (0, 2, "Remove work", "#dbeafe"),
-    (2, 4, "Specialize", "#dcfce7"),
-    (4, 8, "Expose parallelism", "#fef3c7"),
-    (8, 10, "Schedule machine", "#ede9fe"),
+    (0, 1, "Remove work", "#dbeafe"),
+    (1, 2, "Specialize", "#dcfce7"),
+    (2, 3, "Vectorize", "#fef3c7"),
+    (3, 5, "Schedule + temps", "#ede9fe"),
+    (5, 7, "Cache + tune", "#ccfbf1"),
 ]
 
 ENGINE_LABEL = {
@@ -47,8 +49,7 @@ def _esc(text: str) -> str:
 
 
 def _load_rows():
-    with CSV_PATH.open() as f:
-        return list(csv.DictReader(f))
+    return load_presentation_rows(CSV_PATH)
 
 
 def _collect_util(rows):
@@ -67,7 +68,7 @@ def write_svg(rows, series, path: Path = SVG_PATH):
     height = 720
     left = 92
     right = 150  # room for end-of-line engine labels
-    top = 116
+    top = 136
     bottom = 132
     chart_w = width - left - right
     chart_h = height - top - bottom
@@ -87,17 +88,20 @@ def write_svg(rows, series, path: Path = SVG_PATH):
         f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}">',
         '<rect width="100%" height="100%" fill="#f8fafc"/>',
         '<text x="36" y="46" font-family="Arial, sans-serif" font-size="28" font-weight="700" fill="#111827">Machine Utilization Across the Ladder</text>',
-        '<text x="36" y="72" font-family="Arial, sans-serif" font-size="15" fill="#475569">Per-engine busy fraction · same fixed workload · the same two rungs that drop cycles also fill the machine</text>',
+        '<text x="36" y="72" font-family="Arial, sans-serif" font-size="15" fill="#475569">Per-engine busy fraction</text>',
     ]
 
-    # Phase bands behind the plot.
+    # Phase backdrop behind the plot, with the label lifted into its own tag
+    # chip above the plot. The engine lines run to ~100%, so keeping the tags
+    # off the plot area stops them from covering the top markers.
     for start, end, label, fill in PHASES:
         x1 = x_for(start)
         x2 = x_for(end)
         parts.extend(
             [
-                f'<rect x="{x1:.1f}" y="{top - 26}" width="{x2 - x1:.1f}" height="{chart_h + 36}" fill="{fill}" opacity="0.48"/>',
-                f'<text x="{(x1 + x2) / 2:.1f}" y="{top - 10}" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#334155">{_esc(label)}</text>',
+                f'<rect x="{x1:.1f}" y="{top:.1f}" width="{x2 - x1:.1f}" height="{chart_h + 10:.1f}" fill="{fill}" opacity="0.48"/>',
+                f'<rect x="{x1:.1f}" y="{top - 48}" width="{x2 - x1:.1f}" height="22" fill="{fill}" opacity="0.7"/>',
+                f'<text x="{(x1 + x2) / 2:.1f}" y="{top - 33}" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#334155">{_esc(label)}</text>',
             ]
         )
 
@@ -162,8 +166,8 @@ def write_svg(rows, series, path: Path = SVG_PATH):
     box_w = 196
     box_h = 32
     for idx, anchor_engine, title, sub, dx, dy in (
-        (5, "valu", "SIMD turns VALU on", "8 inputs per vector op", 18, -128),
-        (9, "alu", "VLIW fills every engine", "cross-engine packing", -box_w - 14, -box_h - 18),
+        (3, "valu", "SIMD turns VALU on", "8 inputs per vector op", 18, -128),
+        (5, "alu", "Temp banks unlock VLIW", "false deps removed", -box_w - 14, -box_h - 18),
     ):
         x = x_for(idx)
         # Anchor on the engine this rung most directly affects.
@@ -180,12 +184,7 @@ def write_svg(rows, series, path: Path = SVG_PATH):
             ]
         )
 
-    parts.extend(
-        [
-            f'<text x="36" y="{height - 24}" font-family="Arial, sans-serif" font-size="13" fill="#64748b">Source: optimization_ladder/results/traces/*.json (busy engine-slots ÷ available engine-slots)</text>',
-            "</svg>",
-        ]
-    )
+    parts.append("</svg>")
     path.write_text("\n".join(parts))
     return path
 

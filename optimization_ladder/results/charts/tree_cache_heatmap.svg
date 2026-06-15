@@ -1,7 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="880" viewBox="0 0 1280 880">
+<svg xmlns="http://www.w3.org/2000/svg" width="1232" height="838" viewBox="0 0 1232 838">
 <rect width="100%" height="100%" fill="#f8fafc"/>
-<text x="36" y="48" font-family="Arial, sans-serif" font-size="28" font-weight="700" fill="#111827">Why Tree Caching Works: Reuse Is Top-Heavy</text>
-<text x="36" y="78" font-family="Arial, sans-serif" font-size="15" fill="#475569">Complete binary tree, depth 10 (2,047 nodes) · heat = how many of the 256 inputs traverse each node · reuse halves every level deeper</text>
+<text x="36" y="48" font-family="Arial, sans-serif" font-size="28" font-weight="700" fill="#111827">Tree Caching: Reuse Concentrates at Shallow Depths</text>
+<text x="36" y="78" font-family="Arial, sans-serif" font-size="15" fill="#475569">Depth 10 · heat = inputs traversing each node · reuse halves every level deeper</text>
 <rect x="20.0" y="122.0" width="1038.0" height="180.5" fill="#0f766e" opacity="0.07"/>
 <line x1="539.0" y1="156.0" x2="299.5" y2="214.6" stroke="#94a3b8" stroke-width="1.80" opacity="0.42"/>
 <line x1="539.0" y1="156.0" x2="778.5" y2="214.6" stroke="#94a3b8" stroke-width="1.80" opacity="0.42"/>
@@ -774,7 +774,7 @@
 <rect x="20.0" y="126.0" width="288" height="48" rx="6" fill="#ffffff" stroke="#0f766e" stroke-width="1.5"/>
 <text x="34.0" y="147.0" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#0f766e">CACHED · depths 0–2 · 7 nodes</text>
 <text x="34.0" y="165.0" font-family="Arial, sans-serif" font-size="12" fill="#334155">shallow gathers become register vector selects</text>
-<text x="20.0" y="322.5" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#64748b">GATHERED from memory · depths 3–10 · 2,040 nodes (one load per traversal)</text>
+<text x="20.0" y="322.5" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#64748b">GATHERED from memory · depths 3–10 · 2,040 nodes</text>
 <text x="1048.0" y="134.0" font-family="Arial, sans-serif" font-size="11" font-weight="700" fill="#64748b">DEPTH · NODES · REUSE</text>
 <circle cx="1054.0" cy="156.0" r="6" fill="#bd0026" stroke="#ffffff" stroke-width="1"/>
 <text x="1068.0" y="160.0" font-family="Arial, sans-serif" font-size="12" fill="#111827">d0 · 1 · 256× reuse</text>
@@ -803,9 +803,8 @@
 <text x="720" y="166.0" font-family="Arial, sans-serif" font-size="12" fill="#7c2d12">… but they carry the three most-reused</text>
 <text x="720" y="182.0" font-family="Arial, sans-serif" font-size="12" fill="#7c2d12">levels: 256× / 128× / 64× per node.</text>
 <defs><linearGradient id="heat" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#ffffcc"/><stop offset="25%" stop-color="#fed976"/><stop offset="50%" stop-color="#fd8d3c"/><stop offset="75%" stop-color="#f03b20"/><stop offset="100%" stop-color="#bd0026"/></linearGradient></defs>
-<text x="60" y="802" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#334155">Computation per node = inputs traversing it</text>
-<rect x="60" y="810" width="360" height="16" rx="3" fill="url(#heat)" stroke="#cbd5e1"/>
-<text x="60" y="842" font-family="Arial, sans-serif" font-size="11" fill="#64748b">&lt;1× (deep leaves)</text>
-<text x="420" y="842" text-anchor="end" font-family="Arial, sans-serif" font-size="11" fill="#64748b">256× (root)</text>
-<text x="36" y="862" font-family="Arial, sans-serif" font-size="12" fill="#64748b">Stage 6 (06_tree_cache): caches depths 0–2. Source: optimization_ladder/builders.py · workload 10/16/256.</text>
+<text x="60" y="770" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#334155">Computation per node = inputs traversing it</text>
+<rect x="60" y="778" width="360" height="16" rx="3" fill="url(#heat)" stroke="#cbd5e1"/>
+<text x="60" y="810" font-family="Arial, sans-serif" font-size="11" fill="#64748b">&lt;1× (deep leaves)</text>
+<text x="420" y="810" text-anchor="end" font-family="Arial, sans-serif" font-size="11" fill="#64748b">256× (root)</text>
 </svg>

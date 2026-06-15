@@ -75,7 +75,7 @@ NODE_R = {0: 27, 1: 23, 2: 19, 3: 15, 4: 11}
 
 def write_svg(path: Path = OUT) -> Path:
     path.parent.mkdir(parents=True, exist_ok=True)
-    width, height = 1280, 820
+    width, height = 1150, 812
 
     left, right = 132, 968
     usable = right - left
@@ -95,8 +95,8 @@ def write_svg(path: Path = OUT) -> Path:
     parts = [
         f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}">',
         '<rect width="100%" height="100%" fill="#f8fafc"/>',
-        '<text x="44" y="52" font-family="Arial, sans-serif" font-size="29" font-weight="700" fill="#0f172a">Why Tree Caching Wins: the Heat Lives at the Top</text>',
-        f'<text x="44" y="82" font-family="Arial, sans-serif" font-size="15" fill="#475569">Heat = inputs traversing each node across all {ROUNDS} rounds · rounds cycle depths 0→{DEPTH} then 0→{REVISIT_MAX_DEPTH} again, so depths 0–{REVISIT_MAX_DEPTH} are hit twice</text>',
+        '<text x="44" y="52" font-family="Arial, sans-serif" font-size="29" font-weight="700" fill="#0f172a">Tree Caching: Node Access Frequency by Depth</text>',
+        f'<text x="44" y="82" font-family="Arial, sans-serif" font-size="15" fill="#475569">Heat = inputs traversing each node over {ROUNDS} rounds · depths 0–{REVISIT_MAX_DEPTH} are traversed twice</text>',
     ]
 
     # Gradients: page heat ramp + the cold fill for collapsed subtrees.
@@ -197,12 +197,9 @@ def write_svg(path: Path = OUT) -> Path:
         ]
     )
 
-    # Collapsed-region label + bracket under the wedges.
-    parts.extend(
-        [
-            f'<text x="{left + usable / 2:.1f}" y="{baseline_y + 34:.1f}" text-anchor="middle" font-family="Arial, sans-serif" font-size="13.5" font-weight="700" fill="#92400e">depths 5–{DEPTH}: {collapsed_nodes:,} cold nodes — reuse ≤ 8×, always gathered</text>',
-            f'<text x="{left + usable / 2:.1f}" y="{baseline_y + 52:.1f}" text-anchor="middle" font-family="Arial, sans-serif" font-size="11.5" fill="#a16207">each wedge is one 63-node subtree under a depth-4 node</text>',
-        ]
+    # Collapsed-region label under the wedges.
+    parts.append(
+        f'<text x="{left + usable / 2:.1f}" y="{baseline_y + 36:.1f}" text-anchor="middle" font-family="Arial, sans-serif" font-size="13.5" font-weight="700" fill="#92400e">depths 5–{DEPTH}: {collapsed_nodes:,} cold nodes — always gathered</text>'
     )
 
     # Right-margin reuse ladder for the drawn depths.
@@ -234,7 +231,6 @@ def write_svg(path: Path = OUT) -> Path:
             f'<rect x="{lx}" y="{ly}" width="{lw}" height="{lh}" rx="3" fill="url(#heat)" stroke="#cbd5e1"/>',
             f'<text x="{lx}" y="{ly + lh + 15}" font-family="Arial, sans-serif" font-size="11" fill="#64748b">&lt;1 (deep leaves)</text>',
             f'<text x="{lx + lw}" y="{ly + lh + 15}" text-anchor="end" font-family="Arial, sans-serif" font-size="11" fill="#64748b">512 (root)</text>',
-            f'<text x="{width - 44}" y="{height - 22}" text-anchor="end" font-family="Arial, sans-serif" font-size="11" fill="#94a3b8">Stage 6 (06_tree_cache) · caches depths 0–2 · source: optimization_ladder/builders.py · workload 10/16/256</text>',
         ]
     )
 

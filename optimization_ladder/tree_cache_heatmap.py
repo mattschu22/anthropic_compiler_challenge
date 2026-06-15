@@ -66,7 +66,7 @@ def _esc(s: str) -> str:
 
 def write_svg(path: Path = OUT) -> Path:
     path.parent.mkdir(parents=True, exist_ok=True)
-    width, height = 1280, 880
+    width, height = 1232, 838
 
     tree_left, tree_right = 60, 1018
     usable = tree_right - tree_left
@@ -87,8 +87,8 @@ def write_svg(path: Path = OUT) -> Path:
     parts = [
         f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}">',
         '<rect width="100%" height="100%" fill="#f8fafc"/>',
-        '<text x="36" y="48" font-family="Arial, sans-serif" font-size="28" font-weight="700" fill="#111827">Why Tree Caching Works: Reuse Is Top-Heavy</text>',
-        f'<text x="36" y="78" font-family="Arial, sans-serif" font-size="15" fill="#475569">Complete binary tree, depth {DEPTH} ({TOTAL_NODES:,} nodes) · heat = how many of the {INPUTS} inputs traverse each node · reuse halves every level deeper</text>',
+        '<text x="36" y="48" font-family="Arial, sans-serif" font-size="28" font-weight="700" fill="#111827">Tree Caching: Reuse Concentrates at Shallow Depths</text>',
+        f'<text x="36" y="78" font-family="Arial, sans-serif" font-size="15" fill="#475569">Depth {DEPTH} · heat = inputs traversing each node · reuse halves every level deeper</text>',
     ]
 
     # Shade the cached region behind the tree.
@@ -136,7 +136,7 @@ def write_svg(path: Path = OUT) -> Path:
             f'<text x="{tree_left - 26:.1f}" y="{tree_top - 9:.1f}" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#0f766e">CACHED · depths 0–2 · {CACHED_NODES} nodes</text>',
             f'<text x="{tree_left - 26:.1f}" y="{tree_top + 9:.1f}" font-family="Arial, sans-serif" font-size="12" fill="#334155">shallow gathers become register vector selects</text>',
             # Gathered label just below the cut.
-            f'<text x="{tree_left - 40:.1f}" y="{y_cut + 20:.1f}" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#64748b">GATHERED from memory · depths 3–{DEPTH} · {TOTAL_NODES - CACHED_NODES:,} nodes (one load per traversal)</text>',
+            f'<text x="{tree_left - 40:.1f}" y="{y_cut + 20:.1f}" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#64748b">GATHERED from memory · depths 3–{DEPTH} · {TOTAL_NODES - CACHED_NODES:,} nodes</text>',
         ]
     )
 
@@ -168,7 +168,7 @@ def write_svg(path: Path = OUT) -> Path:
     )
 
     # Heat legend (colorbar) along the bottom.
-    lx, ly, lw, lh = 60, height - 70, 360, 16
+    lx, ly, lw, lh = 60, tree_bottom + 36, 360, 16
     stops = "".join(
         f'<stop offset="{p * 100:.0f}%" stop-color="{_heat_color(p)}"/>' for p, _ in _RAMP
     )
@@ -179,7 +179,6 @@ def write_svg(path: Path = OUT) -> Path:
             f'<rect x="{lx}" y="{ly}" width="{lw}" height="{lh}" rx="3" fill="url(#heat)" stroke="#cbd5e1"/>',
             f'<text x="{lx}" y="{ly + lh + 16}" font-family="Arial, sans-serif" font-size="11" fill="#64748b">&lt;1× (deep leaves)</text>',
             f'<text x="{lx + lw}" y="{ly + lh + 16}" text-anchor="end" font-family="Arial, sans-serif" font-size="11" fill="#64748b">256× (root)</text>',
-            f'<text x="36" y="{height - 18}" font-family="Arial, sans-serif" font-size="12" fill="#64748b">Stage 6 (06_tree_cache): caches depths 0–2. Source: optimization_ladder/builders.py · workload 10/16/256.</text>',
         ]
     )
 

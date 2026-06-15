@@ -1,0 +1,3 @@
+Slides 1-14: cleared placeholder/body shapes and rebuilt the visible slide content in place on the imported source slides. Reason: the source deck is a content-only scaffold whose placeholders explicitly request PowerPoint diagrams and codebase-image annotations.
+Slides with codebase images: embedded only local assets from optimization_ladder/results as requested.
+Slide count: preserved at 14 because slides/current.pptx contains 14 slides; the earlier content-only outline omitted the background slide and shifts the requested diagram slides accordingly.

@@ -11,6 +11,11 @@ from dataclasses import dataclass
 
 from anthropic_compiler_challenge.kernel_builder import KernelBuilder
 from anthropic_compiler_challenge.problem_api import DebugInfo, SCRATCH_SIZE, VLEN
+from anthropic_compiler_challenge.scheduler import (
+    chunk_wide_valu_bundles,
+    pipeline_relaxed,
+    pipeline_strict,
+)
 
 
 HASH_CONSTS = {
@@ -65,6 +70,40 @@ class MiniKernelBuilder:
 
     def patch_flow(self, instr_idx, slot):
         self.instrs[instr_idx]["flow"][0] = slot
+
+    def schedule(self, mode: str, *, load_weight: int = -1, valu_weight: int = -1):
+        """Replace the sequential instruction stream with a VLIW schedule."""
+
+        if mode == "none":
+            return
+
+        body = []
+        for instr in self.instrs:
+            for engine, ops in instr.items():
+                body.append((engine, ops))
+        body = chunk_wide_valu_bundles(body, chunk_size=2)
+
+        if mode == "strict":
+            sched = pipeline_strict(
+                body,
+                load_weight=load_weight,
+                valu_weight=valu_weight,
+            )
+        elif mode == "relaxed":
+            sched = pipeline_relaxed(
+                body,
+                load_weight=load_weight,
+                valu_weight=valu_weight,
+                addr_bonus=2,
+                bank_map={},
+            )
+        else:
+            raise ValueError(f"unknown schedule mode {mode!r}")
+
+        assert sched, "expected non-empty scheduled program"
+        sched[0].setdefault("flow", []).append(("pause",))
+        sched[-1].setdefault("flow", []).append(("pause",))
+        self.instrs = sched
 
 
 @dataclass(frozen=True)
@@ -485,6 +524,171 @@ def build_vector_ladder_kernel(
         else:
             kb.add("store", ("vstore", val_addr, tmp_v_val))
 
+    return kb
+
+
+def build_scheduled_vector_ladder_kernel(
+    forest_height: int,
+    n_nodes: int,
+    batch_size: int,
+    rounds: int,
+    *,
+    cache_tree: bool,
+    cache_depth3: bool = False,
+    streaming_io: bool,
+    schedule_mode: str,
+    load_weight: int = -1,
+    valu_weight: int = -1,
+):
+    """Vector checkpoint with dependency-aware scheduling but one temp namespace."""
+
+    kb = build_vector_ladder_kernel(
+        forest_height,
+        n_nodes,
+        batch_size,
+        rounds,
+        cache_tree=cache_tree,
+        cache_depth3=cache_depth3,
+        streaming_io=streaming_io,
+    )
+    kb.schedule(schedule_mode, load_weight=load_weight, valu_weight=valu_weight)
+    return kb
+
+
+def build_banked_vector_kernel(
+    forest_height: int,
+    n_nodes: int,
+    batch_size: int,
+    rounds: int,
+    *,
+    cache_tree: bool,
+    cache_depth3: bool = False,
+    streaming_io: bool = True,
+    parallel_banks: int = 28,
+    unroll: int = 32,
+    schedule_mode: str = "strict",
+    load_weight: int = -1,
+    valu_weight: int = -1,
+):
+    """Vector checkpoint with multiple temporary banks.
+
+    This keeps the readable vector-ladder semantics but processes a group of
+    vector batches together. ``parallel_banks`` controls how many independent
+    temporary namespaces are available to the scheduler.
+    """
+
+    workload = Workload(forest_height, n_nodes, batch_size, rounds)
+    kb = MiniKernelBuilder()
+    c, v = _vector_consts(kb, workload)
+
+    num_batches = batch_size // VLEN
+    group_size = min(unroll, num_batches)
+
+    tmp_v_idx = [kb.alloc(f"tmp_v_idx_{i}", VLEN) for i in range(group_size)]
+    tmp_v_val = [kb.alloc(f"tmp_v_val_{i}", VLEN) for i in range(group_size)]
+
+    bank_count = max(1, min(parallel_banks, group_size))
+    banks = []
+    for i in range(bank_count):
+        banks.append(
+            {
+                "tmp_v_node_val": kb.alloc(f"tmp_v_node_val_b{i}", VLEN),
+                "tmp_v_addr": kb.alloc(f"tmp_v_addr_b{i}", VLEN),
+                "v_tmp1": kb.alloc(f"v_tmp1_b{i}", VLEN),
+                "v_tmp2": kb.alloc(f"v_tmp2_b{i}", VLEN),
+            }
+        )
+
+    io_val_p = kb.alloc("io_val_p") if streaming_io else None
+    cached_node_count = 15 if cache_tree and cache_depth3 else 7
+    cached_nodes = _load_cached_nodes(kb, workload, cached_node_count) if cache_tree else []
+
+    def load_values(active: int, batch_group: int):
+        if streaming_io:
+            kb.add("flow", ("add_imm", io_val_p, c["values_p"], batch_group * VLEN))
+            for b in range(active):
+                kb.add("load", ("vload", tmp_v_val[b], io_val_p))
+                if b != active - 1:
+                    kb.add("flow", ("add_imm", io_val_p, io_val_p, VLEN))
+        else:
+            for b in range(active):
+                batch = batch_group + b
+                val_addr = kb.const(workload.inp_values_p + batch * VLEN, f"value_vec_addr_{batch}")
+                kb.add("load", ("vload", tmp_v_val[b], val_addr))
+
+        for b in range(active):
+            kb.add("valu", ("vbroadcast", tmp_v_idx[b], c["zero"]))
+
+    def store_values(active: int, batch_group: int):
+        if streaming_io:
+            kb.add("flow", ("add_imm", io_val_p, c["values_p"], batch_group * VLEN))
+            for b in range(active):
+                kb.add("store", ("vstore", io_val_p, tmp_v_val[b]))
+                if b != active - 1:
+                    kb.add("flow", ("add_imm", io_val_p, io_val_p, VLEN))
+        else:
+            for b in range(active):
+                batch = batch_group + b
+                val_addr = kb.const(workload.inp_values_p + batch * VLEN, f"value_vec_addr_{batch}")
+                kb.add("store", ("vstore", val_addr, tmp_v_val[b]))
+
+    for batch_group in range(0, num_batches, group_size):
+        active = min(group_size, num_batches - batch_group)
+        load_values(active, batch_group)
+
+        for r in range(rounds):
+            depth = r % (forest_height + 1)
+
+            for bs in range(0, active, bank_count):
+                be = min(active, bs + bank_count)
+
+                for bb in range(bs, be):
+                    bank = banks[bb - bs]
+                    if cache_tree and (depth <= 2 or (cache_depth3 and depth == 3)):
+                        node_src = _cached_node_select(
+                            kb,
+                            tmp_v_idx[bb],
+                            bank["tmp_v_node_val"],
+                            bank["v_tmp1"],
+                            bank["v_tmp2"],
+                            cached_nodes,
+                            v,
+                            c,
+                            depth,
+                        )
+                    else:
+                        kb.add("valu", ("+", bank["tmp_v_addr"], tmp_v_idx[bb], v["v_forest_p"]))
+                        for lane in range(0, VLEN, 2):
+                            kb.add(
+                                "load",
+                                [
+                                    ("load_offset", bank["tmp_v_node_val"], bank["tmp_v_addr"], lane),
+                                    ("load_offset", bank["tmp_v_node_val"], bank["tmp_v_addr"], lane + 1),
+                                ],
+                            )
+                        node_src = bank["tmp_v_node_val"]
+
+                    kb.add("valu", ("^", tmp_v_val[bb], tmp_v_val[bb], node_src))
+
+                for bb in range(bs, be):
+                    bank = banks[bb - bs]
+                    _vector_hash(kb, tmp_v_val[bb], bank["v_tmp1"], bank["v_tmp2"], v, c)
+
+                    if r == rounds - 1:
+                        continue
+                    if depth == forest_height:
+                        kb.add("valu", ("-", tmp_v_idx[bb], tmp_v_idx[bb], tmp_v_idx[bb]))
+                    else:
+                        kb.add("valu", ("&", bank["v_tmp1"], tmp_v_val[bb], v["v_ones"]))
+                        kb.add(
+                            "valu",
+                            ("multiply_add", tmp_v_idx[bb], tmp_v_idx[bb], v["v_twos"], v["v_ones"]),
+                        )
+                        kb.add("valu", ("+", tmp_v_idx[bb], tmp_v_idx[bb], bank["v_tmp1"]))
+
+        store_values(active, batch_group)
+
+    kb.schedule(schedule_mode, load_weight=load_weight, valu_weight=valu_weight)
     return kb
 
 

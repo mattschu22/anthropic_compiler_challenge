@@ -1,68 +1,65 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
 <rect width="100%" height="100%" fill="#f8fafc"/>
 <text x="36" y="46" font-family="Arial, sans-serif" font-size="28" font-weight="700" fill="#111827">Work vs. Time</text>
-<text x="36" y="72" font-family="Arial, sans-serif" font-size="15" fill="#475569">Total ops issued (work) and cycles (time) · after vectorize the work goes flat while cycles keep falling — the back half is pure scheduling</text>
-<rect x="100.0" y="90" width="206.0" height="508" fill="#dbeafe" opacity="0.48"/>
-<text x="203.0" y="106" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#334155">Remove work</text>
-<rect x="306.0" y="90" width="206.0" height="508" fill="#dcfce7" opacity="0.48"/>
-<text x="409.0" y="106" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#334155">Specialize</text>
-<rect x="512.0" y="90" width="412.0" height="508" fill="#fef3c7" opacity="0.48"/>
-<text x="718.0" y="106" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#334155">Expose parallelism</text>
-<rect x="924.0" y="90" width="206.0" height="508" fill="#ede9fe" opacity="0.48"/>
-<text x="1027.0" y="106" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#334155">Schedule machine</text>
+<text x="36" y="72" font-family="Arial, sans-serif" font-size="15" fill="#475569">Total ops issued (work) vs. cycles (time)</text>
+<rect x="100.0" y="136.0" width="147.1" height="462.0" fill="#dbeafe" opacity="0.48"/>
+<rect x="100.0" y="88" width="147.1" height="22" fill="#dbeafe" opacity="0.7"/>
+<text x="173.6" y="103" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#334155">Remove work</text>
+<rect x="247.1" y="136.0" width="147.1" height="462.0" fill="#dcfce7" opacity="0.48"/>
+<rect x="247.1" y="88" width="147.1" height="22" fill="#dcfce7" opacity="0.7"/>
+<text x="320.7" y="103" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#334155">Specialize</text>
+<rect x="394.3" y="136.0" width="147.1" height="462.0" fill="#fef3c7" opacity="0.48"/>
+<rect x="394.3" y="88" width="147.1" height="22" fill="#fef3c7" opacity="0.7"/>
+<text x="467.9" y="103" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#334155">Vectorize</text>
+<rect x="541.4" y="136.0" width="294.3" height="462.0" fill="#ede9fe" opacity="0.48"/>
+<rect x="541.4" y="88" width="294.3" height="22" fill="#ede9fe" opacity="0.7"/>
+<text x="688.6" y="103" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#334155">Schedule + temps</text>
+<rect x="835.7" y="136.0" width="294.3" height="462.0" fill="#ccfbf1" opacity="0.48"/>
+<rect x="835.7" y="88" width="294.3" height="22" fill="#ccfbf1" opacity="0.7"/>
+<text x="982.9" y="103" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#334155">Cache + tune</text>
 <line x1="100" y1="588.0" x2="1130" y2="588.0" stroke="#e2e8f0" stroke-width="1"/>
 <text x="88" y="592.0" text-anchor="end" font-family="Arial, sans-serif" font-size="12" fill="#64748b">1,000</text>
-<line x1="100" y1="430.7" x2="1130" y2="430.7" stroke="#e2e8f0" stroke-width="1"/>
-<text x="88" y="434.7" text-anchor="end" font-family="Arial, sans-serif" font-size="12" fill="#64748b">10,000</text>
-<line x1="100" y1="273.3" x2="1130" y2="273.3" stroke="#e2e8f0" stroke-width="1"/>
-<text x="88" y="277.3" text-anchor="end" font-family="Arial, sans-serif" font-size="12" fill="#64748b">100,000</text>
-<line x1="100" y1="116.0" x2="1130" y2="116.0" stroke="#e2e8f0" stroke-width="1"/>
-<text x="88" y="120.0" text-anchor="end" font-family="Arial, sans-serif" font-size="12" fill="#64748b">1,000,000</text>
+<line x1="100" y1="437.3" x2="1130" y2="437.3" stroke="#e2e8f0" stroke-width="1"/>
+<text x="88" y="441.3" text-anchor="end" font-family="Arial, sans-serif" font-size="12" fill="#64748b">10,000</text>
+<line x1="100" y1="286.7" x2="1130" y2="286.7" stroke="#e2e8f0" stroke-width="1"/>
+<text x="88" y="290.7" text-anchor="end" font-family="Arial, sans-serif" font-size="12" fill="#64748b">100,000</text>
+<line x1="100" y1="136.0" x2="1130" y2="136.0" stroke="#e2e8f0" stroke-width="1"/>
+<text x="88" y="140.0" text-anchor="end" font-family="Arial, sans-serif" font-size="12" fill="#64748b">1,000,000</text>
 <line x1="100" y1="588" x2="1130" y2="588" stroke="#334155" stroke-width="1.2"/>
-<line x1="100" y1="116" x2="100" y2="588" stroke="#334155" stroke-width="1.2"/>
-<text x="26" y="352.0" transform="rotate(-90 26 352.0)" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#475569">count, log scale</text>
-<polygon points="100.0,252.7 203.0,253.6 306.0,263.9 409.0,266.3 512.0,275.4 615.0,372.1 718.0,375.7 821.0,375.7 924.0,373.7 1027.0,373.7 1130.0,372.5 1130.0,576.5 1027.0,570.5 924.0,438.8 821.0,419.2 718.0,419.0 615.0,416.6 512.0,275.4 409.0,266.3 306.0,263.9 203.0,253.6 100.0,252.7" fill="#0f766e" opacity="0.10"/>
-<polyline points="100.0,252.7 203.0,253.6 306.0,263.9 409.0,266.3 512.0,275.4 615.0,372.1 718.0,375.7 821.0,375.7 924.0,373.7 1027.0,373.7 1130.0,372.5" fill="none" stroke="#7c3aed" stroke-width="3.4" stroke-linejoin="round" stroke-linecap="round"/>
-<circle cx="100.0" cy="252.7" r="4" fill="#7c3aed" stroke="#f8fafc" stroke-width="1.5"/>
-<circle cx="203.0" cy="253.6" r="4" fill="#7c3aed" stroke="#f8fafc" stroke-width="1.5"/>
-<circle cx="306.0" cy="263.9" r="4" fill="#7c3aed" stroke="#f8fafc" stroke-width="1.5"/>
-<circle cx="409.0" cy="266.3" r="4" fill="#7c3aed" stroke="#f8fafc" stroke-width="1.5"/>
-<circle cx="512.0" cy="275.4" r="4" fill="#7c3aed" stroke="#f8fafc" stroke-width="1.5"/>
-<circle cx="615.0" cy="372.1" r="4" fill="#7c3aed" stroke="#f8fafc" stroke-width="1.5"/>
-<circle cx="718.0" cy="375.7" r="4" fill="#7c3aed" stroke="#f8fafc" stroke-width="1.5"/>
-<circle cx="821.0" cy="375.7" r="4" fill="#7c3aed" stroke="#f8fafc" stroke-width="1.5"/>
-<circle cx="924.0" cy="373.7" r="4" fill="#7c3aed" stroke="#f8fafc" stroke-width="1.5"/>
-<circle cx="1027.0" cy="373.7" r="4" fill="#7c3aed" stroke="#f8fafc" stroke-width="1.5"/>
-<circle cx="1130.0" cy="372.5" r="4" fill="#7c3aed" stroke="#f8fafc" stroke-width="1.5"/>
-<text x="1140.0" y="376.5" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#7c3aed">ops issued (work)</text>
-<polyline points="100.0,252.7 203.0,253.6 306.0,263.9 409.0,266.3 512.0,275.4 615.0,416.6 718.0,419.0 821.0,419.2 924.0,438.8 1027.0,570.5 1130.0,576.5" fill="none" stroke="#1d4ed8" stroke-width="3.4" stroke-linejoin="round" stroke-linecap="round"/>
-<circle cx="100.0" cy="252.7" r="4" fill="#1d4ed8" stroke="#f8fafc" stroke-width="1.5"/>
-<circle cx="203.0" cy="253.6" r="4" fill="#1d4ed8" stroke="#f8fafc" stroke-width="1.5"/>
-<circle cx="306.0" cy="263.9" r="4" fill="#1d4ed8" stroke="#f8fafc" stroke-width="1.5"/>
-<circle cx="409.0" cy="266.3" r="4" fill="#1d4ed8" stroke="#f8fafc" stroke-width="1.5"/>
-<circle cx="512.0" cy="275.4" r="4" fill="#1d4ed8" stroke="#f8fafc" stroke-width="1.5"/>
-<circle cx="615.0" cy="416.6" r="4" fill="#1d4ed8" stroke="#f8fafc" stroke-width="1.5"/>
-<circle cx="718.0" cy="419.0" r="4" fill="#1d4ed8" stroke="#f8fafc" stroke-width="1.5"/>
-<circle cx="821.0" cy="419.2" r="4" fill="#1d4ed8" stroke="#f8fafc" stroke-width="1.5"/>
-<circle cx="924.0" cy="438.8" r="4" fill="#1d4ed8" stroke="#f8fafc" stroke-width="1.5"/>
-<circle cx="1027.0" cy="570.5" r="4" fill="#1d4ed8" stroke="#f8fafc" stroke-width="1.5"/>
-<circle cx="1130.0" cy="576.5" r="4" fill="#1d4ed8" stroke="#f8fafc" stroke-width="1.5"/>
-<text x="1140.0" y="580.5" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#1d4ed8">cycles (time)</text>
+<line x1="100" y1="136" x2="100" y2="588" stroke="#334155" stroke-width="1.2"/>
+<text x="26" y="362.0" transform="rotate(-90 26 362.0)" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#475569">count, log scale</text>
+<polygon points="100.0,266.9 247.1,277.6 394.3,288.6 541.4,381.3 688.6,381.3 835.7,381.2 982.9,375.0 1130.0,381.7 1130.0,576.9 982.9,562.4 835.7,536.6 688.6,449.0 541.4,424.0 394.3,288.6 247.1,277.6 100.0,266.9" fill="#0f766e" opacity="0.10"/>
+<polyline points="100.0,266.9 247.1,277.6 394.3,288.6 541.4,381.3 688.6,381.3 835.7,381.2 982.9,375.0 1130.0,381.7" fill="none" stroke="#7c3aed" stroke-width="3.4" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="100.0" cy="266.9" r="4" fill="#7c3aed" stroke="#f8fafc" stroke-width="1.5"/>
+<circle cx="247.1" cy="277.6" r="4" fill="#7c3aed" stroke="#f8fafc" stroke-width="1.5"/>
+<circle cx="394.3" cy="288.6" r="4" fill="#7c3aed" stroke="#f8fafc" stroke-width="1.5"/>
+<circle cx="541.4" cy="381.3" r="4" fill="#7c3aed" stroke="#f8fafc" stroke-width="1.5"/>
+<circle cx="688.6" cy="381.3" r="4" fill="#7c3aed" stroke="#f8fafc" stroke-width="1.5"/>
+<circle cx="835.7" cy="381.2" r="4" fill="#7c3aed" stroke="#f8fafc" stroke-width="1.5"/>
+<circle cx="982.9" cy="375.0" r="4" fill="#7c3aed" stroke="#f8fafc" stroke-width="1.5"/>
+<circle cx="1130.0" cy="381.7" r="4" fill="#7c3aed" stroke="#f8fafc" stroke-width="1.5"/>
+<text x="1140.0" y="385.7" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#7c3aed">ops issued (work)</text>
+<polyline points="100.0,266.9 247.1,277.6 394.3,288.6 541.4,424.0 688.6,449.0 835.7,536.6 982.9,562.4 1130.0,576.9" fill="none" stroke="#1d4ed8" stroke-width="3.4" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="100.0" cy="266.9" r="4" fill="#1d4ed8" stroke="#f8fafc" stroke-width="1.5"/>
+<circle cx="247.1" cy="277.6" r="4" fill="#1d4ed8" stroke="#f8fafc" stroke-width="1.5"/>
+<circle cx="394.3" cy="288.6" r="4" fill="#1d4ed8" stroke="#f8fafc" stroke-width="1.5"/>
+<circle cx="541.4" cy="424.0" r="4" fill="#1d4ed8" stroke="#f8fafc" stroke-width="1.5"/>
+<circle cx="688.6" cy="449.0" r="4" fill="#1d4ed8" stroke="#f8fafc" stroke-width="1.5"/>
+<circle cx="835.7" cy="536.6" r="4" fill="#1d4ed8" stroke="#f8fafc" stroke-width="1.5"/>
+<circle cx="982.9" cy="562.4" r="4" fill="#1d4ed8" stroke="#f8fafc" stroke-width="1.5"/>
+<circle cx="1130.0" cy="576.9" r="4" fill="#1d4ed8" stroke="#f8fafc" stroke-width="1.5"/>
+<text x="1140.0" y="580.9" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#1d4ed8">cycles (time)</text>
 <text x="100.0" y="610" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#111827">0</text>
-<text x="203.0" y="610" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#111827">1</text>
-<text x="306.0" y="610" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#111827">2</text>
-<text x="409.0" y="610" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#111827">3</text>
-<text x="512.0" y="610" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#111827">4</text>
-<text x="615.0" y="610" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#111827">5</text>
-<text x="718.0" y="610" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#111827">6</text>
-<text x="821.0" y="610" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#111827">7</text>
-<text x="924.0" y="610" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#111827">8</text>
-<text x="1027.0" y="610" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#111827">9</text>
-<text x="1130.0" y="610" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#111827">10</text>
+<text x="247.1" y="610" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#111827">1</text>
+<text x="394.3" y="610" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#111827">2</text>
+<text x="541.4" y="610" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#111827">3</text>
+<text x="688.6" y="610" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#111827">4</text>
+<text x="835.7" y="610" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#111827">5</text>
+<text x="982.9" y="610" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#111827">6</text>
+<text x="1130.0" y="610" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#111827">7</text>
 <text x="615.0" y="634" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#475569">checkpoint</text>
-<text x="306.0" y="251.9" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#334155">ops = cycles (1 op/cycle)</text>
-<rect x="787.0" y="455.1" width="210" height="34" rx="5" fill="#ffffff" stroke="#cbd5e1"/>
-<text x="797.0" y="470.1" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#111827">same ~23k ops, 14× fewer cycles</text>
-<text x="797.0" y="484.1" font-family="Arial, sans-serif" font-size="11" fill="#0f766e">scheduling gain, no new work removed</text>
-<text x="36" y="696" font-family="Arial, sans-serif" font-size="13" fill="#64748b">Source: optimization_ladder/results/traces/*.json</text>
+<text x="247.1" y="265.6" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#334155">ops = cycles (1 op/cycle)</text>
+<rect x="859.7" y="441.9" width="210" height="34" rx="5" fill="#ffffff" stroke="#cbd5e1"/>
+<text x="869.7" y="456.9" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#111827">false deps fixed, 3.8x fewer cycles</text>
+<text x="869.7" y="468.9" font-family="Arial, sans-serif" font-size="11" fill="#0f766e">more parallel issue from similar work</text>
 </svg>

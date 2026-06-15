@@ -1,0 +1,163 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="737" viewBox="0 0 1280 737">
+<rect width="100%" height="100%" fill="#f8fafc"/>
+<text x="56" y="52" font-family="Arial, sans-serif" font-size="29" font-weight="700" fill="#0f172a">Target Machine: One VLIW + SIMD Core</text>
+<text x="56" y="82" font-family="Arial, sans-serif" font-size="15" fill="#475569">Every cycle, one instruction issues all five engines in parallel · VLEN = 8 · 32-bit words · 1,536-word scratch</text>
+<text x="1224" y="44" text-anchor="end" font-family="Arial, sans-serif" font-size="13" fill="#475569">peak throughput</text>
+<text x="1224" y="78" text-anchor="end" font-family="Arial, sans-serif" font-size="30" font-weight="700" fill="#0f766e">23 slots / cycle</text>
+<text x="1224" y="98" text-anchor="end" font-family="Arial, sans-serif" font-size="12" fill="#94a3b8">up to 65 element ops with SIMD</text>
+<text x="288" y="136" font-family="Arial, sans-serif" font-size="11" font-weight="700" fill="#94a3b8">ISSUE SLOTS / CYCLE</text>
+<text x="508" y="136" font-family="Arial, sans-serif" font-size="11" font-weight="700" fill="#94a3b8">INSTRUCTION SET</text>
+<path d="M 42.0 150.0 H 34.0 V 689.0 H 42.0" fill="none" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="28.0" y="419.5" transform="rotate(-90 28.0 419.5)" text-anchor="middle" font-family="Arial, sans-serif" font-size="11.5" font-weight="700" fill="#64748b">one VLIW bundle / cycle</text>
+<rect x="56" y="150.0" width="1168" height="96.0" rx="11" fill="#ffffff" stroke="#e6eaf0" stroke-width="1.2"/>
+<text x="82" y="184.0" font-family="Arial, sans-serif" font-size="23" font-weight="700" fill="#2563eb">ALU</text>
+<text x="82" y="204.0" font-family="Arial, sans-serif" font-size="12.5" fill="#475569">Scalar integer &amp; comparison</text>
+<text x="82" y="223.0" font-family="Arial, sans-serif" font-size="12.5" font-weight="700" fill="#2563eb">12 slots / cycle</text>
+<rect x="288.0" y="175.5" width="20" height="20" rx="3" fill="#2563eb"/>
+<rect x="313.0" y="175.5" width="20" height="20" rx="3" fill="#2563eb"/>
+<rect x="338.0" y="175.5" width="20" height="20" rx="3" fill="#2563eb"/>
+<rect x="363.0" y="175.5" width="20" height="20" rx="3" fill="#2563eb"/>
+<rect x="388.0" y="175.5" width="20" height="20" rx="3" fill="#2563eb"/>
+<rect x="413.0" y="175.5" width="20" height="20" rx="3" fill="#2563eb"/>
+<rect x="288.0" y="200.5" width="20" height="20" rx="3" fill="#2563eb"/>
+<rect x="313.0" y="200.5" width="20" height="20" rx="3" fill="#2563eb"/>
+<rect x="338.0" y="200.5" width="20" height="20" rx="3" fill="#2563eb"/>
+<rect x="363.0" y="200.5" width="20" height="20" rx="3" fill="#2563eb"/>
+<rect x="388.0" y="200.5" width="20" height="20" rx="3" fill="#2563eb"/>
+<rect x="413.0" y="200.5" width="20" height="20" rx="3" fill="#2563eb"/>
+<rect x="508.0" y="185.0" width="25.9" height="26" rx="5" fill="#eef1f5"/>
+<text x="521.0" y="202.5" text-anchor="middle" font-family="Menlo, Consolas, monospace" font-size="13" fill="#334155">+</text>
+<rect x="538.9" y="185.0" width="25.9" height="26" rx="5" fill="#eef1f5"/>
+<text x="551.9" y="202.5" text-anchor="middle" font-family="Menlo, Consolas, monospace" font-size="13" fill="#334155">-</text>
+<rect x="569.8" y="185.0" width="25.9" height="26" rx="5" fill="#eef1f5"/>
+<text x="582.8" y="202.5" text-anchor="middle" font-family="Menlo, Consolas, monospace" font-size="13" fill="#334155">*</text>
+<rect x="600.7" y="185.0" width="33.8" height="26" rx="5" fill="#eef1f5"/>
+<text x="617.6" y="202.5" text-anchor="middle" font-family="Menlo, Consolas, monospace" font-size="13" fill="#334155">//</text>
+<rect x="639.5" y="185.0" width="49.6" height="26" rx="5" fill="#eef1f5"/>
+<text x="664.3" y="202.5" text-anchor="middle" font-family="Menlo, Consolas, monospace" font-size="13" fill="#334155">cdiv</text>
+<rect x="694.1" y="185.0" width="25.9" height="26" rx="5" fill="#eef1f5"/>
+<text x="707.0" y="202.5" text-anchor="middle" font-family="Menlo, Consolas, monospace" font-size="13" fill="#334155">%</text>
+<rect x="739.0" y="185.0" width="25.9" height="26" rx="5" fill="#eef1f5"/>
+<text x="751.9" y="202.5" text-anchor="middle" font-family="Menlo, Consolas, monospace" font-size="13" fill="#334155">^</text>
+<rect x="769.9" y="185.0" width="25.9" height="26" rx="5" fill="#eef1f5"/>
+<text x="782.8" y="202.5" text-anchor="middle" font-family="Menlo, Consolas, monospace" font-size="13" fill="#334155">&amp;</text>
+<rect x="800.8" y="185.0" width="25.9" height="26" rx="5" fill="#eef1f5"/>
+<text x="813.7" y="202.5" text-anchor="middle" font-family="Menlo, Consolas, monospace" font-size="13" fill="#334155">|</text>
+<rect x="831.7" y="185.0" width="33.8" height="26" rx="5" fill="#eef1f5"/>
+<text x="848.6" y="202.5" text-anchor="middle" font-family="Menlo, Consolas, monospace" font-size="13" fill="#334155">&lt;&lt;</text>
+<rect x="870.5" y="185.0" width="33.8" height="26" rx="5" fill="#eef1f5"/>
+<text x="887.4" y="202.5" text-anchor="middle" font-family="Menlo, Consolas, monospace" font-size="13" fill="#334155">&gt;&gt;</text>
+<rect x="923.3" y="185.0" width="25.9" height="26" rx="5" fill="#eef1f5"/>
+<text x="936.2" y="202.5" text-anchor="middle" font-family="Menlo, Consolas, monospace" font-size="13" fill="#334155">&lt;</text>
+<rect x="954.2" y="185.0" width="33.8" height="26" rx="5" fill="#eef1f5"/>
+<text x="971.1" y="202.5" text-anchor="middle" font-family="Menlo, Consolas, monospace" font-size="13" fill="#334155">==</text>
+<rect x="56" y="260.0" width="1168" height="96.0" rx="11" fill="#ffffff" stroke="#e6eaf0" stroke-width="1.2"/>
+<text x="82" y="294.0" font-family="Arial, sans-serif" font-size="23" font-weight="700" fill="#7c3aed">VALU</text>
+<text x="82" y="314.0" font-family="Arial, sans-serif" font-size="12.5" fill="#475569">Vector SIMD — 8-wide</text>
+<text x="82" y="333.0" font-family="Arial, sans-serif" font-size="12.5" font-weight="700" fill="#7c3aed">6 slots x 8 lanes = 48 ops</text>
+<rect x="288.00" y="297.0" width="1.53" height="22" fill="#7c3aed"/>
+<rect x="290.93" y="297.0" width="1.53" height="22" fill="#7c3aed"/>
+<rect x="293.85" y="297.0" width="1.53" height="22" fill="#7c3aed"/>
+<rect x="296.77" y="297.0" width="1.53" height="22" fill="#7c3aed"/>
+<rect x="299.70" y="297.0" width="1.53" height="22" fill="#7c3aed"/>
+<rect x="302.62" y="297.0" width="1.53" height="22" fill="#7c3aed"/>
+<rect x="305.55" y="297.0" width="1.53" height="22" fill="#7c3aed"/>
+<rect x="308.48" y="297.0" width="1.53" height="22" fill="#7c3aed"/>
+<rect x="315.00" y="297.0" width="1.53" height="22" fill="#7c3aed"/>
+<rect x="317.93" y="297.0" width="1.53" height="22" fill="#7c3aed"/>
+<rect x="320.85" y="297.0" width="1.53" height="22" fill="#7c3aed"/>
+<rect x="323.77" y="297.0" width="1.53" height="22" fill="#7c3aed"/>
+<rect x="326.70" y="297.0" width="1.53" height="22" fill="#7c3aed"/>
+<rect x="329.62" y="297.0" width="1.53" height="22" fill="#7c3aed"/>
+<rect x="332.55" y="297.0" width="1.53" height="22" fill="#7c3aed"/>
+<rect x="335.48" y="297.0" width="1.53" height="22" fill="#7c3aed"/>
+<rect x="342.00" y="297.0" width="1.53" height="22" fill="#7c3aed"/>
+<rect x="344.93" y="297.0" width="1.53" height="22" fill="#7c3aed"/>
+<rect x="347.85" y="297.0" width="1.53" height="22" fill="#7c3aed"/>
+<rect x="350.77" y="297.0" width="1.53" height="22" fill="#7c3aed"/>
+<rect x="353.70" y="297.0" width="1.53" height="22" fill="#7c3aed"/>
+<rect x="356.62" y="297.0" width="1.53" height="22" fill="#7c3aed"/>
+<rect x="359.55" y="297.0" width="1.53" height="22" fill="#7c3aed"/>
+<rect x="362.48" y="297.0" width="1.53" height="22" fill="#7c3aed"/>
+<rect x="369.00" y="297.0" width="1.53" height="22" fill="#7c3aed"/>
+<rect x="371.93" y="297.0" width="1.53" height="22" fill="#7c3aed"/>
+<rect x="374.85" y="297.0" width="1.53" height="22" fill="#7c3aed"/>
+<rect x="377.77" y="297.0" width="1.53" height="22" fill="#7c3aed"/>
+<rect x="380.70" y="297.0" width="1.53" height="22" fill="#7c3aed"/>
+<rect x="383.62" y="297.0" width="1.53" height="22" fill="#7c3aed"/>
+<rect x="386.55" y="297.0" width="1.53" height="22" fill="#7c3aed"/>
+<rect x="389.48" y="297.0" width="1.53" height="22" fill="#7c3aed"/>
+<rect x="396.00" y="297.0" width="1.53" height="22" fill="#7c3aed"/>
+<rect x="398.93" y="297.0" width="1.53" height="22" fill="#7c3aed"/>
+<rect x="401.85" y="297.0" width="1.53" height="22" fill="#7c3aed"/>
+<rect x="404.77" y="297.0" width="1.53" height="22" fill="#7c3aed"/>
+<rect x="407.70" y="297.0" width="1.53" height="22" fill="#7c3aed"/>
+<rect x="410.62" y="297.0" width="1.53" height="22" fill="#7c3aed"/>
+<rect x="413.55" y="297.0" width="1.53" height="22" fill="#7c3aed"/>
+<rect x="416.48" y="297.0" width="1.53" height="22" fill="#7c3aed"/>
+<rect x="423.00" y="297.0" width="1.53" height="22" fill="#7c3aed"/>
+<rect x="425.93" y="297.0" width="1.53" height="22" fill="#7c3aed"/>
+<rect x="428.85" y="297.0" width="1.53" height="22" fill="#7c3aed"/>
+<rect x="431.77" y="297.0" width="1.53" height="22" fill="#7c3aed"/>
+<rect x="434.70" y="297.0" width="1.53" height="22" fill="#7c3aed"/>
+<rect x="437.62" y="297.0" width="1.53" height="22" fill="#7c3aed"/>
+<rect x="440.55" y="297.0" width="1.53" height="22" fill="#7c3aed"/>
+<rect x="443.48" y="297.0" width="1.53" height="22" fill="#7c3aed"/>
+<rect x="508.0" y="295.0" width="136.5" height="26" rx="5" fill="#eef1f5"/>
+<text x="576.2" y="312.5" text-anchor="middle" font-family="Menlo, Consolas, monospace" font-size="13" fill="#334155">any ALU op (x8)</text>
+<rect x="663.5" y="295.0" width="97.0" height="26" rx="5" fill="#eef1f5"/>
+<text x="712.0" y="312.5" text-anchor="middle" font-family="Menlo, Consolas, monospace" font-size="13" fill="#334155">vbroadcast</text>
+<rect x="765.5" y="295.0" width="160.2" height="26" rx="5" fill="#eef1f5"/>
+<text x="845.6" y="312.5" text-anchor="middle" font-family="Menlo, Consolas, monospace" font-size="13" fill="#334155">multiply_add (FMA)</text>
+<rect x="56" y="370.0" width="1168" height="96.0" rx="11" fill="#ffffff" stroke="#e6eaf0" stroke-width="1.2"/>
+<text x="82" y="404.0" font-family="Arial, sans-serif" font-size="23" font-weight="700" fill="#0f766e">LOAD</text>
+<text x="82" y="424.0" font-family="Arial, sans-serif" font-size="12.5" fill="#475569">Memory reads &amp; constants</text>
+<text x="82" y="443.0" font-family="Arial, sans-serif" font-size="12.5" font-weight="700" fill="#0f766e">2 slots / cycle</text>
+<rect x="288.0" y="408.0" width="20" height="20" rx="3" fill="#0f766e"/>
+<rect x="313.0" y="408.0" width="20" height="20" rx="3" fill="#0f766e"/>
+<rect x="508.0" y="405.0" width="49.6" height="26" rx="5" fill="#eef1f5"/>
+<text x="532.8" y="422.5" text-anchor="middle" font-family="Menlo, Consolas, monospace" font-size="13" fill="#334155">load</text>
+<rect x="562.6" y="405.0" width="57.5" height="26" rx="5" fill="#eef1f5"/>
+<text x="591.4" y="422.5" text-anchor="middle" font-family="Menlo, Consolas, monospace" font-size="13" fill="#334155">vload</text>
+<rect x="625.1" y="405.0" width="104.9" height="26" rx="5" fill="#eef1f5"/>
+<text x="677.6" y="422.5" text-anchor="middle" font-family="Menlo, Consolas, monospace" font-size="13" fill="#334155">load_offset</text>
+<rect x="735.0" y="405.0" width="57.5" height="26" rx="5" fill="#eef1f5"/>
+<text x="763.8" y="422.5" text-anchor="middle" font-family="Menlo, Consolas, monospace" font-size="13" fill="#334155">const</text>
+<rect x="56" y="480.0" width="1168" height="96.0" rx="11" fill="#ffffff" stroke="#e6eaf0" stroke-width="1.2"/>
+<text x="82" y="514.0" font-family="Arial, sans-serif" font-size="23" font-weight="700" fill="#dc2626">STORE</text>
+<text x="82" y="534.0" font-family="Arial, sans-serif" font-size="12.5" fill="#475569">Memory writes</text>
+<text x="82" y="553.0" font-family="Arial, sans-serif" font-size="12.5" font-weight="700" fill="#dc2626">2 slots / cycle</text>
+<rect x="288.0" y="518.0" width="20" height="20" rx="3" fill="#dc2626"/>
+<rect x="313.0" y="518.0" width="20" height="20" rx="3" fill="#dc2626"/>
+<rect x="508.0" y="515.0" width="57.5" height="26" rx="5" fill="#eef1f5"/>
+<text x="536.8" y="532.5" text-anchor="middle" font-family="Menlo, Consolas, monospace" font-size="13" fill="#334155">store</text>
+<rect x="570.5" y="515.0" width="65.4" height="26" rx="5" fill="#eef1f5"/>
+<text x="603.2" y="532.5" text-anchor="middle" font-family="Menlo, Consolas, monospace" font-size="13" fill="#334155">vstore</text>
+<rect x="56" y="590.0" width="1168" height="99.0" rx="11" fill="#ffffff" stroke="#e6eaf0" stroke-width="1.2"/>
+<text x="82" y="625.5" font-family="Arial, sans-serif" font-size="23" font-weight="700" fill="#f59e0b">FLOW</text>
+<text x="82" y="645.5" font-family="Arial, sans-serif" font-size="12.5" fill="#475569">Control flow, select &amp; misc</text>
+<text x="82" y="664.5" font-family="Arial, sans-serif" font-size="12.5" font-weight="700" fill="#f59e0b">1 slot / cycle</text>
+<rect x="288.0" y="629.5" width="20" height="20" rx="3" fill="#f59e0b"/>
+<rect x="508.0" y="609.0" width="65.4" height="26" rx="5" fill="#eef1f5"/>
+<text x="540.7" y="626.5" text-anchor="middle" font-family="Menlo, Consolas, monospace" font-size="13" fill="#334155">select</text>
+<rect x="578.4" y="609.0" width="73.3" height="26" rx="5" fill="#eef1f5"/>
+<text x="615.0" y="626.5" text-anchor="middle" font-family="Menlo, Consolas, monospace" font-size="13" fill="#334155">vselect</text>
+<rect x="656.7" y="609.0" width="73.3" height="26" rx="5" fill="#eef1f5"/>
+<text x="693.4" y="626.5" text-anchor="middle" font-family="Menlo, Consolas, monospace" font-size="13" fill="#334155">add_imm</text>
+<rect x="749.0" y="609.0" width="49.6" height="26" rx="5" fill="#eef1f5"/>
+<text x="773.8" y="626.5" text-anchor="middle" font-family="Menlo, Consolas, monospace" font-size="13" fill="#334155">jump</text>
+<rect x="803.6" y="609.0" width="120.7" height="26" rx="5" fill="#eef1f5"/>
+<text x="864.0" y="626.5" text-anchor="middle" font-family="Menlo, Consolas, monospace" font-size="13" fill="#334155">jump_indirect</text>
+<rect x="929.3" y="609.0" width="89.1" height="26" rx="5" fill="#eef1f5"/>
+<text x="973.9" y="626.5" text-anchor="middle" font-family="Menlo, Consolas, monospace" font-size="13" fill="#334155">cond_jump</text>
+<rect x="1023.4" y="609.0" width="120.7" height="26" rx="5" fill="#eef1f5"/>
+<text x="1083.8" y="626.5" text-anchor="middle" font-family="Menlo, Consolas, monospace" font-size="13" fill="#334155">cond_jump_rel</text>
+<rect x="508.0" y="644.0" width="49.6" height="26" rx="5" fill="#eef1f5"/>
+<text x="532.8" y="661.5" text-anchor="middle" font-family="Menlo, Consolas, monospace" font-size="13" fill="#334155">halt</text>
+<rect x="562.6" y="644.0" width="57.5" height="26" rx="5" fill="#eef1f5"/>
+<text x="591.4" y="661.5" text-anchor="middle" font-family="Menlo, Consolas, monospace" font-size="13" fill="#334155">pause</text>
+<rect x="625.1" y="644.0" width="104.9" height="26" rx="5" fill="#eef1f5"/>
+<text x="677.6" y="661.5" text-anchor="middle" font-family="Menlo, Consolas, monospace" font-size="13" fill="#334155">trace_write</text>
+<rect x="735.0" y="644.0" width="65.4" height="26" rx="5" fill="#eef1f5"/>
+<text x="767.7" y="661.5" text-anchor="middle" font-family="Menlo, Consolas, monospace" font-size="13" fill="#334155">coreid</text>
+</svg>

@@ -1,9 +1,9 @@
 {
   "stage": 6,
   "id": "06_tree_cache",
-  "name": "Tree Caching",
-  "kind": "vector_ladder",
-  "claim": "Cache the heavily reused upper tree levels and replace shallow gathers with vector selects.",
+  "name": "Implement Tree Caching",
+  "kind": "banked_vector",
+  "claim": "Cache high-reuse upper tree levels and replace shallow gathers with vector selects once temporary banking exposes enough parallelism.",
   "workload": {
     "forest_height": 10,
     "rounds": 16,
@@ -11,7 +11,12 @@
   },
   "builder_args": {
     "cache_tree": true,
-    "cache_depth3": false,
-    "streaming_io": false
+    "cache_depth3": true,
+    "streaming_io": true,
+    "parallel_banks": 23,
+    "unroll": 32,
+    "schedule_mode": "strict",
+    "load_weight": -1,
+    "valu_weight": -1
   }
 }

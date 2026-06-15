@@ -1,0 +1,14 @@
+Rendered QA summary:
+- Task mode: create
+- Profile: engineering-platform
+- Slide count: 15
+- Export status: passed
+- PPTX archive integrity: passed with unzip -t
+- Render status: all 15 slide PNG previews generated
+- Contact sheet: generated and inspected
+
+Content QA:
+- Story: pass. Slides follow the agreed narrative from baseline through VLIW scheduling.
+- Specificity: pass. Cycle counts, workload constants, machine slot limits, and named checkpoints are included.
+- Engineering proof objects: pass. Includes workload map, machine model, optimization ladder, Perfetto-style traces, utilization chart, and tree-cache heatmap.
+- Known limitation: visual polish is intentionally basic; this is a content-first draft.

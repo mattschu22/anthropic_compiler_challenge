@@ -2,9 +2,10 @@
 
 from __future__ import annotations
 
-import csv
 import math
 from pathlib import Path
+
+from .presentation_rows import load_presentation_rows
 
 
 ROOT = Path(__file__).resolve().parent
@@ -13,17 +14,16 @@ CSV_PATH = RESULTS / "cycles.csv"
 SVG_PATH = RESULTS / "charts" / "optimization_ladder.svg"
 
 PHASES = [
-    (0, 2, "Remove work", "#dbeafe"),
-    (2, 4, "Specialize", "#dcfce7"),
-    (4, 8, "Expose parallelism", "#fef3c7"),
-    (8, 10, "Schedule machine", "#ede9fe"),
+    (0, 1, "Remove work", "#dbeafe"),
+    (1, 2, "Specialize", "#dcfce7"),
+    (2, 3, "Vectorize", "#fef3c7"),
+    (3, 5, "Schedule + temps", "#ede9fe"),
+    (5, 7, "Cache + tune", "#ccfbf1"),
 ]
 
 
 def _load_rows():
-    with CSV_PATH.open() as f:
-        rows = list(csv.DictReader(f))
-    return rows
+    return load_presentation_rows(CSV_PATH)
 
 
 def _esc(text: str) -> str:
@@ -41,7 +41,7 @@ def write_svg(rows, path: Path = SVG_PATH):
     height = 720
     left = 92
     right = 56
-    top = 116
+    top = 136
     bottom = 150
     chart_w = width - left - right
     chart_h = height - top - bottom
@@ -63,19 +63,21 @@ def write_svg(rows, path: Path = SVG_PATH):
         f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}">',
         '<rect width="100%" height="100%" fill="#f8fafc"/>',
         '<text x="36" y="46" font-family="Arial, sans-serif" font-size="28" font-weight="700" fill="#111827">Optimization Ladder</text>',
-        '<text x="36" y="72" font-family="Arial, sans-serif" font-size="15" fill="#475569">Cumulative checkpoints · log-scaled cycles · fixed 10/16/256 workload</text>',
+        '<text x="36" y="72" font-family="Arial, sans-serif" font-size="15" fill="#475569">Fixed 10/16/256 workload</text>',
         '<text x="1132" y="46" text-anchor="end" font-family="Arial, sans-serif" font-size="14" fill="#475569">final speedup</text>',
-        '<text x="1228" y="46" text-anchor="end" font-family="Arial, sans-serif" font-size="28" font-weight="700" fill="#0f766e">124.8x</text>',
+        f'<text x="1228" y="46" text-anchor="end" font-family="Arial, sans-serif" font-size="28" font-weight="700" fill="#0f766e">{float(rows[-1]["speedup"]):.1f}x</text>',
     ]
 
-    # Phase bands behind the plot.
+    # Phase backdrop behind the plot, with the label lifted into its own tag
+    # chip above the plot so it never sits on top of near-top data markers.
     for start, end, label, fill in PHASES:
         x1 = x_for(start)
         x2 = x_for(end)
         parts.extend(
             [
-                f'<rect x="{x1:.1f}" y="{top - 26}" width="{x2 - x1:.1f}" height="{chart_h + 36}" fill="{fill}" opacity="0.48"/>',
-                f'<text x="{(x1 + x2) / 2:.1f}" y="{top - 10}" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#334155">{_esc(label)}</text>',
+                f'<rect x="{x1:.1f}" y="{top:.1f}" width="{x2 - x1:.1f}" height="{chart_h + 10:.1f}" fill="{fill}" opacity="0.48"/>',
+                f'<rect x="{x1:.1f}" y="{top - 48}" width="{x2 - x1:.1f}" height="22" fill="{fill}" opacity="0.7"/>',
+                f'<text x="{(x1 + x2) / 2:.1f}" y="{top - 33}" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#334155">{_esc(label)}</text>',
             ]
         )
 
@@ -115,12 +117,10 @@ def write_svg(rows, path: Path = SVG_PATH):
 
     for idx, (row, (x, y)) in enumerate(zip(rows, points)):
         value = int(row["cycles"])
-        marker_fill = "#0f766e" if idx >= 9 else "#2563eb"
-        if idx == 8:
-            marker_fill = "#f59e0b"
-        # Points 5 and 9 carry callout boxes above them, so drop their value
+        marker_fill = "#2563eb"
+        # Callout points carry boxes above them, so drop their value
         # label below the marker to keep both readable.
-        label_y = y + 22 if idx in (5, 9) else y - 12
+        label_y = y + 22 if idx in (3, 5) else y - 12
         parts.extend(
             [
                 f'<circle cx="{x:.1f}" cy="{y:.1f}" r="6.5" fill="{marker_fill}" stroke="#f8fafc" stroke-width="2"/>',
@@ -129,15 +129,30 @@ def write_svg(rows, path: Path = SVG_PATH):
             ]
         )
 
-    # Callouts for the two largest narrative inflection points. Boxes sit above
-    # and to the left of each marker; value labels for these points are placed
-    # below the marker so nothing is occluded.
+    # Callouts for the two largest narrative inflection points. Boxes are lifted
+    # well into the empty space above the descending line (the curve only falls
+    # left-to-right, so the region above each point is clear) and tethered with a
+    # short leader, so they never sit on top of the line or its markers. Value
+    # labels for these points drop below the marker to stay readable.
     box_w = 212
     box_h = 30
-    for idx, label, factor, dx, dy in (
-        (5, "SIMD: 8 lanes per vector", "11.9x faster", -box_w - 16, -88),
-        (9, "VLIW packing fills slots", "6.9x faster", -box_w - 16, -96),
-    ):
+    callouts = [
+        (
+            3,
+            "SIMD + streaming IO",
+            f'{int(rows[2]["cycles"]):,} -> {int(rows[3]["cycles"]):,} cycles',
+            -197,
+            -207,
+        ),
+        (
+            5,
+            "Temp banks expose work",
+            f'{int(rows[4]["cycles"]):,} -> {int(rows[5]["cycles"]):,} cycles',
+            -260,
+            -180,
+        ),
+    ]
+    for idx, label, factor, dx, dy in callouts:
         x, y = points[idx]
         bx = x + dx
         by = y + dy
@@ -149,7 +164,7 @@ def write_svg(rows, path: Path = SVG_PATH):
                 f'<circle cx="{anchor_x:.1f}" cy="{anchor_y:.1f}" r="2.4" fill="#64748b"/>',
                 f'<rect x="{bx:.1f}" y="{by:.1f}" width="{box_w}" height="{box_h}" rx="5" fill="#ffffff" stroke="#cbd5e1"/>',
                 f'<text x="{bx + 12:.1f}" y="{by + 13:.1f}" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#111827">{_esc(label)}</text>',
-                f'<text x="{bx + 12:.1f}" y="{by + 25:.1f}" font-family="Arial, sans-serif" font-size="11" fill="#0f766e">{_esc(factor)} vs previous rung</text>',
+                f'<text x="{bx + 12:.1f}" y="{by + 25:.1f}" font-family="Arial, sans-serif" font-size="11" fill="#0f766e">{_esc(factor)}</text>',
             ]
         )
 
@@ -165,12 +180,7 @@ def write_svg(rows, path: Path = SVG_PATH):
             f'<text x="{x:.1f}" y="{y:.1f}" font-family="Arial, sans-serif" font-size="12" fill="#334155">{_esc(row["stage"])}. {_esc(row["name"])}</text>'
         )
 
-    parts.extend(
-        [
-            f'<text x="36" y="{height - 32}" font-family="Arial, sans-serif" font-size="13" fill="#64748b">Source: optimization_ladder/results/cycles.csv</text>',
-            "</svg>",
-        ]
-    )
+    parts.append("</svg>")
     path.write_text("\n".join(parts))
     return path
 

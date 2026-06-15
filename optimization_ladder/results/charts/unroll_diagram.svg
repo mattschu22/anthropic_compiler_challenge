@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1340" height="446" viewBox="0 0 1340 446">
+<rect width="100%" height="100%" fill="#f8fafc"/>
+<text x="56" y="50" font-family="Arial, sans-serif" font-size="28" font-weight="700" fill="#0f172a">Round Unrolling: Expose the Fixed Depth Sequence</text>
+<text x="56" y="80" font-family="Arial, sans-serif" font-size="15" fill="#475569">16 rounds over a height-10 tree (depth = r % 11) compile to a constant, branch-free schedule</text>
+<defs><marker id="ar" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#334155"/></marker><marker id="arw" markerWidth="9" markerHeight="9" refX="6.5" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#b45309"/></marker></defs>
+<text x="56" y="120" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#94a3b8">GENERIC LOOP · runtime checks</text>
+<rect x="56" y="132" width="470" height="280" rx="11" fill="#ffffff" stroke="#e6eaf0" stroke-width="1.2"/>
+<text x="84" y="184" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="14" fill="#1f2328" xml:space="preserve">for r in range(16):</text>
+<text x="84" y="218" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="14" fill="#1f2328" xml:space="preserve">    depth = r % 11</text>
+<rect x="394" y="204" width="116" height="20" rx="5" fill="#fee2e2"/>
+<text x="452" y="218" text-anchor="middle" font-family="Arial, sans-serif" font-size="11.5" font-weight="700" fill="#b91c1c">runtime %</text>
+<text x="84" y="252" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="14" fill="#1f2328" xml:space="preserve">    fp, ip, vp = header(mem)</text>
+<rect x="394" y="238" width="116" height="20" rx="5" fill="#fee2e2"/>
+<text x="452" y="252" text-anchor="middle" font-family="Arial, sans-serif" font-size="11.5" font-weight="700" fill="#b91c1c">layout load</text>
+<text x="84" y="286" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="14" fill="#1f2328" xml:space="preserve">    if depth == 10:  reset</text>
+<rect x="394" y="272" width="116" height="20" rx="5" fill="#fee2e2"/>
+<text x="452" y="286" text-anchor="middle" font-family="Arial, sans-serif" font-size="11.5" font-weight="700" fill="#b91c1c">branch / round</text>
+<text x="84" y="320" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="14" fill="#1f2328" xml:space="preserve">    else:            descend</text>
+<path d="M 68 196 q -10 0 -10 12 v 120 q 0 12 10 12" fill="none" stroke="#94a3b8" stroke-width="1.6" marker-end="url(#ar)"/>
+<text x="72" y="382" font-family="Arial, sans-serif" font-size="12" fill="#64748b">repeated every round — work the compiler can do once</text>
+<line x1="538" y1="272.0" x2="586" y2="272.0" stroke="#334155" stroke-width="2.4" marker-end="url(#ar)"/>
+<text x="564" y="260" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#334155">unroll</text>
+<text x="600" y="120" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#94a3b8">UNROLLED · 16 fixed steps</text>
+<rect x="600" y="132" width="684" height="280" rx="11" fill="#ffffff" stroke="#e6eaf0" stroke-width="1.2"/>
+<text x="626" y="194" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#64748b">step depth (precomputed)</text>
+<rect x="626" y="224" width="33" height="48" rx="4" fill="#1e40af" stroke="#ffffff" stroke-width="1"/>
+<text x="642" y="254" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#ffffff">0</text>
+<text x="642" y="288" text-anchor="middle" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="10.5" fill="#94a3b8">r0</text>
+<rect x="664" y="224" width="33" height="48" rx="4" fill="#2e50b7" stroke="#ffffff" stroke-width="1"/>
+<text x="680" y="254" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#ffffff">1</text>
+<text x="680" y="288" text-anchor="middle" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="10.5" fill="#94a3b8">r1</text>
+<rect x="702" y="224" width="33" height="48" rx="4" fill="#3e5fbf" stroke="#ffffff" stroke-width="1"/>
+<text x="718" y="254" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#ffffff">2</text>
+<text x="718" y="288" text-anchor="middle" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="10.5" fill="#94a3b8">r2</text>
+<rect x="740" y="224" width="33" height="48" rx="4" fill="#4e6ec7" stroke="#ffffff" stroke-width="1"/>
+<text x="756" y="254" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#ffffff">3</text>
+<text x="756" y="288" text-anchor="middle" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="10.5" fill="#94a3b8">r3</text>
+<rect x="778" y="224" width="33" height="48" rx="4" fill="#5e7ecf" stroke="#ffffff" stroke-width="1"/>
+<text x="794" y="254" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#ffffff">4</text>
+<text x="794" y="288" text-anchor="middle" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="10.5" fill="#94a3b8">r4</text>
+<rect x="816" y="224" width="33" height="48" rx="4" fill="#6e8ed6" stroke="#ffffff" stroke-width="1"/>
+<text x="832" y="254" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#1e3a8a">5</text>
+<text x="832" y="288" text-anchor="middle" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="10.5" fill="#94a3b8">r5</text>
+<rect x="854" y="224" width="33" height="48" rx="4" fill="#7f9dde" stroke="#ffffff" stroke-width="1"/>
+<text x="870" y="254" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#1e3a8a">6</text>
+<text x="870" y="288" text-anchor="middle" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="10.5" fill="#94a3b8">r6</text>
+<rect x="892" y="224" width="33" height="48" rx="4" fill="#8face6" stroke="#ffffff" stroke-width="1"/>
+<text x="908" y="254" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#1e3a8a">7</text>
+<text x="908" y="288" text-anchor="middle" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="10.5" fill="#94a3b8">r7</text>
+<rect x="930" y="224" width="33" height="48" rx="4" fill="#9fbcee" stroke="#ffffff" stroke-width="1"/>
+<text x="946" y="254" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#1e3a8a">8</text>
+<text x="946" y="288" text-anchor="middle" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="10.5" fill="#94a3b8">r8</text>
+<rect x="968" y="224" width="33" height="48" rx="4" fill="#afccf6" stroke="#ffffff" stroke-width="1"/>
+<text x="984" y="254" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#1e3a8a">9</text>
+<text x="984" y="288" text-anchor="middle" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="10.5" fill="#94a3b8">r9</text>
+<rect x="1006" y="224" width="33" height="48" rx="4" fill="#bfdbfe" stroke="#f59e0b" stroke-width="2.4"/>
+<text x="1022" y="254" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#1e3a8a">10</text>
+<text x="1022" y="288" text-anchor="middle" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="10.5" fill="#94a3b8">r10</text>
+<rect x="1060" y="224" width="33" height="48" rx="4" fill="#1e40af" stroke="#ffffff" stroke-width="1"/>
+<text x="1076" y="254" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#ffffff">0</text>
+<text x="1076" y="288" text-anchor="middle" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="10.5" fill="#94a3b8">r11</text>
+<rect x="1098" y="224" width="33" height="48" rx="4" fill="#2e50b7" stroke="#ffffff" stroke-width="1"/>
+<text x="1114" y="254" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#ffffff">1</text>
+<text x="1114" y="288" text-anchor="middle" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="10.5" fill="#94a3b8">r12</text>
+<rect x="1136" y="224" width="33" height="48" rx="4" fill="#3e5fbf" stroke="#ffffff" stroke-width="1"/>
+<text x="1152" y="254" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#ffffff">2</text>
+<text x="1152" y="288" text-anchor="middle" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="10.5" fill="#94a3b8">r13</text>
+<rect x="1174" y="224" width="33" height="48" rx="4" fill="#4e6ec7" stroke="#ffffff" stroke-width="1"/>
+<text x="1190" y="254" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#ffffff">3</text>
+<text x="1190" y="288" text-anchor="middle" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="10.5" fill="#94a3b8">r14</text>
+<rect x="1212" y="224" width="33" height="48" rx="4" fill="#5e7ecf" stroke="#ffffff" stroke-width="1"/>
+<text x="1228" y="254" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#ffffff">4</text>
+<text x="1228" y="288" text-anchor="middle" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="10.5" fill="#94a3b8">r15</text>
+<text x="1022" y="214" text-anchor="middle" font-family="Arial, sans-serif" font-size="10.5" font-weight="700" fill="#b45309">leaf · reset</text>
+<path d="M 1039 266 q 22 18 21 0" fill="none" stroke="#b45309" stroke-width="1.6" marker-end="url(#arw)"/>
+<text x="1050" y="310" text-anchor="middle" font-family="Arial, sans-serif" font-size="10.5" fill="#b45309">wrap</text>
+<path d="M 626 182 V 174 H 1039 V 182" fill="none" stroke="#cbd5e1" stroke-width="1.3"/>
+<text x="832" y="169" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="700" fill="#64748b">full descent: root → leaf</text>
+<path d="M 1060 182 V 174 H 1245 V 182" fill="none" stroke="#cbd5e1" stroke-width="1.3"/>
+<text x="1152" y="169" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="700" fill="#64748b">partial second descent</text>
+<text x="626" y="342" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#0f766e">Memory layout baked in (constants, no header reads):</text>
+<rect x="626" y="356" width="151" height="26" rx="5" fill="#ecfdf5" stroke="#0f766e" stroke-opacity="0.4"/>
+<text x="702" y="373" text-anchor="middle" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="12.5" fill="#0f766e">forest_values @ 7</text>
+<rect x="789" y="356" width="128" height="26" rx="5" fill="#ecfdf5" stroke="#0f766e" stroke-opacity="0.4"/>
+<text x="853" y="373" text-anchor="middle" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="12.5" fill="#0f766e">indices @ 2054</text>
+<rect x="930" y="356" width="121" height="26" rx="5" fill="#ecfdf5" stroke="#0f766e" stroke-opacity="0.4"/>
+<text x="990" y="373" text-anchor="middle" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="12.5" fill="#0f766e">values @ 2310</text>
+</svg>

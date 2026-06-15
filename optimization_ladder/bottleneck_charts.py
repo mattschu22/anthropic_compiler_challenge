@@ -17,6 +17,7 @@ import csv
 import math
 from pathlib import Path
 
+from .presentation_rows import load_presentation_rows
 from .trace_visuals import ENGINE_ORDER, summarize_trace
 
 
@@ -31,18 +32,20 @@ ENGINE_COLOR = {e: c for e, _s, c in ENGINE_ORDER}
 ENGINE_LABEL = {"alu": "ALU", "valu": "VALU", "load": "Load", "store": "Store", "flow": "Flow"}
 
 PHASES = [
-    (0, 2, "Remove work", "#dbeafe"),
-    (2, 4, "Specialize", "#dcfce7"),
-    (4, 8, "Expose parallelism", "#fef3c7"),
-    (8, 10, "Schedule machine", "#ede9fe"),
+    (0, 1, "Remove work", "#dbeafe"),
+    (1, 2, "Specialize", "#dcfce7"),
+    (2, 3, "Vectorize", "#fef3c7"),
+    (3, 5, "Schedule + temps", "#ede9fe"),
+    (5, 7, "Cache + tune", "#ccfbf1"),
 ]
 
 # Bottleneck regimes: (first_stage, last_stage, name, sub, color).
 REGIMES = [
-    (0, 4, "Serialized", "scalar issue width", "#64748b"),
-    (5, 7, "Memory-bound", "load is the hot lane", "#0f766e"),
-    (8, 8, "Schedule-bound", "not yet packed", "#f59e0b"),
-    (9, 10, "VALU throughput", "at the hardware ceiling", "#7c3aed"),
+    (0, 2, "Serialized", "scalar issue width", "#64748b"),
+    (3, 3, "Vectorized", "SIMD active", "#0f766e"),
+    (4, 4, "False deps", "one temp namespace", "#f59e0b"),
+    (5, 5, "Temp-banked", "parallel work exposed", "#2563eb"),
+    (6, 7, "VALU throughput", "cache and tune", "#7c3aed"),
 ]
 
 
@@ -57,8 +60,7 @@ def _esc(text: str) -> str:
 
 
 def _load_rows():
-    with CSV_PATH.open() as f:
-        return list(csv.DictReader(f))
+    return load_presentation_rows(CSV_PATH)
 
 
 def collect(rows):
@@ -94,13 +96,16 @@ def _header(parts, title, subtitle):
 
 
 def _phase_bands(parts, x_for, top, chart_h):
+    # Phase backdrop behind the plot, with the label lifted into its own tag
+    # chip above the plot so it never covers near-top data markers.
     for start, end, label, fill in PHASES:
         x1 = x_for(start)
         x2 = x_for(end)
         parts.extend(
             [
-                f'<rect x="{x1:.1f}" y="{top - 26}" width="{x2 - x1:.1f}" height="{chart_h + 36}" fill="{fill}" opacity="0.48"/>',
-                f'<text x="{(x1 + x2) / 2:.1f}" y="{top - 10}" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#334155">{_esc(label)}</text>',
+                f'<rect x="{x1:.1f}" y="{top:.1f}" width="{x2 - x1:.1f}" height="{chart_h + 10:.1f}" fill="{fill}" opacity="0.48"/>',
+                f'<rect x="{x1:.1f}" y="{top - 48}" width="{x2 - x1:.1f}" height="22" fill="{fill}" opacity="0.7"/>',
+                f'<text x="{(x1 + x2) / 2:.1f}" y="{top - 33}" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#334155">{_esc(label)}</text>',
             ]
         )
 
@@ -128,7 +133,7 @@ def _regime_for(stage):
 # --------------------------------------------------------------------------- #
 def issue_density_svg(data, path):
     width, height = 1280, 720
-    left, right, top, bottom = 92, 60, 116, 132
+    left, right, top, bottom = 92, 60, 136, 132
     chart_w = width - left - right
     chart_h = height - top - bottom
     n = len(data)
@@ -148,7 +153,7 @@ def issue_density_svg(data, path):
     _header(
         parts,
         "Issue Density vs. Machine Peak",
-        "Ops issued per cycle against the 23-slot VLIW peak · the empty space above each bar is idle machine",
+        "Ops issued per cycle vs. the 23-slot peak",
     )
     _phase_bands(parts, x_for, top, chart_h)
 
@@ -197,25 +202,24 @@ def issue_density_svg(data, path):
 
     _stage_axis(parts, data, x_for, top, chart_h)
 
-    # Callout on the headroom collapse.
-    d9 = data[9]
-    x9 = x_for(9)
-    y9 = y_for(d9["opc"])
+    # Callout on the false-dependency break.
+    vliw_stage = 5
+    pre_stage = 4
+    d_vliw = data[vliw_stage]
+    x9 = x_for(vliw_stage)
+    y9 = y_for(d_vliw["opc"])
+    pre_pct = data[pre_stage]["opc"] / PEAK * 100.0
+    post_pct = d_vliw["opc"] / PEAK * 100.0
     parts.extend(
         [
             f'<rect x="{x9 - 250:.1f}" y="{y9 - 18:.1f}" width="196" height="34" rx="5" fill="#ffffff" stroke="#cbd5e1"/>',
-            f'<text x="{x9 - 240:.1f}" y="{y9 - 3:.1f}" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#111827">VLIW packing: 2.6 → 17.8 ops/cyc</text>',
-            f'<text x="{x9 - 240:.1f}" y="{y9 + 11:.1f}" font-family="Arial, sans-serif" font-size="11" fill="#475569">4% → 86% of peak issue width</text>',
+            f'<text x="{x9 - 240:.1f}" y="{y9 - 3:.1f}" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#111827">Temp banks: {data[pre_stage]["opc"]:.1f} → {d_vliw["opc"]:.1f} ops/cyc</text>',
+            f'<text x="{x9 - 240:.1f}" y="{y9 + 11:.1f}" font-family="Arial, sans-serif" font-size="11" fill="#475569">{pre_pct:.0f}% → {post_pct:.0f}% of peak issue width</text>',
             f'<line x1="{x9 - 54:.1f}" y1="{y9 - 1:.1f}" x2="{x9 - bar_w / 2:.1f}" y2="{y9:.1f}" stroke="#64748b" stroke-width="1.2"/>',
         ]
     )
 
-    parts.extend(
-        [
-            f'<text x="36" y="{height - 24}" font-family="Arial, sans-serif" font-size="13" fill="#64748b">Source: optimization_ladder/results/traces/*.json · bar color = bottleneck regime</text>',
-            "</svg>",
-        ]
-    )
+    parts.append("</svg>")
     path.write_text("\n".join(parts))
     return path
 
@@ -242,7 +246,7 @@ def shifting_bottleneck_svg(data, path):
     _header(
         parts,
         "The Bottleneck Keeps Moving",
-        "The binding constraint at each rung — every optimization relocates the limiter rather than re-fighting it",
+        "The binding constraint at each rung",
     )
 
     # Phase labels above the band, aligned to the cycle/utilization charts.
@@ -266,7 +270,7 @@ def shifting_bottleneck_svg(data, path):
         lo, hi = min(opcs), max(opcs)
         metric = f"{lo:.1f} ops/cyc" if abs(hi - lo) < 0.05 else f"{lo:.1f} → {hi:.1f} ops/cyc"
         box_w = x2 - x1
-        # Size each text row so it fits inside its box (stage 8 is only one
+        # Size each text row so it fits inside its box (single-rung regimes are
         # checkpoint wide, so a fixed font would overflow into neighbors).
         name_fs = max(11, min(18, (box_w - 16) / (0.62 * len(name))))
         metric_fs = max(11, min(13, (box_w - 16) / (0.5 * len(metric))))
@@ -281,9 +285,9 @@ def shifting_bottleneck_svg(data, path):
 
     # Transition arrows between regimes, labeled with the unlocking rung.
     transitions = [
-        (4, 5, "vectorize"),
-        (7, 8, "temp banks"),
-        (8, 9, "VLIW schedule"),
+        (2, 3, "vectorize"),
+        (4, 5, "temp banks"),
+        (5, 6, "tree cache"),
     ]
     arrow_y = band_y + band_h + 30
     parts.append(
@@ -326,7 +330,7 @@ def shifting_bottleneck_svg(data, path):
 # --------------------------------------------------------------------------- #
 def work_vs_time_svg(data, path):
     width, height = 1280, 720
-    left, right, top, bottom = 100, 150, 116, 132
+    left, right, top, bottom = 100, 150, 136, 132
     chart_w = width - left - right
     chart_h = height - top - bottom
     n = len(data)
@@ -349,7 +353,7 @@ def work_vs_time_svg(data, path):
     _header(
         parts,
         "Work vs. Time",
-        "Total ops issued (work) and cycles (time) · after vectorize the work goes flat while cycles keep falling — the back half is pure scheduling",
+        "Total ops issued (work) vs. cycles (time)",
     )
     _phase_bands(parts, x_for, top, chart_h)
 
@@ -402,29 +406,33 @@ def work_vs_time_svg(data, path):
 
     # Annotations.
     # 1) coincident scalar region.
-    x2 = x_for(2)
+    x2 = x_for(1)
     parts.extend(
         [
-            f'<text x="{x2:.1f}" y="{y_for(data[2]["ops"]) - 12:.1f}" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#334155">ops = cycles (1 op/cycle)</text>',
+            f'<text x="{x2:.1f}" y="{y_for(data[1]["ops"]) - 12:.1f}" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#334155">ops = cycles (1 op/cycle)</text>',
         ]
     )
-    # 2) work-flat / cycles-falling region.
-    xm = x_for(9)
-    ym = (y_for(data[9]["ops"]) + y_for(data[9]["cycles"])) / 2
+    # 2) work-flat / cycles-falling region. Park the box in the open gap to the
+    # right of the schedule stage -- between the flat work line and the falling
+    # cycles line -- so it never sits on top of either line or its markers.
+    schedule_stage = 5
+    prior_stage = 4
+    xm = x_for(schedule_stage)
+    ym = (
+        y_for(data[schedule_stage]["ops"]) + y_for(data[schedule_stage]["cycles"])
+    ) / 2
+    box_x = xm + 24
+    box_y = ym - 17
+    cycle_ratio = data[prior_stage]["cycles"] / data[schedule_stage]["cycles"]
     parts.extend(
         [
-            f'<rect x="{xm - 240:.1f}" y="{ym - 17:.1f}" width="210" height="34" rx="5" fill="#ffffff" stroke="#cbd5e1"/>',
-            f'<text x="{xm - 230:.1f}" y="{ym - 2:.1f}" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#111827">same ~23k ops, 14× fewer cycles</text>',
-            f'<text x="{xm - 230:.1f}" y="{ym + 12:.1f}" font-family="Arial, sans-serif" font-size="11" fill="#0f766e">scheduling gain, no new work removed</text>',
+            f'<rect x="{box_x:.1f}" y="{box_y:.1f}" width="210" height="34" rx="5" fill="#ffffff" stroke="#cbd5e1"/>',
+            f'<text x="{box_x + 10:.1f}" y="{box_y + 15:.1f}" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#111827">false deps fixed, {cycle_ratio:.1f}x fewer cycles</text>',
+            f'<text x="{box_x + 10:.1f}" y="{box_y + 27:.1f}" font-family="Arial, sans-serif" font-size="11" fill="#0f766e">more parallel issue from similar work</text>',
         ]
     )
 
-    parts.extend(
-        [
-            f'<text x="36" y="{height - 24}" font-family="Arial, sans-serif" font-size="13" fill="#64748b">Source: optimization_ladder/results/traces/*.json</text>',
-            "</svg>",
-        ]
-    )
+    parts.append("</svg>")
     path.write_text("\n".join(parts))
     return path
 
@@ -434,7 +442,7 @@ def work_vs_time_svg(data, path):
 # --------------------------------------------------------------------------- #
 def op_composition_svg(data, path):
     width, height = 1280, 720
-    left, right, top, bottom = 92, 60, 152, 132
+    left, right, top, bottom = 92, 60, 164, 132
     chart_w = width - left - right
     chart_h = height - top - bottom
     n = len(data)
@@ -451,18 +459,20 @@ def op_composition_svg(data, path):
     _header(
         parts,
         "Composition of Issued Work",
-        "Share of issued ops by engine · the number above each bar is total ops/cycle (the magnitude the share divides)",
+        "Share of issued ops by engine",
     )
 
     # Bars are always full height (100% stacked), so the ops/cycle magnitude
-    # gets its own row above the plot, with phase labels a row higher still.
+    # gets its own row above the plot, with the phase label lifted into its own
+    # tag chip a row higher still, clear of both the bars and the ops/cyc row.
     for start, end, label, fill in PHASES:
         x1 = x_for(start)
         x2 = x_for(end)
         parts.extend(
             [
-                f'<rect x="{x1:.1f}" y="{top - 48}" width="{x2 - x1:.1f}" height="{chart_h + 58}" fill="{fill}" opacity="0.48"/>',
-                f'<text x="{(x1 + x2) / 2:.1f}" y="{top - 32}" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#334155">{_esc(label)}</text>',
+                f'<rect x="{x1:.1f}" y="{top:.1f}" width="{x2 - x1:.1f}" height="{chart_h + 10:.1f}" fill="{fill}" opacity="0.48"/>',
+                f'<rect x="{x1:.1f}" y="{top - 60}" width="{x2 - x1:.1f}" height="22" fill="{fill}" opacity="0.7"/>',
+                f'<text x="{(x1 + x2) / 2:.1f}" y="{top - 45}" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#334155">{_esc(label)}</text>',
             ]
         )
     parts.append(
@@ -521,12 +531,7 @@ def op_composition_svg(data, path):
         )
         lx += 120
 
-    parts.extend(
-        [
-            f'<text x="36" y="{height - 18}" text-anchor="start" font-family="Arial, sans-serif" font-size="11" fill="#64748b" transform="translate(640 0)">Source: optimization_ladder/results/traces/*.json</text>',
-            "</svg>",
-        ]
-    )
+    parts.append("</svg>")
     path.write_text("\n".join(parts))
     return path
 
